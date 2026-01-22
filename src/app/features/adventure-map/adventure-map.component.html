@@ -1,0 +1,74 @@
+<div class="heroes-root">
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <div class="resource gold">💰 2500</div>
+    <div class="resource wood">🪵 15</div>
+    <div class="resource ore">⛏️ 12</div>
+
+    <!-- <div class="day-info">
+      <span>Day 3</span>
+      <span>Week 1</span>
+      <span>Month 1</span>
+    </div>
+   -->
+    <div class="day-info">
+      <span>Day {{ (gameTime$ | async)?.day }}</span>
+      <span>Week {{ (gameTime$ | async)?.week }}</span>
+      <span>Month {{ (gameTime$ | async)?.month }}</span>
+    </div>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <div class="main-layout">
+
+    <!-- MAP AREA -->
+    <section class="map-container">
+      <canvas #canvas width="960" height="720"></canvas>
+    </section>
+
+    <!-- RIGHT PANEL -->
+    <aside class="side-panel">
+
+      <!-- HERO PORTRAIT -->
+      <div class="panel hero-panel">
+        <div class="hero-portrait"></div>
+        <div class="hero-info">
+          <div class="hero-name">{{ selectedHero.name }}</div>
+          <div class="hero-stats">
+            <span>⚔️ 3</span>
+            <span>🛡️ 2</span>
+            <span>📘 1</span>
+            <span>✨ 1</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOVEMENT -->
+      <div class="panel movement-panel">
+        <div class="label">Movement</div>
+        <div class="movement-bar">
+          <div class="movement-fill" [style.width.%]="movementPercent$ | async"></div>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="panel actions-panel">
+        <button>📜 Spell Book</button>
+        <button>🎒 Inventory</button>
+        <button>🏰 Town</button>
+        <button (click)="endTurn()">⚔️ End Turn</button>
+      </div>
+
+    </aside>
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <footer class="bottom-bar">
+    <button>🗺️ Adventure</button>
+    <button>⚔️ Kingdom</button>
+    <button>⚙️ Options</button>
+    <button>❌ Exit</button>
+  </footer>
+
+</div>
