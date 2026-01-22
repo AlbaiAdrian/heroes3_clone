@@ -4,6 +4,6 @@ import { Resources } from './resources.model';
 
 export interface Player {
   heroes: Hero[];
-  selectedHeroIndex: number;
+  selectedHero: Hero;
   resources: Resources;
 }
