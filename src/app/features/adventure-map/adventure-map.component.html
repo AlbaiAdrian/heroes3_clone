@@ -2,9 +2,9 @@
 
   <!-- TOP BAR -->
   <header class="top-bar">
-    <div class="resource gold">💰 2500</div>
-    <div class="resource wood">🪵 15</div>
-    <div class="resource ore">⛏️ 12</div>
+    <div class="resource gold">💰 {{ player.resources.gold }}</div>
+    <div class="resource wood">🪵 {{ player.resources.wood }}</div>
+    <div class="resource ore">⛏️ {{ player.resources.stone }}</div>
 
     <!-- <div class="day-info">
       <span>Day 3</span>
@@ -34,7 +34,7 @@
       <div class="panel hero-panel">
         <div class="hero-portrait"></div>
         <div class="hero-info">
-          <div class="hero-name">{{ selectedHero.name }}</div>
+          <div class="hero-name">{{ player.heroes[player.selectedHeroIndex].name }}</div>
           <div class="hero-stats">
             <span>⚔️ 3</span>
             <span>🛡️ 2</span>

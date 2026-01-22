@@ -46,7 +46,6 @@ export class AdventureMapComponent implements AfterViewInit {
   map!: Tile[][];
   objects!: MapObject[];
   player!: Player;
-  selectedHero!: Hero;
 
   // Reactive bindings
   turn$: Observable<number>;
@@ -72,10 +71,11 @@ export class AdventureMapComponent implements AfterViewInit {
     this.objectWalkability.applyObjects(this.map, this.objects)
 
     // Initialize player with starting hero and resources
-    this.selectedHero = {tile: this.map[5][5], name: 'First Hero', level: 1, movementPoints: 10,maxMovementPoints: 10, path: [], facing:HeroOrientation.West};
+    const firstHero: Hero = {tile: this.map[5][5], name: 'First Hero', level: 1, movementPoints: 10, maxMovementPoints: 10, path: [], facing:HeroOrientation.West};
     
     this.player = {
-      heroes: [this.selectedHero],
+      heroes: [firstHero],
+      selectedHeroIndex: 0,
       resources: {
         gold: 10000,
         wood: 20,
@@ -89,11 +89,11 @@ export class AdventureMapComponent implements AfterViewInit {
 
     this.movement$ = this.movementState.movement$;
 
-    this.movementPercent$ = this.movement$.pipe(map(movement => Math.round((movement / this.selectedHero.maxMovementPoints) * 100)));
+    this.movementPercent$ = this.movement$.pipe(map(movement => Math.round((movement / this.player.heroes[this.player.selectedHeroIndex].maxMovementPoints) * 100)));
 
     this.gameTime$ = this.gameClock.time$;
 
-    this.movementState.initialize(this.selectedHero);
+    this.movementState.initialize(this.player.heroes[this.player.selectedHeroIndex]);
   }
 
   ngAfterViewInit(): void {
@@ -112,13 +112,13 @@ export class AdventureMapComponent implements AfterViewInit {
     const tile = this.getTileFromMouse(event);
     if (!tile) return;
 
-    this.heroMovement.setDestination(this.selectedHero, tile, this.map);
+    this.heroMovement.setDestination(this.player.heroes[this.player.selectedHeroIndex], tile, this.map);
 
     this.redraw();
   }
 
   private async onDoubleClick(event: MouseEvent): Promise<void> {
-    await this.heroMovement.executePlannedMovement(this.selectedHero,async () => {
+    await this.heroMovement.executePlannedMovement(this.player.heroes[this.player.selectedHeroIndex], async () => {
       this.redraw();
       // yield control so browser can paint
       await new Promise(requestAnimationFrame);
@@ -126,7 +126,7 @@ export class AdventureMapComponent implements AfterViewInit {
   }
 
   private redraw(): void {
-    this.renderer.draw(this.map, this.objects, this.selectedHero);
+    this.renderer.draw(this.map, this.objects, this.player.heroes[this.player.selectedHeroIndex]);
   }
 
   private getTileFromMouse(event: MouseEvent): Tile | null {
