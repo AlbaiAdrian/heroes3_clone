@@ -1,5 +1,5 @@
 import { AfterViewInit, ViewChild, ElementRef, Component, OnDestroy } from "@angular/core";
-import { map, Observable } from "rxjs";
+import { map, Observable, Subscription } from "rxjs";
 import { Tile } from "../../core/models/terrain/tile.model";
 import { EventBusService } from "../../core/services/event-bus.service";
 import { HeroMovementStateService } from "../../core/services/hero-movement/hero-movement-state.service";
@@ -60,6 +60,9 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   // Map dimensions (increased from 24x16 to 48x32)
   private readonly MAP_WIDTH = 48;
   private readonly MAP_HEIGHT = 32;
+  
+  // Subscriptions for cleanup
+  private subscriptions: Subscription[] = [];
 
   constructor(
       private mapGenerator: MapGeneratorService,
@@ -121,7 +124,9 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     // Center camera on hero initially
     this.viewport.centerOnTile(this.player.selectedHero.tile.x, this.player.selectedHero.tile.y);
 
-    this.eventBus.on('heroMoved').subscribe(() => this.redraw());
+    this.subscriptions.push(
+      this.eventBus.on('heroMoved').subscribe(() => this.redraw())
+    );
 
     this.canvas.nativeElement.addEventListener('click', e => this.onClick(e));
     this.canvas.nativeElement.addEventListener('dblclick', e => this.onDoubleClick(e));
@@ -129,8 +134,12 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     this.canvas.nativeElement.addEventListener('mouseleave', () => this.onMouseLeave());
 
     // Subscribe to camera changes to trigger redraw
-    this.viewport.cameraX.subscribe(() => this.redraw());
-    this.viewport.cameraY.subscribe(() => this.redraw());
+    this.subscriptions.push(
+      this.viewport.cameraX.subscribe(() => this.redraw())
+    );
+    this.subscriptions.push(
+      this.viewport.cameraY.subscribe(() => this.redraw())
+    );
 
     this.redraw();
   }
@@ -195,6 +204,7 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.edgeScroll.disable();
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 }
