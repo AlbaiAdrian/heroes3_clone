@@ -10,31 +10,56 @@ import { MapObject } from '../../models/map-objects/map-object.model';
 import { ObjectsSpriteService } from './objects-sprite.service';
 import { MAP_OBJECT_DEFINITIONS } from '../../models/map-objects/map-object-config';
 import { getFootprintSize } from './map-object.utils';
+import { ViewportService } from '../viewport/viewport.service';
 
 @Injectable({ providedIn: 'root' })
 export class CanvasRendererService {
 
   private ctx!: CanvasRenderingContext2D;
   private tileSize = 48;
+  private canvasWidth = 960;
+  private canvasHeight = 720;
 
-  constructor(private heroSprite: HeroSpriteService, private terrainSprite: TerrainSpriteService, private ojectsSprite: ObjectsSpriteService) {}
+  constructor(
+    private heroSprite: HeroSpriteService, 
+    private terrainSprite: TerrainSpriteService, 
+    private ojectsSprite: ObjectsSpriteService,
+    private viewport: ViewportService
+  ) {}
 
   initialize(ctx: CanvasRenderingContext2D): void {
     this.ctx = ctx;
+    this.canvasWidth = ctx.canvas.width;
+    this.canvasHeight = ctx.canvas.height;
   }
 
-  draw(map: Tile[][], objects: MapObject[], hero: Hero, ): void {
-    this.ctx.clearRect(0, 0, 960, 720);
-    this.drawMap(map);
-    this.renderObjects(objects);
+  draw(map: Tile[][], objects: MapObject[], hero: Hero): void {
+    const camera = this.viewport.getCameraPosition();
+    
+    this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+    
+    // Apply camera transformation
+    this.ctx.save();
+    this.ctx.translate(-camera.x, -camera.y);
+    
+    this.drawMap(map, camera);
+    this.renderObjects(objects, camera);
     this.drawPathPreview(hero);
     this.drawHero(hero);
+    
+    this.ctx.restore();
   }
 
-  private drawMap(map: Tile[][]): void {
-    for (const row of map) {
-      for (const tile of row) {
-        this.drawTile(tile);
+  private drawMap(map: Tile[][], camera: { x: number; y: number }): void {
+    // Calculate visible tile range for performance optimization
+    const startX = Math.max(0, Math.floor(camera.x / this.tileSize));
+    const startY = Math.max(0, Math.floor(camera.y / this.tileSize));
+    const endX = Math.min(map[0].length, Math.ceil((camera.x + this.canvasWidth) / this.tileSize) + 1);
+    const endY = Math.min(map.length, Math.ceil((camera.y + this.canvasHeight) / this.tileSize) + 1);
+    
+    for (let y = startY; y < endY; y++) {
+      for (let x = startX; x < endX; x++) {
+        this.drawTile(map[y][x]);
       }
     }
   }
@@ -50,7 +75,6 @@ export class CanvasRendererService {
       this.tileSize,
       this.tileSize
     );
-    console.log('Drew tile at', tile.x, tile.y, this.tileSize);
   }
 
   private drawPathPreview(hero: Hero): void {
@@ -96,12 +120,23 @@ export class CanvasRendererService {
 //     );
 //   }
 // }
-  renderObjects(objects: MapObject[]): void {
+  renderObjects(objects: MapObject[], camera: { x: number; y: number }): void {
+    // Filter objects that are visible in the viewport
+    const startX = Math.floor(camera.x / this.tileSize);
+    const startY = Math.floor(camera.y / this.tileSize);
+    const endX = Math.ceil((camera.x + this.canvasWidth) / this.tileSize);
+    const endY = Math.ceil((camera.y + this.canvasHeight) / this.tileSize);
+    
     for (const obj of objects) {
-      const def = MAP_OBJECT_DEFINITIONS[obj.type];
-      const sprite = this.ojectsSprite.get(obj.type);
       const size = getFootprintSize(obj.footprint);
-
+      
+      // Simple visibility check
+      if (obj.x + size.width < startX || obj.x > endX ||
+          obj.y + size.height < startY || obj.y > endY) {
+        continue;
+      }
+      
+      const sprite = this.ojectsSprite.get(obj.type);
       const drawWidth = size.width * this.tileSize;
       const drawHeight = size.height * this.tileSize;
 
