@@ -53,9 +53,12 @@ export class AdventureMapComponent implements AfterViewInit {
   private viewportY = 0;
   private readonly viewportWidth = 20;  // tiles visible horizontally
   private readonly viewportHeight = 15; // tiles visible vertically
+  private readonly tileSize = 48; // pixels per tile
+  private readonly dragThreshold = 5; // pixels to move before considering it a drag
   
   // Mouse drag state
   private isDragging = false;
+  private hasDragged = false; // Track if actual dragging occurred
   private dragStartX = 0;
   private dragStartY = 0;
 
@@ -128,7 +131,7 @@ export class AdventureMapComponent implements AfterViewInit {
   }
 
   private onClick(event: MouseEvent): void {
-    if (this.isDragging) return; // Ignore click if we were dragging
+    if (this.hasDragged) return; // Ignore click if we were dragging
     
     const tile = this.getTileFromMouse(event);
     if (!tile) return;
@@ -152,8 +155,8 @@ export class AdventureMapComponent implements AfterViewInit {
 
   private getTileFromMouse(event: MouseEvent): Tile | null {
     const rect = this.canvas.nativeElement.getBoundingClientRect();
-    const canvasX = Math.floor((event.clientX - rect.left) / 48);
-    const canvasY = Math.floor((event.clientY - rect.top) / 48);
+    const canvasX = Math.floor((event.clientX - rect.left) / this.tileSize);
+    const canvasY = Math.floor((event.clientY - rect.top) / this.tileSize);
     
     // Adjust for viewport offset
     const x = canvasX + this.viewportX;
@@ -164,6 +167,7 @@ export class AdventureMapComponent implements AfterViewInit {
 
   private onMouseDown(event: MouseEvent): void {
     this.isDragging = true;
+    this.hasDragged = false;
     this.dragStartX = event.clientX;
     this.dragStartY = event.clientY;
   }
@@ -175,10 +179,12 @@ export class AdventureMapComponent implements AfterViewInit {
     const deltaY = event.clientY - this.dragStartY;
     
     // Drag threshold to distinguish from click
-    if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
+    if (Math.abs(deltaX) > this.dragThreshold || Math.abs(deltaY) > this.dragThreshold) {
+      this.hasDragged = true;
+      
       // Convert pixel delta to tile delta
-      const tileDeltaX = Math.floor(-deltaX / 48);
-      const tileDeltaY = Math.floor(-deltaY / 48);
+      const tileDeltaX = Math.floor(-deltaX / this.tileSize);
+      const tileDeltaY = Math.floor(-deltaY / this.tileSize);
       
       if (tileDeltaX !== 0 || tileDeltaY !== 0) {
         this.scrollViewport(tileDeltaX, tileDeltaY);

@@ -27,8 +27,8 @@ export class CanvasRendererService {
     this.ctx.clearRect(0, 0, 960, 720);
     this.drawMap(map, viewportX, viewportY, viewportWidth, viewportHeight);
     this.renderObjects(objects, viewportX, viewportY, viewportWidth, viewportHeight);
-    this.drawPathPreview(hero, viewportX, viewportY);
-    this.drawHero(hero, viewportX, viewportY);
+    this.drawPathPreview(hero, viewportX, viewportY, viewportWidth, viewportHeight);
+    this.drawHero(hero, viewportX, viewportY, viewportWidth, viewportHeight);
   }
 
   private drawMap(map: Tile[][], viewportX: number, viewportY: number, viewportWidth: number, viewportHeight: number): void {
@@ -60,11 +60,17 @@ export class CanvasRendererService {
     );
   }
 
-  private drawPathPreview(hero: Hero, viewportX: number, viewportY: number): void {
+  private drawPathPreview(hero: Hero, viewportX: number, viewportY: number, viewportWidth: number, viewportHeight: number): void {
     this.ctx.fillStyle = 'rgba(0, 255, 0, 0.3)';
 
     for (const tile of hero.path) {
       if (tile === hero.tile) continue;
+
+      // Skip if tile is outside viewport
+      if (tile.x < viewportX || tile.x >= viewportX + viewportWidth ||
+          tile.y < viewportY || tile.y >= viewportY + viewportHeight) {
+        continue;
+      }
 
       // Only draw if tile is in viewport
       const screenX = (tile.x - viewportX) * this.tileSize;
@@ -79,7 +85,13 @@ export class CanvasRendererService {
     }
   }
 
-  private drawHero(hero: Hero, viewportX: number, viewportY: number): void {
+  private drawHero(hero: Hero, viewportX: number, viewportY: number, viewportWidth: number, viewportHeight: number): void {
+    // Skip if hero is outside viewport
+    if (hero.tile.x < viewportX || hero.tile.x >= viewportX + viewportWidth ||
+        hero.tile.y < viewportY || hero.tile.y >= viewportY + viewportHeight) {
+      return;
+    }
+
     const sprite = this.heroSprite.get(hero.facing);
 
     // Draw at screen position relative to viewport
