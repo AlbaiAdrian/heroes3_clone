@@ -198,8 +198,9 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     
     // Convert screen coordinates to world coordinates
     const worldPos = this.viewport.screenToWorld(screenX, screenY);
-    const x = Math.floor(worldPos.x / ViewportService.TILE_SIZE);
-    const y = Math.floor(worldPos.y / ViewportService.TILE_SIZE);
+    const tileSize = 48; // Same as ViewportService.TILE_SIZE and CanvasRendererService.tileSize
+    const x = Math.floor(worldPos.x / tileSize);
+    const y = Math.floor(worldPos.y / tileSize);
     
     return this.map[y]?.[x] ?? null;
   }

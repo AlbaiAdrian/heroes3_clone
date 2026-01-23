@@ -44,8 +44,8 @@ export class CanvasRendererService {
     
     this.drawMap(map, camera);
     this.renderObjects(objects, camera);
-    this.drawPathPreview(hero);
-    this.drawHero(hero);
+    this.drawPathPreview(hero, camera);
+    this.drawHero(hero, camera);
     
     this.ctx.restore();
   }
@@ -77,11 +77,22 @@ export class CanvasRendererService {
     );
   }
 
-  private drawPathPreview(hero: Hero): void {
+  private drawPathPreview(hero: Hero, camera: { x: number; y: number }): void {
+    // Calculate visible tile range for viewport culling
+    const startX = Math.floor(camera.x / this.tileSize);
+    const startY = Math.floor(camera.y / this.tileSize);
+    const endX = Math.ceil((camera.x + this.canvasWidth) / this.tileSize);
+    const endY = Math.ceil((camera.y + this.canvasHeight) / this.tileSize);
+    
     this.ctx.fillStyle = 'rgba(0, 255, 0, 0.3)';
 
     for (const tile of hero.path) {
       if (tile === hero.tile) continue;
+
+      // Only draw path tiles that are visible in the viewport
+      if (tile.x < startX || tile.x > endX || tile.y < startY || tile.y > endY) {
+        continue;
+      }
 
       this.ctx.fillRect(
         tile.x * this.tileSize,
@@ -92,18 +103,36 @@ export class CanvasRendererService {
     }
   }
 
-  private drawHero(hero: Hero): void {
-    const sprite = this.heroSprite.get(hero.facing);
-
+  private drawHero(hero: Hero, camera: { x: number; y: number }): void {
     const x = hero.tile.x * this.tileSize;
     const y = hero.tile.y * this.tileSize;
+    
+    // Hero sprite extends beyond the tile (1.5x size, offset by 0.25 left and 0.5 up)
+    const heroLeft = x - this.tileSize * 0.25;
+    const heroTop = y - this.tileSize * 0.5;
+    const heroWidth = this.tileSize * 1.5;
+    const heroHeight = this.tileSize * 1.5;
+    
+    // Calculate viewport bounds
+    const viewportLeft = camera.x;
+    const viewportTop = camera.y;
+    const viewportRight = camera.x + this.canvasWidth;
+    const viewportBottom = camera.y + this.canvasHeight;
+    
+    // Only draw hero if visible in viewport
+    if (heroLeft + heroWidth < viewportLeft || heroLeft > viewportRight ||
+        heroTop + heroHeight < viewportTop || heroTop > viewportBottom) {
+      return;
+    }
+    
+    const sprite = this.heroSprite.get(hero.facing);
 
     this.ctx.drawImage(
       sprite,
-      x - this.tileSize * 0.25,
-      y - this.tileSize * 0.5,
-      this.tileSize * 1.5,
-      this.tileSize * 1.5
+      heroLeft,
+      heroTop,
+      heroWidth,
+      heroHeight
     );
   }
 
