@@ -15,6 +15,8 @@ import { GameTime } from "../../core/models/game-time.model";
 import { MapObjectGeneratorService } from "../../core/services/map-generation/map-object-generator.service";
 import { MapObject } from "../../core/models/map-objects/map-object.model";
 import { ObjectWalkabilityService } from "../../core/services/map-generation/object-walkability.service";
+import { Player } from "../../core/models/player/player.model";
+import { ResourceType } from "../../core/models/player/resource-type.enum";
 
 // @Component({
 //   standalone: true,
@@ -44,7 +46,7 @@ export class AdventureMapComponent implements AfterViewInit {
 
   map!: Tile[][];
   objects!: MapObject[];
-  selectedHero!: Hero;
+  player!: Player;
 
   // Reactive bindings
   turn$: Observable<number>;
@@ -69,7 +71,18 @@ export class AdventureMapComponent implements AfterViewInit {
     this.objects = this.objectGenerator.generate(this.map);
     this.objectWalkability.applyObjects(this.map, this.objects)
 
-    this.selectedHero = {tile: this.map[5][5], name: 'First Hero', level: 1, movementPoints: 10,maxMovementPoints: 10, path: [], facing:HeroOrientation.West};
+    // Initialize player with starting hero and resources
+    const firstHero: Hero = {tile: this.map[5][5], name: 'First Hero', level: 1, movementPoints: 10, maxMovementPoints: 10, path: [], facing:HeroOrientation.West};
+    
+    this.player = {
+      heroes: [firstHero],
+      selectedHero: firstHero,
+      resources: {
+        gold: { value: 10000, type: ResourceType.Gold },
+        wood: { value: 20, type: ResourceType.Wood },
+        stone: { value: 20, type: ResourceType.Stone }
+      }
+    };
 
     this.turn$ = this.turnEngine.turnState$.pipe(
         map(state => state.currentTurn)
@@ -77,11 +90,11 @@ export class AdventureMapComponent implements AfterViewInit {
 
     this.movement$ = this.movementState.movement$;
 
-    this.movementPercent$ = this.movement$.pipe(map(movement => Math.round((movement / this.selectedHero.maxMovementPoints) * 100)));
+    this.movementPercent$ = this.movement$.pipe(map(movement => Math.round((movement / this.player.selectedHero.maxMovementPoints) * 100)));
 
     this.gameTime$ = this.gameClock.time$;
 
-    this.movementState.initialize(this.selectedHero);
+    this.movementState.initialize(this.player.selectedHero);
   }
 
   ngAfterViewInit(): void {
@@ -100,13 +113,13 @@ export class AdventureMapComponent implements AfterViewInit {
     const tile = this.getTileFromMouse(event);
     if (!tile) return;
 
-    this.heroMovement.setDestination(this.selectedHero, tile, this.map);
+    this.heroMovement.setDestination(this.player.selectedHero, tile, this.map);
 
     this.redraw();
   }
 
   private async onDoubleClick(event: MouseEvent): Promise<void> {
-    await this.heroMovement.executePlannedMovement(this.selectedHero,async () => {
+    await this.heroMovement.executePlannedMovement(this.player.selectedHero, async () => {
       this.redraw();
       // yield control so browser can paint
       await new Promise(requestAnimationFrame);
@@ -114,7 +127,7 @@ export class AdventureMapComponent implements AfterViewInit {
   }
 
   private redraw(): void {
-    this.renderer.draw(this.map, this.objects, this.selectedHero);
+    this.renderer.draw(this.map, this.objects, this.player.selectedHero);
   }
 
   private getTileFromMouse(event: MouseEvent): Tile | null {
@@ -125,7 +138,7 @@ export class AdventureMapComponent implements AfterViewInit {
   }
 
   endTurn(): void {
-    this.turnEngine.endTurn([this.selectedHero]);
+    this.turnEngine.endTurn(this.player.heroes);
   }
 
 }
