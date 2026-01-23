@@ -48,7 +48,7 @@ export class ViewportService {
   /**
    * Get viewport dimensions in tiles
    */
-  getViewportDimensions(): { width: number; height: number } {
+  private getViewportDimensions(): { width: number; height: number } {
     return {
       width: Math.ceil(this.canvasWidth / this.TILE_SIZE),
       height: Math.ceil(this.canvasHeight / this.TILE_SIZE)
@@ -93,7 +93,7 @@ export class ViewportService {
   /**
    * Set camera position to specific coordinates
    */
-  setCameraPosition(x: number, y: number): void {
+  private setCameraPosition(x: number, y: number): void {
     this.cameraX$.next(this.clampCameraX(x));
     this.cameraY$.next(this.clampCameraY(y));
   }
@@ -137,7 +137,7 @@ export class ViewportService {
   /**
    * Convert world coordinates to screen coordinates
    */
-  worldToScreen(worldX: number, worldY: number): { x: number; y: number } {
+  private worldToScreen(worldX: number, worldY: number): { x: number; y: number } {
     return {
       x: worldX - this.cameraX$.value,
       y: worldY - this.cameraY$.value

@@ -34,7 +34,7 @@ export class EdgeScrollController implements OnDestroy {
   /**
    * Enable edge scrolling
    */
-  enable(): void {
+  private enable(): void {
     this.isEnabled = true;
   }
   
@@ -73,7 +73,7 @@ export class EdgeScrollController implements OnDestroy {
   /**
    * Get current scroll direction
    */
-  getCurrentDirection(): ScrollDirection {
+  private getCurrentDirection(): ScrollDirection {
     return this.currentScrollDirection;
   }
   

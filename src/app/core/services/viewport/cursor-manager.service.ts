@@ -12,7 +12,7 @@ export class CursorManagerService {
   /**
    * Get CSS cursor value for a scroll direction
    */
-  getCursorForDirection(direction: ScrollDirection): string {
+  private getCursorForDirection(direction: ScrollDirection): string {
     switch (direction) {
       case ScrollDirection.NORTH:
         return 'n-resize';
