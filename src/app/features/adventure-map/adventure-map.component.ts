@@ -1,5 +1,5 @@
 import { AfterViewInit, ViewChild, ElementRef, Component, OnDestroy } from "@angular/core";
-import { map, Observable, Subscription } from "rxjs";
+import { combineLatest, map, Observable, Subscription } from "rxjs";
 import { Tile } from "../../core/models/terrain/tile.model";
 import { HeroMovementStateService } from "../../core/services/hero-movement/hero-movement-state.service";
 import { MapGeneratorService } from "../../core/services/map-generation/map-generator.service";
@@ -140,14 +140,10 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     this.canvas.nativeElement.addEventListener('mouseleave', this.boundOnMouseLeave);
 
     // Subscribe to camera changes to trigger redraw
+    // Use combineLatest to avoid duplicate redraws when both X and Y change simultaneously
     this.subscriptions.push(
-      this.viewport.cameraX.subscribe(() => this.redraw())
+      combineLatest([this.viewport.cameraX, this.viewport.cameraY]).subscribe(() => this.redraw())
     );
-    this.subscriptions.push(
-      this.viewport.cameraY.subscribe(() => this.redraw())
-    );
-
-    this.redraw();
   }
 
   private onClick(event: MouseEvent): void {

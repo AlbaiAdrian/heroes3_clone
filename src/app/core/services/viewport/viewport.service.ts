@@ -53,9 +53,6 @@ export class ViewportService {
     this.canvasHeight = canvasHeight;
     this.mapWidth = mapWidth;
     this.mapHeight = mapHeight;
-    
-    // Center camera on map initially
-    this.centerCamera();
   }
   
   /**
