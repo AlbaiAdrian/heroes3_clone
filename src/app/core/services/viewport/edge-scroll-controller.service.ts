@@ -81,6 +81,11 @@ export class EdgeScrollController implements OnDestroy {
    * Determine scroll direction based on mouse position
    */
   private getScrollDirection(mouseX: number, mouseY: number, canvasWidth: number, canvasHeight: number): ScrollDirection {
+    // If mouse is outside the canvas bounds, stop scrolling
+    if (mouseX < 0 || mouseX > canvasWidth || mouseY < 0 || mouseY > canvasHeight) {
+      return ScrollDirection.NONE;
+    }
+    
     const atTop = mouseY < this.EDGE_MARGIN;
     const atBottom = mouseY > canvasHeight - this.EDGE_MARGIN;
     const atLeft = mouseX < this.EDGE_MARGIN;
