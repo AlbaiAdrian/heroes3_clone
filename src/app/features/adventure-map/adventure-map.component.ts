@@ -48,6 +48,20 @@ export class AdventureMapComponent implements AfterViewInit {
   objects!: MapObject[];
   player!: Player;
 
+  // Viewport tracking for scrolling
+  private viewportX = 0;
+  private viewportY = 0;
+  private readonly viewportWidth = 20;  // tiles visible horizontally
+  private readonly viewportHeight = 15; // tiles visible vertically
+  private readonly tileSize = 48; // pixels per tile
+  private readonly dragThreshold = 5; // pixels to move before considering it a drag
+  
+  // Mouse drag state
+  private isDragging = false;
+  private hasDragged = false; // Track if actual dragging occurred
+  private dragStartX = 0;
+  private dragStartY = 0;
+
   // Reactive bindings
   turn$: Observable<number>;
   readonly movement$: Observable<number>;
@@ -67,7 +81,8 @@ export class AdventureMapComponent implements AfterViewInit {
     
   {
     // this sequence must be reworked
-    this.map = this.mapGenerator.generate(24, 16);
+    // Generate a larger map (40x30 tiles instead of 24x16)
+    this.map = this.mapGenerator.generate(40, 30);
     this.objects = this.objectGenerator.generate(this.map);
     this.objectWalkability.applyObjects(this.map, this.objects)
 
@@ -105,11 +120,19 @@ export class AdventureMapComponent implements AfterViewInit {
 
     this.canvas.nativeElement.addEventListener('click', e => this.onClick(e));
     this.canvas.nativeElement.addEventListener('dblclick', e => this.onDoubleClick(e));
+    
+    // Add mouse drag handlers for scrolling
+    this.canvas.nativeElement.addEventListener('mousedown', e => this.onMouseDown(e));
+    this.canvas.nativeElement.addEventListener('mousemove', e => this.onMouseMove(e));
+    this.canvas.nativeElement.addEventListener('mouseup', () => this.onMouseUp());
+    this.canvas.nativeElement.addEventListener('mouseleave', () => this.onMouseUp());
 
     this.redraw();
   }
 
   private onClick(event: MouseEvent): void {
+    if (this.hasDragged) return; // Ignore click if we were dragging
+    
     const tile = this.getTileFromMouse(event);
     if (!tile) return;
 
@@ -127,14 +150,62 @@ export class AdventureMapComponent implements AfterViewInit {
   }
 
   private redraw(): void {
-    this.renderer.draw(this.map, this.objects, this.player.selectedHero);
+    this.renderer.draw(this.map, this.objects, this.player.selectedHero, this.viewportX, this.viewportY, this.viewportWidth, this.viewportHeight);
   }
 
   private getTileFromMouse(event: MouseEvent): Tile | null {
     const rect = this.canvas.nativeElement.getBoundingClientRect();
-    const x = Math.floor((event.clientX - rect.left) /48);
-    const y = Math.floor((event.clientY - rect.top) / 48);
+    const canvasX = Math.floor((event.clientX - rect.left) / this.tileSize);
+    const canvasY = Math.floor((event.clientY - rect.top) / this.tileSize);
+    
+    // Adjust for viewport offset
+    const x = canvasX + this.viewportX;
+    const y = canvasY + this.viewportY;
+    
     return this.map[y]?.[x] ?? null;
+  }
+
+  private onMouseDown(event: MouseEvent): void {
+    this.isDragging = true;
+    this.hasDragged = false;
+    this.dragStartX = event.clientX;
+    this.dragStartY = event.clientY;
+  }
+
+  private onMouseMove(event: MouseEvent): void {
+    if (!this.isDragging) return;
+
+    const deltaX = event.clientX - this.dragStartX;
+    const deltaY = event.clientY - this.dragStartY;
+    
+    // Drag threshold to distinguish from click
+    if (Math.abs(deltaX) > this.dragThreshold || Math.abs(deltaY) > this.dragThreshold) {
+      this.hasDragged = true;
+      
+      // Convert pixel delta to tile delta
+      const tileDeltaX = Math.floor(-deltaX / this.tileSize);
+      const tileDeltaY = Math.floor(-deltaY / this.tileSize);
+      
+      if (tileDeltaX !== 0 || tileDeltaY !== 0) {
+        this.scrollViewport(tileDeltaX, tileDeltaY);
+        this.dragStartX = event.clientX;
+        this.dragStartY = event.clientY;
+      }
+    }
+  }
+
+  private onMouseUp(): void {
+    this.isDragging = false;
+  }
+
+  private scrollViewport(deltaX: number, deltaY: number): void {
+    const mapWidth = this.map[0].length;
+    const mapHeight = this.map.length;
+    
+    this.viewportX = Math.max(0, Math.min(mapWidth - this.viewportWidth, this.viewportX + deltaX));
+    this.viewportY = Math.max(0, Math.min(mapHeight - this.viewportHeight, this.viewportY + deltaY));
+    
+    this.redraw();
   }
 
   endTurn(): void {
