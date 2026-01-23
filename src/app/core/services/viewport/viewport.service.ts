@@ -46,16 +46,6 @@ export class ViewportService {
   }
   
   /**
-   * Get viewport dimensions in tiles
-   */
-  private getViewportDimensions(): { width: number; height: number } {
-    return {
-      width: Math.ceil(this.canvasWidth / this.TILE_SIZE),
-      height: Math.ceil(this.canvasHeight / this.TILE_SIZE)
-    };
-  }
-  
-  /**
    * Initialize viewport with canvas and map dimensions
    */
   initialize(canvasWidth: number, canvasHeight: number, mapWidth: number, mapHeight: number): void {
@@ -131,16 +121,6 @@ export class ViewportService {
     return {
       x: screenX + this.cameraX$.value,
       y: screenY + this.cameraY$.value
-    };
-  }
-  
-  /**
-   * Convert world coordinates to screen coordinates
-   */
-  private worldToScreen(worldX: number, worldY: number): { x: number; y: number } {
-    return {
-      x: worldX - this.cameraX$.value,
-      y: worldY - this.cameraY$.value
     };
   }
 }

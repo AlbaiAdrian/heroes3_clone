@@ -71,13 +71,6 @@ export class EdgeScrollController implements OnDestroy {
   }
   
   /**
-   * Get current scroll direction
-   */
-  private getCurrentDirection(): ScrollDirection {
-    return this.currentScrollDirection;
-  }
-  
-  /**
    * Determine scroll direction based on mouse position
    */
   private getScrollDirection(mouseX: number, mouseY: number, canvasWidth: number, canvasHeight: number): ScrollDirection {

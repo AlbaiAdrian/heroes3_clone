@@ -1,7 +1,6 @@
 import { AfterViewInit, ViewChild, ElementRef, Component, OnDestroy } from "@angular/core";
 import { map, Observable, Subscription } from "rxjs";
 import { Tile } from "../../core/models/terrain/tile.model";
-import { EventBusService } from "../../core/services/event-bus.service";
 import { HeroMovementStateService } from "../../core/services/hero-movement/hero-movement-state.service";
 import { MapGeneratorService } from "../../core/services/map-generation/map-generator.service";
 import { CanvasRendererService } from "../../core/services/rendering/canvas-renderer.service";
@@ -79,7 +78,6 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
       private movementState: HeroMovementStateService,
       private turnEngine: TurnEngineService,
       private gameClock: GameClockService,
-      private eventBus: EventBusService,
       private viewport: ViewportService,
       private edgeScroll: EdgeScrollController,
       private cursorManager: CursorManagerService
@@ -129,10 +127,6 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     
     // Center camera on hero initially
     this.viewport.centerOnTile(this.player.selectedHero.tile.x, this.player.selectedHero.tile.y);
-
-    this.subscriptions.push(
-      this.eventBus.on('heroMoved').subscribe(() => this.redraw())
-    );
 
     // Bind event listeners for proper cleanup
     this.boundOnClick = (e: MouseEvent) => this.onClick(e);
