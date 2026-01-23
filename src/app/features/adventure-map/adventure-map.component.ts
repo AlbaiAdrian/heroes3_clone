@@ -63,6 +63,12 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   
   // Subscriptions for cleanup
   private subscriptions: Subscription[] = [];
+  
+  // Event listeners for cleanup
+  private boundOnClick!: (e: MouseEvent) => void;
+  private boundOnDoubleClick!: (e: MouseEvent) => Promise<void>;
+  private boundOnMouseMove!: (e: MouseEvent) => void;
+  private boundOnMouseLeave!: () => void;
 
   constructor(
       private mapGenerator: MapGeneratorService,
@@ -128,10 +134,16 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
       this.eventBus.on('heroMoved').subscribe(() => this.redraw())
     );
 
-    this.canvas.nativeElement.addEventListener('click', e => this.onClick(e));
-    this.canvas.nativeElement.addEventListener('dblclick', e => this.onDoubleClick(e));
-    this.canvas.nativeElement.addEventListener('mousemove', e => this.onMouseMove(e));
-    this.canvas.nativeElement.addEventListener('mouseleave', () => this.onMouseLeave());
+    // Bind event listeners for proper cleanup
+    this.boundOnClick = (e: MouseEvent) => this.onClick(e);
+    this.boundOnDoubleClick = (e: MouseEvent) => this.onDoubleClick(e);
+    this.boundOnMouseMove = (e: MouseEvent) => this.onMouseMove(e);
+    this.boundOnMouseLeave = () => this.onMouseLeave();
+
+    this.canvas.nativeElement.addEventListener('click', this.boundOnClick);
+    this.canvas.nativeElement.addEventListener('dblclick', this.boundOnDoubleClick);
+    this.canvas.nativeElement.addEventListener('mousemove', this.boundOnMouseMove);
+    this.canvas.nativeElement.addEventListener('mouseleave', this.boundOnMouseLeave);
 
     // Subscribe to camera changes to trigger redraw
     this.subscriptions.push(
@@ -205,6 +217,14 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.edgeScroll.disable();
     this.subscriptions.forEach(sub => sub.unsubscribe());
+    
+    // Remove event listeners
+    if (this.canvas?.nativeElement) {
+      this.canvas.nativeElement.removeEventListener('click', this.boundOnClick);
+      this.canvas.nativeElement.removeEventListener('dblclick', this.boundOnDoubleClick);
+      this.canvas.nativeElement.removeEventListener('mousemove', this.boundOnMouseMove);
+      this.canvas.nativeElement.removeEventListener('mouseleave', this.boundOnMouseLeave);
+    }
   }
 
 }

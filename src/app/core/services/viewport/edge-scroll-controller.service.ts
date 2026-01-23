@@ -25,7 +25,7 @@ export class EdgeScrollController implements OnDestroy {
   private readonly EDGE_MARGIN = 10; // pixels from edge to trigger scroll
   private readonly SCROLL_SPEED = 8; // pixels per frame
   
-  private scrollIntervalId: number | null = null;
+  private animationFrameId: number | null = null;
   private currentScrollDirection = ScrollDirection.NONE;
   private isEnabled = true;
   
@@ -102,25 +102,32 @@ export class EdgeScrollController implements OnDestroy {
   }
   
   /**
-   * Start the scrolling animation
+   * Start the scrolling animation using requestAnimationFrame
    */
   private startScrolling(): void {
-    if (this.scrollIntervalId !== null) {
+    if (this.animationFrameId !== null) {
       return; // Already scrolling
     }
     
-    this.scrollIntervalId = window.setInterval(() => {
-      this.performScroll();
-    }, 16); // ~60 FPS
+    const scroll = () => {
+      if (this.currentScrollDirection !== ScrollDirection.NONE) {
+        this.performScroll();
+        this.animationFrameId = window.requestAnimationFrame(scroll);
+      } else {
+        this.animationFrameId = null;
+      }
+    };
+    
+    this.animationFrameId = window.requestAnimationFrame(scroll);
   }
   
   /**
    * Stop the scrolling animation
    */
   private stopScrolling(): void {
-    if (this.scrollIntervalId !== null) {
-      window.clearInterval(this.scrollIntervalId);
-      this.scrollIntervalId = null;
+    if (this.animationFrameId !== null) {
+      window.cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = null;
     }
   }
   

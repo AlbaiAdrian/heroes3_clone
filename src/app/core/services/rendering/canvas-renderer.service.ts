@@ -23,7 +23,7 @@ export class CanvasRendererService {
   constructor(
     private heroSprite: HeroSpriteService, 
     private terrainSprite: TerrainSpriteService, 
-    private ojectsSprite: ObjectsSpriteService,
+    private objectsSprite: ObjectsSpriteService,
     private viewport: ViewportService
   ) {}
 
@@ -136,7 +136,7 @@ export class CanvasRendererService {
         continue;
       }
       
-      const sprite = this.ojectsSprite.get(obj.type);
+      const sprite = this.objectsSprite.get(obj.type);
       const drawWidth = size.width * this.tileSize;
       const drawHeight = size.height * this.tileSize;
 
