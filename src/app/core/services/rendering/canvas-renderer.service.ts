@@ -58,7 +58,6 @@ export class CanvasRendererService {
       this.tileSize,
       this.tileSize
     );
-    console.log('Drew tile at', tile.x, tile.y, this.tileSize);
   }
 
   private drawPathPreview(hero: Hero, viewportX: number, viewportY: number): void {
