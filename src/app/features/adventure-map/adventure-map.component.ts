@@ -41,6 +41,8 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   readonly movement$: Observable<number>;
   readonly movementPercent$: Observable<number>;
   readonly gameTime$: Observable<GameTime>;
+  readonly isMoving$: Observable<boolean>;
+  readonly hasPath$: Observable<boolean>;
 
   // Map dimensions (increased from 24x16 to 48x32)
   private readonly MAP_WIDTH = 48;
@@ -97,6 +99,23 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     this.movementPercent$ = this.movement$.pipe(map(movement => Math.round((movement / this.player.selectedHero.maxMovementPoints) * 100)));
 
     this.gameTime$ = this.gameClock.time$;
+
+    this.isMoving$ = this.heroMovement.isMoving$;
+
+    this.hasPath$ = new Observable<boolean>(observer => {
+      // Emit true if hero has a path, false otherwise
+      const checkPath = () => {
+        observer.next(this.player.selectedHero.path.length > 0);
+      };
+      
+      // Initial check
+      checkPath();
+      
+      // Check periodically or when things change (simplified approach)
+      const interval = setInterval(checkPath, 100);
+      
+      return () => clearInterval(interval);
+    });
 
     this.movementState.initialize(this.player.selectedHero);
   }
@@ -189,6 +208,14 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
 
   endTurn(): void {
     this.turnEngine.endTurn(this.player.heroes);
+  }
+
+  async continueMovement(): Promise<void> {
+    await this.heroMovement.executePlannedMovement(this.player.selectedHero, async () => {
+      this.redraw();
+      // yield control so browser can paint
+      await new Promise(requestAnimationFrame);
+    });
   }
 
   ngOnDestroy(): void {
