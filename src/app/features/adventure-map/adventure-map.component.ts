@@ -221,6 +221,9 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     this.edgeScroll.disable();
     this.subscriptions.forEach(sub => sub.unsubscribe());
     
+    // Complete BehaviorSubject to prevent memory leaks
+    this.hasPathSubject.complete();
+    
     // Remove event listeners
     if (this.canvas?.nativeElement) {
       this.canvas.nativeElement.removeEventListener('click', this.boundOnClick);
