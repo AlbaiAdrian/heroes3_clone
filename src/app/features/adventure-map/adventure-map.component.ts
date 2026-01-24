@@ -20,20 +20,6 @@ import { ViewportService } from "../../core/services/viewport/viewport.service";
 import { EdgeScrollController } from "../../core/services/viewport/edge-scroll-controller.service";
 import { CursorManagerService } from "../../core/services/viewport/cursor-manager.service";
 
-// @Component({
-//   standalone: true,
-//   selector: 'app-adventure-map',
-//   imports: [CommonModule],
-//   template: `
-//     <canvas #canvas width="960" height="720"></canvas>
-
-//     <section class="ui">
-//       <p>Turn: {{ turn$ | async }}</p>
-//       <p>Movement: {{ movement$ | async }}</p>
-//       <button (click)="endTurn()">End Turn</button>
-//     </section>
-//   `,
-// })
 @Component({
   selector: 'app-adventure-map',
   standalone: true,
