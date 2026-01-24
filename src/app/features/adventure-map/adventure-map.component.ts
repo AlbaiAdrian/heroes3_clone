@@ -142,11 +142,7 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   }
 
   private async onDoubleClick(event: MouseEvent): Promise<void> {
-    await this.heroMovement.executePlannedMovement(this.player.selectedHero, async () => {
-      this.redraw();
-      // yield control so browser can paint
-      await new Promise(requestAnimationFrame);
-    });
+    await this.moveHero();
   }
 
   private onMouseMove(event: MouseEvent): void {
