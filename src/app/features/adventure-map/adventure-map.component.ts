@@ -1,5 +1,5 @@
 import { AfterViewInit, ViewChild, ElementRef, Component, OnDestroy } from "@angular/core";
-import { combineLatest, map, Observable, Subscription, BehaviorSubject } from "rxjs";
+import { combineLatest, map, Observable, Subscription } from "rxjs";
 import { Tile } from "../../core/models/terrain/tile.model";
 import { HeroMovementStateService } from "../../core/services/hero-movement/hero-movement-state.service";
 import { MapGeneratorService } from "../../core/services/map-generation/map-generator.service";
@@ -41,8 +41,6 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   readonly movement$: Observable<number>;
   readonly movementPercent$: Observable<number>;
   readonly gameTime$: Observable<GameTime>;
-  readonly isMoving$: Observable<boolean>;
-  readonly hasPath$: Observable<boolean>;
 
   // Map dimensions (increased from 24x16 to 48x32)
   private readonly MAP_WIDTH = 48;
@@ -50,9 +48,6 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   
   // Subscriptions for cleanup
   private subscriptions: Subscription[] = [];
-  
-  // BehaviorSubject to track if hero has a path
-  private hasPathSubject = new BehaviorSubject<boolean>(false);
   
   // Event listeners for cleanup
   private boundOnClick!: (e: MouseEvent) => void;
@@ -103,10 +98,6 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
 
     this.gameTime$ = this.gameClock.time$;
 
-    this.isMoving$ = this.heroMovement.isMoving$;
-
-    this.hasPath$ = this.hasPathSubject.asObservable();
-
     this.movementState.initialize(this.player.selectedHero);
   }
 
@@ -146,9 +137,6 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     if (!tile) return;
 
     this.heroMovement.setDestination(this.player.selectedHero, tile, this.map);
-    
-    // Update hasPath observable
-    this.hasPathSubject.next(this.player.selectedHero.path.length > 0);
 
     this.redraw();
   }
@@ -159,9 +147,6 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
       // yield control so browser can paint
       await new Promise(requestAnimationFrame);
     });
-    
-    // Update hasPath observable after movement completes
-    this.hasPathSubject.next(this.player.selectedHero.path.length > 0);
   }
 
   private onMouseMove(event: MouseEvent): void {
@@ -206,23 +191,17 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     this.turnEngine.endTurn(this.player.heroes);
   }
 
-  async continueMovement(): Promise<void> {
+  async moveHero(): Promise<void> {
     await this.heroMovement.executePlannedMovement(this.player.selectedHero, async () => {
       this.redraw();
       // yield control so browser can paint
       await new Promise(requestAnimationFrame);
     });
-    
-    // Update hasPath observable after movement completes
-    this.hasPathSubject.next(this.player.selectedHero.path.length > 0);
   }
 
   ngOnDestroy(): void {
     this.edgeScroll.disable();
     this.subscriptions.forEach(sub => sub.unsubscribe());
-    
-    // Complete BehaviorSubject to prevent memory leaks
-    this.hasPathSubject.complete();
     
     // Remove event listeners
     if (this.canvas?.nativeElement) {

@@ -57,7 +57,7 @@
         <button>📜 Spell Book</button>
         <button>🎒 Inventory</button>
         <button>🏰 Town</button>
-        <button (click)="continueMovement()" [disabled]="!(hasPath$ | async) || (isMoving$ | async)">🚶 Continue Move</button>
+        <button (click)="moveHero()" [disabled]="player.selectedHero.path.length === 0">🚶 Move</button>
         <button (click)="endTurn()">⚔️ End Turn</button>
       </div>
 
