@@ -1,7 +1,6 @@
-import { AfterViewInit, ViewChild, ElementRef, Component } from "@angular/core";
-import { map, Observable } from "rxjs";
+import { AfterViewInit, ViewChild, ElementRef, Component, OnDestroy } from "@angular/core";
+import { combineLatest, map, Observable, Subscription } from "rxjs";
 import { Tile } from "../../core/models/terrain/tile.model";
-import { EventBusService } from "../../core/services/event-bus.service";
 import { HeroMovementStateService } from "../../core/services/hero-movement/hero-movement-state.service";
 import { MapGeneratorService } from "../../core/services/map-generation/map-generator.service";
 import { CanvasRendererService } from "../../core/services/rendering/canvas-renderer.service";
@@ -17,6 +16,9 @@ import { MapObject } from "../../core/models/map-objects/map-object.model";
 import { ObjectWalkabilityService } from "../../core/services/map-generation/object-walkability.service";
 import { Player } from "../../core/models/player/player.model";
 import { ResourceType } from "../../core/models/player/resource-type.enum";
+import { ViewportService } from "../../core/services/viewport/viewport.service";
+import { EdgeScrollController } from "../../core/services/viewport/edge-scroll-controller.service";
+import { CursorManagerService } from "../../core/services/viewport/cursor-manager.service";
 
 // @Component({
 //   standalone: true,
@@ -40,7 +42,7 @@ import { ResourceType } from "../../core/models/player/resource-type.enum";
   styleUrls: ['./adventure-map.component.scss'],
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdventureMapComponent implements AfterViewInit {
+export class AdventureMapComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
 
@@ -54,6 +56,19 @@ export class AdventureMapComponent implements AfterViewInit {
   readonly movementPercent$: Observable<number>;
   readonly gameTime$: Observable<GameTime>;
 
+  // Map dimensions (increased from 24x16 to 48x32)
+  private readonly MAP_WIDTH = 48;
+  private readonly MAP_HEIGHT = 32;
+  
+  // Subscriptions for cleanup
+  private subscriptions: Subscription[] = [];
+  
+  // Event listeners for cleanup
+  private boundOnClick!: (e: MouseEvent) => void;
+  private boundOnDoubleClick!: (e: MouseEvent) => Promise<void>;
+  private boundOnMouseMove!: (e: MouseEvent) => void;
+  private boundOnMouseLeave!: () => void;
+
   constructor(
       private mapGenerator: MapGeneratorService,
       private objectGenerator: MapObjectGeneratorService,
@@ -63,11 +78,14 @@ export class AdventureMapComponent implements AfterViewInit {
       private movementState: HeroMovementStateService,
       private turnEngine: TurnEngineService,
       private gameClock: GameClockService,
-      private eventBus: EventBusService) 
+      private viewport: ViewportService,
+      private edgeScroll: EdgeScrollController,
+      private cursorManager: CursorManagerService
+    ) 
     
   {
     // this sequence must be reworked
-    this.map = this.mapGenerator.generate(24, 16);
+    this.map = this.mapGenerator.generate(this.MAP_WIDTH, this.MAP_HEIGHT);
     this.objects = this.objectGenerator.generate(this.map);
     this.objectWalkability.applyObjects(this.map, this.objects)
 
@@ -100,13 +118,32 @@ export class AdventureMapComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     const ctx = this.canvas.nativeElement.getContext('2d')!;
     this.renderer.initialize(ctx);
+    
+    const canvasWidth = this.canvas.nativeElement.width;
+    const canvasHeight = this.canvas.nativeElement.height;
 
-    this.eventBus.on('heroMoved').subscribe(() => this.redraw());
+    // Initialize viewport with canvas and map dimensions
+    this.viewport.initialize(canvasWidth, canvasHeight, this.MAP_WIDTH, this.MAP_HEIGHT);
+    
+    // Center camera on hero initially
+    this.viewport.centerOnTile(this.player.selectedHero.tile.x, this.player.selectedHero.tile.y);
 
-    this.canvas.nativeElement.addEventListener('click', e => this.onClick(e));
-    this.canvas.nativeElement.addEventListener('dblclick', e => this.onDoubleClick(e));
+    // Bind event listeners for proper cleanup
+    this.boundOnClick = (e: MouseEvent) => this.onClick(e);
+    this.boundOnDoubleClick = (e: MouseEvent) => this.onDoubleClick(e);
+    this.boundOnMouseMove = (e: MouseEvent) => this.onMouseMove(e);
+    this.boundOnMouseLeave = () => this.onMouseLeave();
 
-    this.redraw();
+    this.canvas.nativeElement.addEventListener('click', this.boundOnClick);
+    this.canvas.nativeElement.addEventListener('dblclick', this.boundOnDoubleClick);
+    this.canvas.nativeElement.addEventListener('mousemove', this.boundOnMouseMove);
+    this.canvas.nativeElement.addEventListener('mouseleave', this.boundOnMouseLeave);
+
+    // Subscribe to camera changes to trigger redraw
+    // Use combineLatest to avoid duplicate redraws when both X and Y change simultaneously
+    this.subscriptions.push(
+      combineLatest([this.viewport.cameraX, this.viewport.cameraY]).subscribe(() => this.redraw())
+    );
   }
 
   private onClick(event: MouseEvent): void {
@@ -126,19 +163,59 @@ export class AdventureMapComponent implements AfterViewInit {
     });
   }
 
+  private onMouseMove(event: MouseEvent): void {
+    const rect = this.canvas.nativeElement.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+    
+    const scrollDirection = this.edgeScroll.updateMousePosition(
+      mouseX, 
+      mouseY, 
+      this.canvas.nativeElement.width, 
+      this.canvas.nativeElement.height
+    );
+    
+    this.cursorManager.applyCursor(this.canvas.nativeElement, scrollDirection);
+  }
+
+  private onMouseLeave(): void {
+    this.edgeScroll.updateMousePosition(-100, -100, 0, 0); // Stop scrolling
+    this.cursorManager.resetCursor(this.canvas.nativeElement);
+  }
+
   private redraw(): void {
     this.renderer.draw(this.map, this.objects, this.player.selectedHero);
   }
 
   private getTileFromMouse(event: MouseEvent): Tile | null {
     const rect = this.canvas.nativeElement.getBoundingClientRect();
-    const x = Math.floor((event.clientX - rect.left) /48);
-    const y = Math.floor((event.clientY - rect.top) / 48);
+    const screenX = event.clientX - rect.left;
+    const screenY = event.clientY - rect.top;
+    
+    // Convert screen coordinates to world coordinates
+    const worldPos = this.viewport.screenToWorld(screenX, screenY);
+    const tileSize = 48; // Same as ViewportService.TILE_SIZE and CanvasRendererService.tileSize
+    const x = Math.floor(worldPos.x / tileSize);
+    const y = Math.floor(worldPos.y / tileSize);
+    
     return this.map[y]?.[x] ?? null;
   }
 
   endTurn(): void {
     this.turnEngine.endTurn(this.player.heroes);
+  }
+
+  ngOnDestroy(): void {
+    this.edgeScroll.disable();
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+    
+    // Remove event listeners
+    if (this.canvas?.nativeElement) {
+      this.canvas.nativeElement.removeEventListener('click', this.boundOnClick);
+      this.canvas.nativeElement.removeEventListener('dblclick', this.boundOnDoubleClick);
+      this.canvas.nativeElement.removeEventListener('mousemove', this.boundOnMouseMove);
+      this.canvas.nativeElement.removeEventListener('mouseleave', this.boundOnMouseLeave);
+    }
   }
 
 }
