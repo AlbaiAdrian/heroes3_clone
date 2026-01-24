@@ -136,19 +136,6 @@ export class CanvasRendererService {
     );
   }
 
-//   renderObjects(objects: MapObject[]): void {
-//   for (const obj of objects) {
-//     const sprite = 
-
-//     this.ctx.drawImage(
-//       sprite,
-//       obj.x * this.tileSize,
-//       obj.y * this.tileSize,
-//       this.tileSize,
-//       this.tileSize
-//     );
-//   }
-// }
   renderObjects(objects: MapObject[], camera: { x: number; y: number }): void {
     // Filter objects that are visible in the viewport
     const startX = Math.floor(camera.x / this.tileSize);
