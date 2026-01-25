@@ -4,6 +4,7 @@ import { MapObjectType } from '../../models/map-objects/map-object-type.enum';
 import { MapObject } from '../../models/map-objects/map-object.model';
 import { TerrainType } from '../../models/terrain/terrain.enum';
 import { Tile } from '../../models/terrain/tile.model';
+import { MineType } from '../../models/map-objects/mine-type.enum';
 
 
 @Injectable({ providedIn: 'root' })
@@ -43,7 +44,7 @@ export class MapObjectGeneratorService {
 
       if (!this.canPlace(grid, x, y, def.footprint)) continue;
 
-      return {
+      const object: MapObject = {
         id: crypto.randomUUID(),
         type,
         x,
@@ -51,6 +52,15 @@ export class MapObjectGeneratorService {
         footprint: def.footprint,
         entries: def.entries,
       };
+
+      // Assign a random mine type if this is a mine
+      if (type === MapObjectType.MINE) {
+        const mineTypes = [MineType.GOLD, MineType.WOOD, MineType.STONE];
+        const randomIndex = Math.floor(Math.random() * mineTypes.length);
+        (object as any).mineType = mineTypes[randomIndex];
+      }
+
+      return object;
     }
   }
 

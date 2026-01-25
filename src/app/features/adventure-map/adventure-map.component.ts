@@ -85,7 +85,8 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
         gold: { value: 10000, type: ResourceType.Gold },
         wood: { value: 20, type: ResourceType.Wood },
         stone: { value: 20, type: ResourceType.Stone }
-      }
+      },
+      ownedMines: []
     };
 
     this.turn$ = this.turnEngine.turnState$.pipe(
@@ -184,11 +185,11 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   }
 
   endTurn(): void {
-    this.turnEngine.endTurn(this.player.heroes);
+    this.turnEngine.endTurn(this.player.heroes, this.player);
   }
 
   async moveHero(): Promise<void> {
-    await this.heroMovement.executePlannedMovement(this.player.selectedHero, async () => {
+    await this.heroMovement.executePlannedMovement(this.player.selectedHero, this.objects, this.player, async () => {
       // Center camera on hero after each step
       this.viewport.centerOnTile(this.player.selectedHero.tile.x, this.player.selectedHero.tile.y);
       // yield control so browser can paint
