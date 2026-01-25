@@ -33,8 +33,7 @@ export class ResourceGenerationService {
   private addResources(resources: Resources, mine: MapObjectMine): void {
     const resourceKey = mine.resourceType as keyof Resources;
     const resource = resources[resourceKey];
-    if (resource) {
-      resource.value += mine.produceResources();
-    }
+    // Add resources from the mine's production
+    resource.value += mine.produceResources();
   }
 }

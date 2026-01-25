@@ -86,10 +86,13 @@ export class MapObjectGeneratorService {
     mine.entries.forEach(entry => {
       const tileX = mine.x + entry.dx;
       const tileY = mine.y + entry.dy;
-      const tile = grid[tileY]?.[tileX];
       
-      if (tile) {
-        tile.interaction = interaction;
+      // Validate bounds before accessing tile
+      if (tileY >= 0 && tileY < grid.length && tileX >= 0 && tileX < grid[0].length) {
+        const tile = grid[tileY][tileX];
+        if (tile) {
+          tile.interaction = interaction;
+        }
       }
     });
   }

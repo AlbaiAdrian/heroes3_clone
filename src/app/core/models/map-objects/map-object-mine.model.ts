@@ -11,7 +11,7 @@ import { ObjectFootprintTile } from './map-object-footprint.model';
  */
 export class MapObjectMine implements MapObject {
   readonly id: string;
-  readonly type: MapObjectType.MINE;
+  readonly type: MapObjectType;
   readonly x: number;
   readonly y: number;
   readonly footprint: readonly ObjectFootprintTile[];
