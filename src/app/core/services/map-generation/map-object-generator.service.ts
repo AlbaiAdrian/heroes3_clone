@@ -58,6 +58,7 @@ export class MapObjectGeneratorService {
         const mineTypes = [MineType.GOLD, MineType.WOOD, MineType.STONE];
         const randomIndex = Math.floor(Math.random() * mineTypes.length);
         (object as any).mineType = mineTypes[randomIndex];
+        console.log(`Mine created at position (${x}, ${y}) - Type: ${mineTypes[randomIndex]}`);
       }
 
       return object;
