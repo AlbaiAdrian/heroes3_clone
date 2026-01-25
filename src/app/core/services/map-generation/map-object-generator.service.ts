@@ -5,7 +5,7 @@ import { MapObject } from '../../models/map-objects/map-object.model';
 import { MapObjectMine, MINE_PRODUCTION_CONFIG } from '../../models/map-objects/map-object-mine.model';
 import { TerrainType } from '../../models/terrain/terrain.enum';
 import { Tile } from '../../models/terrain/tile.model';
-import { MineType } from '../../models/map-objects/mine-type.enum';
+import { ResourceType } from '../../models/player/resource-type.enum';
 import { TileInteraction } from '../../models/terrain/tile-interaction.model';
 
 
@@ -48,10 +48,10 @@ export class MapObjectGeneratorService {
 
       // Create mine object as plain object implementing MapObjectMine interface
       if (type === MapObjectType.MINE) {
-        const mineTypes = [MineType.GOLD, MineType.WOOD, MineType.STONE];
-        const randomIndex = Math.floor(Math.random() * mineTypes.length);
-        const mineType = mineTypes[randomIndex];
-        const config = MINE_PRODUCTION_CONFIG[mineType];
+        const resourceTypes = [ResourceType.Gold, ResourceType.Wood, ResourceType.Stone];
+        const randomIndex = Math.floor(Math.random() * resourceTypes.length);
+        const resourceType = resourceTypes[randomIndex];
+        const productionAmount = MINE_PRODUCTION_CONFIG[resourceType];
         
         const mine: MapObjectMine = {
           id: crypto.randomUUID(),
@@ -60,9 +60,8 @@ export class MapObjectGeneratorService {
           y,
           footprint: def.footprint,
           entries: def.entries,
-          mineType: mineType,
-          resourceType: config.resourceType,
-          productionAmount: config.productionAmount,
+          resourceType: resourceType,
+          productionAmount: productionAmount,
         };
         
         // Set up interaction on entry tiles that returns the mine

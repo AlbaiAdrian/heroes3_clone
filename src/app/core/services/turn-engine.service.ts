@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { TurnState } from '../models/turn-state.model';
 import { HeroMovementStateService } from './hero-movement/hero-movement-state.service';
-import { Hero } from '../models/hero/hero.model';
 import { GameClockService } from './game-clock.service';
 import { ResourceGenerationService } from './resource-generation.service';
 import { Player } from '../models/player/player.model';
@@ -26,12 +25,14 @@ export class TurnEngineService {
     return this.state$.value;
   }
 
-  endTurn(heroes: Hero[], player: Player): void {
+  endTurn(player: Player): void {
     this.state$.next(
       {
         currentTurn: this.snapshot.currentTurn + 1,
       });
-    heroes.forEach(hero => {
+    
+    // Iterate through player's heroes
+    player.heroes.forEach(hero => {
       this.gameClock.nextDay();
       this.movementState.reset(hero);
     });

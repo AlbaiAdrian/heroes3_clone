@@ -190,7 +190,7 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   }
 
   endTurn(): void {
-    this.turnEngine.endTurn(this.player.heroes, this.player);
+    this.turnEngine.endTurn(this.player);
   }
 
   async moveHero(): Promise<void> {

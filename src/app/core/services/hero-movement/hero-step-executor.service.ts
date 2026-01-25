@@ -49,7 +49,7 @@ export class HeroStepExecutorService {
   }
 
   private isMine(action: any): action is MapObjectMine {
-    return action && typeof action === 'object' && 'mineType' in action;
+    return action && typeof action === 'object' && 'resourceType' in action && 'productionAmount' in action;
   }
 
   private delay(ms: number): Promise<void> {
