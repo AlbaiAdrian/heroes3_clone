@@ -4,14 +4,17 @@ import { Tile } from '../../models/terrain/tile.model';
 import { HeroOrientation } from '../../models/hero/hero-orientation.enum';
 import { Hero } from '../../models/hero/hero.model';
 import { ActivePlayerService } from '../active-player.service';
-import { MapObjectMine } from '../../models/map-objects/map-object-mine.model';
+import { ActionHandlerRegistry } from '../action-handlers/action-handler-registry.service';
 
 @Injectable({ providedIn: 'root' })
 export class HeroStepExecutorService {
 
   private readonly STEP_DELAY_MS = 200;
 
-  constructor(private activePlayerService: ActivePlayerService) {}
+  constructor(
+    private activePlayerService: ActivePlayerService,
+    private actionHandlerRegistry: ActionHandlerRegistry
+  ) {}
 
   async execute(hero: Hero, tile: Tile): Promise<void> {
     const facing = this.getFacingDirection(hero, tile);
@@ -26,30 +29,15 @@ export class HeroStepExecutorService {
     // Handle tile interaction if present
     if (tile.interaction) {
       const action = tile.interaction.getAction();
-      this.handleAction(action);
+      const player = this.activePlayerService.getActivePlayer();
+      
+      if (player) {
+        this.actionHandlerRegistry.handleAction(action, player);
+      }
     }
 
     // allow browser to paint before next step
     await this.delay(this.STEP_DELAY_MS);
-  }
-
-  private handleAction(action: any): void {
-    const player = this.activePlayerService.getActivePlayer();
-    if (!player) return;
-
-    // Handle mine capture
-    if (this.isMine(action)) {
-      const mine = action as MapObjectMine;
-      // Check if mine is already owned
-      if (!player.ownedMines.some(m => m.id === mine.id)) {
-        player.ownedMines.push(mine);
-      }
-    }
-    // Future: handle other action types (bonuses, spells, etc.)
-  }
-
-  private isMine(action: any): action is MapObjectMine {
-    return action && typeof action === 'object' && 'resourceType' in action && 'productionAmount' in action;
   }
 
   private delay(ms: number): Promise<void> {

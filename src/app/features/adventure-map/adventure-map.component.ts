@@ -1,4 +1,4 @@
-import { AfterViewInit, ViewChild, ElementRef, Component, OnDestroy } from "@angular/core";
+import { AfterViewInit, ViewChild, ElementRef, Component, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import { combineLatest, map, Observable, Subscription } from "rxjs";
 import { Tile } from "../../core/models/terrain/tile.model";
 import { HeroMovementStateService } from "../../core/services/hero-movement/hero-movement-state.service";
@@ -68,7 +68,8 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
       private viewport: ViewportService,
       private edgeScroll: EdgeScrollController,
       private cursorManager: CursorManagerService,
-      private activePlayerService: ActivePlayerService
+      private activePlayerService: ActivePlayerService,
+      private cdr: ChangeDetectorRef
     ) 
     
   {
@@ -191,6 +192,8 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
 
   endTurn(): void {
     this.turnEngine.endTurn(this.player);
+    // Trigger change detection to update resource display in GUI
+    this.cdr.markForCheck();
   }
 
   async moveHero(): Promise<void> {
