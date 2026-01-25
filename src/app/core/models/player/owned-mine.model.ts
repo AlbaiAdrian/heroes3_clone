@@ -1,7 +1,5 @@
-import { ResourceType } from './resource-type.enum';
-
-export interface OwnedMine {
-  readonly id: string;
-  readonly resourceType: ResourceType;
-  readonly productionAmount: number;
-}
+/**
+ * Player's owned mines are tracked by their IDs.
+ * The actual mine objects contain the production details.
+ */
+export type OwnedMines = string[];

@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { MAP_OBJECT_DEFINITIONS } from '../../models/map-objects/map-object-config';
 import { MapObjectType } from '../../models/map-objects/map-object-type.enum';
 import { MapObject } from '../../models/map-objects/map-object.model';
+import { MapObjectMine } from '../../models/map-objects/map-object-mine.model';
 import { TerrainType } from '../../models/terrain/terrain.enum';
 import { Tile } from '../../models/terrain/tile.model';
 import { MineType } from '../../models/map-objects/mine-type.enum';
+import { MineInteraction } from '../../models/map-objects/mine-interaction.model';
 
 
 @Injectable({ providedIn: 'root' })
@@ -44,6 +46,26 @@ export class MapObjectGeneratorService {
 
       if (!this.canPlace(grid, x, y, def.footprint)) continue;
 
+      // Create mine object with proper type
+      if (type === MapObjectType.MINE) {
+        const mineTypes = [MineType.GOLD, MineType.WOOD, MineType.STONE];
+        const randomIndex = Math.floor(Math.random() * mineTypes.length);
+        const mine = new MapObjectMine(
+          crypto.randomUUID(),
+          x,
+          y,
+          def.footprint,
+          def.entries,
+          mineTypes[randomIndex]
+        );
+        
+        // Set up interaction on entry tiles
+        this.setupMineInteractions(grid, mine);
+        
+        return mine;
+      }
+
+      // Create regular map object
       const object: MapObject = {
         id: crypto.randomUUID(),
         type,
@@ -53,16 +75,23 @@ export class MapObjectGeneratorService {
         entries: def.entries,
       };
 
-      // Assign a random mine type if this is a mine
-      if (type === MapObjectType.MINE) {
-        const mineTypes = [MineType.GOLD, MineType.WOOD, MineType.STONE];
-        const randomIndex = Math.floor(Math.random() * mineTypes.length);
-        const mineObject = object as MapObject & { mineType: MineType };
-        mineObject.mineType = mineTypes[randomIndex];
-      }
-
       return object;
     }
+  }
+
+  private setupMineInteractions(grid: Tile[][], mine: MapObjectMine): void {
+    const interaction = new MineInteraction(mine);
+    
+    // Add interaction to each entry tile
+    mine.entries.forEach(entry => {
+      const tileX = mine.x + entry.dx;
+      const tileY = mine.y + entry.dy;
+      const tile = grid[tileY]?.[tileX];
+      
+      if (tile) {
+        tile.interaction = interaction;
+      }
+    });
   }
 
   private canPlace(
