@@ -191,7 +191,6 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     await this.heroMovement.executePlannedMovement(this.player.selectedHero, async () => {
       // Center camera on hero after each step
       this.viewport.centerOnTile(this.player.selectedHero.tile.x, this.player.selectedHero.tile.y);
-      this.redraw();
       // yield control so browser can paint
       await new Promise(requestAnimationFrame);
     });
