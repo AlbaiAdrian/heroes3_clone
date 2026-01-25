@@ -7,5 +7,9 @@ export interface Tile {
     y: number;
     terrain: TerrainType;
     walkable: boolean;
+    /**
+     * Optional interaction that returns an action when triggered.
+     * Can return a mine, bonus, spell, etc.
+     */
     interaction?: TileInteraction;
   }

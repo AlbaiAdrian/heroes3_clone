@@ -7,7 +7,6 @@ import { Hero } from '../models/hero/hero.model';
 import { GameClockService } from './game-clock.service';
 import { ResourceGenerationService } from './resource-generation.service';
 import { Player } from '../models/player/player.model';
-import { MapObject } from '../models/map-objects/map-object.model';
 
 @Injectable({ providedIn: 'root' })
 export class TurnEngineService {
@@ -27,7 +26,7 @@ export class TurnEngineService {
     return this.state$.value;
   }
 
-  endTurn(heroes: Hero[], player: Player, objects: MapObject[]): void {
+  endTurn(heroes: Hero[], player: Player): void {
     this.state$.next(
       {
         currentTurn: this.snapshot.currentTurn + 1,
@@ -38,6 +37,6 @@ export class TurnEngineService {
     });
     
     // Generate resources from owned mines
-    this.resourceGeneration.generateFromMines(player, objects);
+    this.resourceGeneration.generateFromMines(player);
   }
 }

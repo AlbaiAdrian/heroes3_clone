@@ -19,6 +19,7 @@ import { ResourceType } from "../../core/models/player/resource-type.enum";
 import { ViewportService } from "../../core/services/viewport/viewport.service";
 import { EdgeScrollController } from "../../core/services/viewport/edge-scroll-controller.service";
 import { CursorManagerService } from "../../core/services/viewport/cursor-manager.service";
+import { ActivePlayerService } from "../../core/services/active-player.service";
 
 @Component({
   selector: 'app-adventure-map',
@@ -66,7 +67,8 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
       private gameClock: GameClockService,
       private viewport: ViewportService,
       private edgeScroll: EdgeScrollController,
-      private cursorManager: CursorManagerService
+      private cursorManager: CursorManagerService,
+      private activePlayerService: ActivePlayerService
     ) 
     
   {
@@ -88,6 +90,9 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
       },
       ownedMines: []
     };
+
+    // Set this player as the active player for the turn-based game
+    this.activePlayerService.setActivePlayer(this.player);
 
     this.turn$ = this.turnEngine.turnState$.pipe(
         map(state => state.currentTurn)
@@ -185,11 +190,11 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   }
 
   endTurn(): void {
-    this.turnEngine.endTurn(this.player.heroes, this.player, this.objects);
+    this.turnEngine.endTurn(this.player.heroes, this.player);
   }
 
   async moveHero(): Promise<void> {
-    await this.heroMovement.executePlannedMovement(this.player.selectedHero, this.player, async () => {
+    await this.heroMovement.executePlannedMovement(this.player.selectedHero, async () => {
       // Center camera on hero after each step
       this.viewport.centerOnTile(this.player.selectedHero.tile.x, this.player.selectedHero.tile.y);
       // yield control so browser can paint

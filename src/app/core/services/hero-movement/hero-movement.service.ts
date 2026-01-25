@@ -5,7 +5,6 @@ import { HeroStepExecutorService } from './hero-step-executor.service';
 import { HeroMovementStateService } from './hero-movement-state.service';
 import { Tile } from '../../models/terrain/tile.model';
 import { Hero } from '../../models/hero/hero.model';
-import { Player } from '../../models/player/player.model';
 
 @Injectable({ providedIn: 'root' })
 export class HeroMovementService {
@@ -22,7 +21,7 @@ export class HeroMovementService {
     hero.path = this.pathfinding.findPath(hero.tile, tile, map);
   }
 
-  async executePlannedMovement(hero: Hero, player: Player, afterStep: () => Promise<void>): Promise<void> {
+  async executePlannedMovement(hero: Hero, afterStep: () => Promise<void>): Promise<void> {
     if (this.isMoving) return;
 
     this.isMoving = true;
@@ -34,7 +33,7 @@ export class HeroMovementService {
 
       const nextTile = originalPath[i];
 
-      await this.stepExecutor.execute(hero, nextTile, player);
+      await this.stepExecutor.execute(hero, nextTile);
       this.movementState.consume(hero);
         
       // service does NOT know what this does

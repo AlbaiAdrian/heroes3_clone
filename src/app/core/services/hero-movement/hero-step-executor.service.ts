@@ -3,14 +3,17 @@ import { Injectable } from '@angular/core';
 import { Tile } from '../../models/terrain/tile.model';
 import { HeroOrientation } from '../../models/hero/hero-orientation.enum';
 import { Hero } from '../../models/hero/hero.model';
-import { Player } from '../../models/player/player.model';
+import { ActivePlayerService } from '../active-player.service';
+import { MapObjectMine } from '../../models/map-objects/map-object-mine.model';
 
 @Injectable({ providedIn: 'root' })
 export class HeroStepExecutorService {
 
   private readonly STEP_DELAY_MS = 200;
 
-  async execute(hero: Hero, tile: Tile, player: Player): Promise<void> {
+  constructor(private activePlayerService: ActivePlayerService) {}
+
+  async execute(hero: Hero, tile: Tile): Promise<void> {
     const facing = this.getFacingDirection(hero, tile);
     hero.tile = tile;
     hero.facing = facing;
@@ -20,13 +23,33 @@ export class HeroStepExecutorService {
       hero.path.splice(index, 1);
     }
 
-    // Execute tile interaction if present
+    // Handle tile interaction if present
     if (tile.interaction) {
-      tile.interaction.execute(hero, player);
+      const action = tile.interaction.getAction();
+      this.handleAction(action);
     }
 
     // allow browser to paint before next step
     await this.delay(this.STEP_DELAY_MS);
+  }
+
+  private handleAction(action: any): void {
+    const player = this.activePlayerService.getActivePlayer();
+    if (!player) return;
+
+    // Handle mine capture
+    if (this.isMine(action)) {
+      const mine = action as MapObjectMine;
+      // Check if mine is already owned
+      if (!player.ownedMines.some(m => m.id === mine.id)) {
+        player.ownedMines.push(mine);
+      }
+    }
+    // Future: handle other action types (bonuses, spells, etc.)
+  }
+
+  private isMine(action: any): action is MapObjectMine {
+    return action && typeof action === 'object' && 'mineType' in action;
   }
 
   private delay(ms: number): Promise<void> {

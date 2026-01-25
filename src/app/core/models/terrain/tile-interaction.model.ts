@@ -1,15 +1,12 @@
-import { Player } from '../player/player.model';
-import { Hero } from '../hero/hero.model';
-
 /**
  * Base interface for tile interactions.
- * All interactive map objects should implement this interface.
+ * Returns an action object when triggered, without knowing about hero or player.
  */
 export interface TileInteraction {
   /**
-   * Execute the interaction when a hero steps on this tile.
-   * @param hero The hero interacting with the tile
-   * @param player The player who owns the hero
+   * Get the action object for this interaction.
+   * The action can be a mine, a bonus, a spell, etc.
+   * @returns The action object associated with this tile
    */
-  execute(hero: Hero, player: Player): void;
+  getAction(): any;
 }
