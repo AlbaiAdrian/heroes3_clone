@@ -6,6 +6,7 @@ import { Hero } from '../models/hero/hero.model';
 import { ResourceType } from '../models/player/resource-type.enum';
 import { MineType } from '../models/map-objects/mine-type.enum';
 import { OwnedMine } from '../models/player/owned-mine.model';
+import { Resources } from '../models/player/resources.model';
 
 @Injectable({ providedIn: 'root' })
 export class MineInteractionService {
@@ -23,13 +24,9 @@ export class MineInteractionService {
     if (!mine) return;
     
     // Check if mine is already owned
-    if (player.ownedMines.some((m: OwnedMine) => m.id === mine.id)) {
-      console.log('Mine already owned');
-      return;
-    }
+    if (player.ownedMines.some((m: OwnedMine) => m.id === mine.id)) return;
     
     // Capture the mine
-    console.log('Capturing mine of type:', mine.mineType);
     this.captureMine(mine, player);
   }
 
@@ -58,17 +55,15 @@ export class MineInteractionService {
     };
     
     player.ownedMines.push(ownedMine);
-    console.log(`Mine captured! Type: ${mine.mineType}, Resource: ${production.resourceType}, Amount: ${production.amount}`);
-    console.log(`Total owned mines: ${player.ownedMines.length}`);
   }
 
   generateResourcesFromMines(player: Player): void {
-    console.log(`Generating resources from ${player.ownedMines.length} owned mines`);
     player.ownedMines.forEach((mine: OwnedMine) => {
-      const resource = player.resources[mine.resourceType];
-      const oldValue = resource.value;
-      resource.value += mine.productionAmount;
-      console.log(`Mine produced ${mine.productionAmount} ${mine.resourceType}: ${oldValue} -> ${resource.value}`);
+      const resourceKey = mine.resourceType as keyof Resources;
+      const resource = player.resources[resourceKey];
+      if (resource) {
+        resource.value += mine.productionAmount;
+      }
     });
   }
 }
