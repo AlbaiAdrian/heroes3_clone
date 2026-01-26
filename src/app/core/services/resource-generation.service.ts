@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Player } from '../models/player/player.model';
 import { Resources } from '../models/player/resources.model';
+import { ResourceType } from '../models/player/resource-type.enum';
 
 /**
  * Service for generating resources from owned mines.
@@ -19,9 +20,11 @@ export class ResourceGenerationService {
     });
   }
 
-  private addResources(resources: Resources, resourceType: string, amount: number): void {
+  private addResources(resources: Resources, resourceType: ResourceType, amount: number): void {
     const resourceKey = resourceType as keyof Resources;
     const resource = resources[resourceKey];
-    resource.value += amount;
+    if (resource) {
+      resource.value += amount;
+    }
   }
 }

@@ -32,9 +32,6 @@ export class ActionHandlerRegistry {
    * @param interactionObject The interaction object to handle
    */
   handleInteraction(interactionObject: MapObject): void {
-    const player = this.activePlayerService.getActivePlayer();
-    if (!player) return;
-
     const handler = this.handlers.find(h => h.canHandle(interactionObject));
     if (handler) {
       handler.handle(interactionObject);

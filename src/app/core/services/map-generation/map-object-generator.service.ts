@@ -11,6 +11,7 @@ import { TileInteraction } from '../../models/terrain/tile-interaction.model';
 
 @Injectable({ providedIn: 'root' })
 export class MapObjectGeneratorService {
+  private readonly MINE_RESOURCE_TYPES = [ResourceType.Gold, ResourceType.Wood, ResourceType.Stone];
 
   generate(grid: Tile[][]): MapObject[] {
     const objects: MapObject[] = [];
@@ -48,9 +49,8 @@ export class MapObjectGeneratorService {
 
       // Create mine object as plain object implementing MapObjectMine interface
       if (type === MapObjectType.MINE) {
-        const resourceTypes = [ResourceType.Gold, ResourceType.Wood, ResourceType.Stone];
-        const randomIndex = Math.floor(Math.random() * resourceTypes.length);
-        const resourceType = resourceTypes[randomIndex];
+        const randomIndex = Math.floor(Math.random() * this.MINE_RESOURCE_TYPES.length);
+        const resourceType = this.MINE_RESOURCE_TYPES[randomIndex];
         const productionAmount = MINE_PRODUCTION_CONFIG[resourceType];
         
         const mine: MapObjectMine = {
