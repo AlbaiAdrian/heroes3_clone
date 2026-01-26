@@ -31,9 +31,11 @@ export class TurnEngineService {
         currentTurn: this.snapshot.currentTurn + 1,
       });
     
+    // Advance the game clock once per turn
+    this.gameClock.nextDay();
+
     // Iterate through player's heroes
     player.heroes.forEach(hero => {
-      this.gameClock.nextDay();
       this.movementState.reset(hero);
     });
     
