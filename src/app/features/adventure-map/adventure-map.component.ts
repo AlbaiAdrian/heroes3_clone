@@ -192,8 +192,6 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
 
   endTurn(): void {
     this.turnEngine.endTurn(this.player);
-    // Trigger change detection to update resource display in GUI
-    this.cdr.markForCheck();
   }
 
   async moveHero(): Promise<void> {
