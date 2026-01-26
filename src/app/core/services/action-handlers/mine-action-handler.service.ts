@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActionHandler } from '../../models/actions/action-handler.interface';
-import { InteractionObject } from '../../models/interactions/interaction-object.interface';
+import { MapObject } from '../../models/map-objects/map-object.model';
 import { MapObjectMine } from '../../models/map-objects/map-object-mine.model';
 import { MapObjectType } from '../../models/map-objects/map-object-type.enum';
 import { ActivePlayerService } from '../active-player.service';
@@ -14,11 +14,11 @@ export class MineActionHandler implements ActionHandler {
 
   constructor(private activePlayerService: ActivePlayerService) {}
 
-  canHandle(interactionObject: InteractionObject): boolean {
+  canHandle(interactionObject: MapObject): boolean {
     return interactionObject.type === MapObjectType.MINE;
   }
 
-  handle(interactionObject: InteractionObject): void {
+  handle(interactionObject: MapObject): void {
     const mine = interactionObject as MapObjectMine;
     const player = this.activePlayerService.getActivePlayer();
     

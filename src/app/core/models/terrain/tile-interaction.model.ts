@@ -1,4 +1,4 @@
-import { InteractionObject } from '../interactions/interaction-object.interface';
+import { MapObject } from '../map-objects/map-object.model';
 
 /**
  * Base interface for tile interactions.
@@ -10,5 +10,5 @@ export interface TileInteraction {
    * The object can be a mine, a bonus, a spell, etc.
    * @returns The interaction object associated with this tile
    */
-  getInteractionObject(): InteractionObject;
+  getInteractionObject(): MapObject;
 }

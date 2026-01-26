@@ -1,4 +1,4 @@
-import { InteractionObject } from '../interactions/interaction-object.interface';
+import { MapObject } from '../map-objects/map-object.model';
 
 /**
  * Strategy interface for handling different interaction object types.
@@ -10,11 +10,11 @@ export interface ActionHandler {
    * @param interactionObject The interaction object to check
    * @returns True if this handler can process the interaction object
    */
-  canHandle(interactionObject: InteractionObject): boolean;
+  canHandle(interactionObject: MapObject): boolean;
 
   /**
    * Handle the interaction object.
    * @param interactionObject The interaction object to process
    */
-  handle(interactionObject: InteractionObject): void;
+  handle(interactionObject: MapObject): void;
 }

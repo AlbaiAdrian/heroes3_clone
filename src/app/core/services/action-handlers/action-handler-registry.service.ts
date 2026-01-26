@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActionHandler } from '../../models/actions/action-handler.interface';
-import { InteractionObject } from '../../models/interactions/interaction-object.interface';
+import { MapObject } from '../../models/map-objects/map-object.model';
 import { ActivePlayerService } from '../active-player.service';
 import { MineActionHandler } from './mine-action-handler.service';
 
@@ -31,7 +31,7 @@ export class ActionHandlerRegistry {
    * Handle an interaction object by finding the appropriate handler.
    * @param interactionObject The interaction object to handle
    */
-  handleInteraction(interactionObject: InteractionObject): void {
+  handleInteraction(interactionObject: MapObject): void {
     const player = this.activePlayerService.getActivePlayer();
     if (!player) return;
 
