@@ -14,6 +14,11 @@ export class ActivePlayerService {
   }
 
   getActivePlayer(): Player | undefined {
+    if (!this.currentPlayer) {
+      console.warn(
+        'ActivePlayerService: getActivePlayer called but no active player is currently set.'
+      );
+    }
     return this.currentPlayer;
   }
 }
