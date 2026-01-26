@@ -1,4 +1,4 @@
-import { MapObject } from './map-object.model';
+import { InteractionObject } from '../interactions/interaction-object.interface';
 import { ResourceType } from '../player/resource-type.enum';
 
 /**
@@ -12,9 +12,9 @@ export const MINE_PRODUCTION_CONFIG: Record<ResourceType, number> = {
 
 /**
  * Interface for mine objects on the map.
- * Extends MapObject with mine-specific properties.
+ * Extends InteractionObject with mine-specific properties.
  */
-export interface MapObjectMine extends MapObject {
+export interface MapObjectMine extends InteractionObject {
   readonly resourceType: ResourceType;
   readonly productionAmount: number;
 }

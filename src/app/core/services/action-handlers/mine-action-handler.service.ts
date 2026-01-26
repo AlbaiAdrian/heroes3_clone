@@ -1,24 +1,31 @@
 import { Injectable } from '@angular/core';
 import { ActionHandler } from '../../models/actions/action-handler.interface';
-import { Player } from '../../models/player/player.model';
+import { InteractionObject } from '../../models/interactions/interaction-object.interface';
 import { MapObjectMine } from '../../models/map-objects/map-object-mine.model';
+import { MapObjectType } from '../../models/map-objects/map-object-type.enum';
+import { ActivePlayerService } from '../active-player.service';
 
 /**
- * Handler for mine capture actions.
- * Implements Strategy Pattern for extensible action handling.
+ * Handler for mine capture interactions.
+ * Implements Strategy Pattern for extensible interaction handling.
  */
 @Injectable({ providedIn: 'root' })
 export class MineActionHandler implements ActionHandler {
 
-  canHandle(action: any): boolean {
-    return action && typeof action === 'object' && 'resourceType' in action && 'productionAmount' in action;
+  constructor(private activePlayerService: ActivePlayerService) {}
+
+  canHandle(interactionObject: InteractionObject): boolean {
+    return interactionObject.type === MapObjectType.MINE;
   }
 
-  handle(action: any, player: Player): void {
-    const mine = action as MapObjectMine;
+  handle(interactionObject: InteractionObject): void {
+    const mine = interactionObject as MapObjectMine;
+    const player = this.activePlayerService.getActivePlayer();
     
-    // Check if mine is already owned
-    if (!player.ownedMines.some(m => m.id === mine.id)) {
+    if (!player) return;
+    
+    // Check if mine is already owned by comparing object references
+    if (!player.ownedMines.some(m => m === mine)) {
       player.ownedMines.push(mine);
     }
   }

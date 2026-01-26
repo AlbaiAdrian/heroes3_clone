@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Tile } from '../../models/terrain/tile.model';
 import { HeroOrientation } from '../../models/hero/hero-orientation.enum';
 import { Hero } from '../../models/hero/hero.model';
-import { ActivePlayerService } from '../active-player.service';
 import { ActionHandlerRegistry } from '../action-handlers/action-handler-registry.service';
 
 @Injectable({ providedIn: 'root' })
@@ -12,7 +11,6 @@ export class HeroStepExecutorService {
   private readonly STEP_DELAY_MS = 200;
 
   constructor(
-    private activePlayerService: ActivePlayerService,
     private actionHandlerRegistry: ActionHandlerRegistry
   ) {}
 
@@ -28,12 +26,8 @@ export class HeroStepExecutorService {
 
     // Handle tile interaction if present
     if (tile.interaction) {
-      const action = tile.interaction.getAction();
-      const player = this.activePlayerService.getActivePlayer();
-      
-      if (player) {
-        this.actionHandlerRegistry.handleAction(action, player);
-      }
+      const interactionObject = tile.interaction.getInteractionObject();
+      this.actionHandlerRegistry.handleInteraction(interactionObject);
     }
 
     // allow browser to paint before next step

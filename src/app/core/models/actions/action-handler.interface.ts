@@ -1,21 +1,20 @@
-import { Player } from '../player/player.model';
+import { InteractionObject } from '../interactions/interaction-object.interface';
 
 /**
- * Strategy interface for handling different action types.
- * Each action handler implements this interface.
+ * Strategy interface for handling different interaction object types.
+ * Each interaction handler implements this interface.
  */
 export interface ActionHandler {
   /**
-   * Check if this handler can handle the given action.
-   * @param action The action object to check
-   * @returns True if this handler can process the action
+   * Check if this handler can handle the given interaction object.
+   * @param interactionObject The interaction object to check
+   * @returns True if this handler can process the interaction object
    */
-  canHandle(action: any): boolean;
+  canHandle(interactionObject: InteractionObject): boolean;
 
   /**
-   * Handle the action.
-   * @param action The action object to process
-   * @param player The active player
+   * Handle the interaction object.
+   * @param interactionObject The interaction object to process
    */
-  handle(action: any, player: Player): void;
+  handle(interactionObject: InteractionObject): void;
 }

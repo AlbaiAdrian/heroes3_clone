@@ -54,7 +54,6 @@ export class MapObjectGeneratorService {
         const productionAmount = MINE_PRODUCTION_CONFIG[resourceType];
         
         const mine: MapObjectMine = {
-          id: crypto.randomUUID(),
           type: MapObjectType.MINE,
           x,
           y,
@@ -72,7 +71,6 @@ export class MapObjectGeneratorService {
 
       // Create regular map object
       const object: MapObject = {
-        id: crypto.randomUUID(),
         type,
         x,
         y,
@@ -87,7 +85,7 @@ export class MapObjectGeneratorService {
   private setupMineInteractions(grid: Tile[][], mine: MapObjectMine): void {
     // Create interaction that returns the mine object
     const interaction: TileInteraction = {
-      getAction: () => mine
+      getInteractionObject: () => mine
     };
     
     // Add interaction to each entry tile

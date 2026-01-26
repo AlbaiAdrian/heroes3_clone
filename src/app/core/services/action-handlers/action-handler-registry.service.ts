@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActionHandler } from '../../models/actions/action-handler.interface';
-import { Player } from '../../models/player/player.model';
+import { InteractionObject } from '../../models/interactions/interaction-object.interface';
+import { ActivePlayerService } from '../active-player.service';
 import { MineActionHandler } from './mine-action-handler.service';
 
 /**
@@ -12,6 +13,7 @@ export class ActionHandlerRegistry {
   private handlers: ActionHandler[] = [];
 
   constructor(
+    private activePlayerService: ActivePlayerService,
     private mineActionHandler: MineActionHandler
     // Add more handlers here as needed
   ) {
@@ -26,14 +28,16 @@ export class ActionHandlerRegistry {
   }
 
   /**
-   * Handle an action by finding the appropriate handler.
-   * @param action The action to handle
-   * @param player The active player
+   * Handle an interaction object by finding the appropriate handler.
+   * @param interactionObject The interaction object to handle
    */
-  handleAction(action: any, player: Player): void {
-    const handler = this.handlers.find(h => h.canHandle(action));
+  handleInteraction(interactionObject: InteractionObject): void {
+    const player = this.activePlayerService.getActivePlayer();
+    if (!player) return;
+
+    const handler = this.handlers.find(h => h.canHandle(interactionObject));
     if (handler) {
-      handler.handle(action, player);
+      handler.handle(interactionObject);
     }
   }
 }
