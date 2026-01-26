@@ -9,9 +9,25 @@ import { ResourceType } from '../../models/player/resource-type.enum';
 import { TileInteraction } from '../../models/terrain/tile-interaction.model';
 
 
+/**
+ * Shared interaction factory that uses a WeakMap to associate tiles with their map objects.
+ * This avoids creating a new closure for each mine, improving memory efficiency.
+ */
+class InteractionFactory {
+  private tileToObjectMap = new WeakMap<Tile, MapObject>();
+  
+  createInteraction(tile: Tile, mapObject: MapObject): TileInteraction {
+    this.tileToObjectMap.set(tile, mapObject);
+    return {
+      getInteractionObject: () => this.tileToObjectMap.get(tile) || mapObject
+    };
+  }
+}
+
 @Injectable({ providedIn: 'root' })
 export class MapObjectGeneratorService {
   private readonly MINE_RESOURCE_TYPES = [ResourceType.Gold, ResourceType.Wood, ResourceType.Stone];
+  private readonly interactionFactory = new InteractionFactory();
 
   generate(grid: Tile[][]): MapObject[] {
     const objects: MapObject[] = [];
@@ -83,12 +99,7 @@ export class MapObjectGeneratorService {
   }
 
   private setupMineInteractions(grid: Tile[][], mine: MapObjectMine): void {
-    // Create interaction that returns the mine object
-    const interaction: TileInteraction = {
-      getInteractionObject: () => mine
-    };
-    
-    // Add interaction to each entry tile
+    // Add interaction to each entry tile using the shared interaction factory
     mine.entries.forEach(entry => {
       const tileX = mine.x + entry.dx;
       const tileY = mine.y + entry.dy;
@@ -97,7 +108,7 @@ export class MapObjectGeneratorService {
       if (tileY >= 0 && tileY < grid.length && tileX >= 0 && tileX < grid[0].length) {
         const tile = grid[tileY][tileX];
         if (tile) {
-          tile.interaction = interaction;
+          tile.interaction = this.interactionFactory.createInteraction(tile, mine);
         }
       }
     });
