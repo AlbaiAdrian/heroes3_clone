@@ -28,12 +28,21 @@ class InteractionFactory {
 export class MapObjectGeneratorService {
   private readonly MINE_RESOURCE_TYPES = [ResourceType.Gold, ResourceType.Wood, ResourceType.Stone];
   private readonly interactionFactory = new InteractionFactory();
+  private occupiedTiles = new Set<string>();
 
   generate(grid: Tile[][]): MapObject[] {
     const objects: MapObject[] = [];
+    // Reset occupied tiles for each generation
+    this.occupiedTiles.clear();
 
     objects.push(this.placeObject(grid, MapObjectType.TOWN));
-    objects.push(...this.placeMultiple(grid, MapObjectType.MINE, 3));
+    
+    // Place 2 mines of each resource type
+    for (const resourceType of this.MINE_RESOURCE_TYPES) {
+      objects.push(this.placeMine(grid, resourceType));
+      objects.push(this.placeMine(grid, resourceType));
+    }
+    
     objects.push(...this.placeMultiple(grid, MapObjectType.TREE, 20));
 
     return objects;
@@ -47,6 +56,42 @@ export class MapObjectGeneratorService {
     return Array.from({ length: count }, () =>
       this.placeObject(grid, type)
     );
+  }
+
+  private placeMine(
+    grid: Tile[][],
+    resourceType: ResourceType
+  ): MapObjectMine {
+    const def = MAP_OBJECT_DEFINITIONS[MapObjectType.MINE];
+    const width = grid[0].length;
+    const height = grid.length;
+
+    while (true) {
+      const x = Math.floor(Math.random() * width);
+      const y = Math.floor(Math.random() * height);
+
+      if (!this.canPlace(grid, x, y, def.footprint)) continue;
+
+      const productionAmount = MINE_PRODUCTION_CONFIG[resourceType];
+      
+      const mine: MapObjectMine = {
+        type: MapObjectType.MINE,
+        x,
+        y,
+        footprint: def.footprint,
+        entries: def.entries,
+        resourceType: resourceType,
+        productionAmount: productionAmount,
+      };
+      
+      // Mark tiles as occupied
+      this.markOccupied(x, y, def.footprint);
+      
+      // Set up interaction on entry tiles that returns the mine
+      this.setupMineInteractions(grid, mine);
+      
+      return mine;
+    }
   }
 
   private placeObject(
@@ -63,28 +108,6 @@ export class MapObjectGeneratorService {
 
       if (!this.canPlace(grid, x, y, def.footprint)) continue;
 
-      // Create mine object as plain object implementing MapObjectMine interface
-      if (type === MapObjectType.MINE) {
-        const randomIndex = Math.floor(Math.random() * this.MINE_RESOURCE_TYPES.length);
-        const resourceType = this.MINE_RESOURCE_TYPES[randomIndex];
-        const productionAmount = MINE_PRODUCTION_CONFIG[resourceType];
-        
-        const mine: MapObjectMine = {
-          type: MapObjectType.MINE,
-          x,
-          y,
-          footprint: def.footprint,
-          entries: def.entries,
-          resourceType: resourceType,
-          productionAmount: productionAmount,
-        };
-        
-        // Set up interaction on entry tiles that returns the mine
-        this.setupMineInteractions(grid, mine);
-        
-        return mine;
-      }
-
       // Create regular map object
       const object: MapObject = {
         type,
@@ -93,6 +116,9 @@ export class MapObjectGeneratorService {
         footprint: def.footprint,
         entries: def.entries,
       };
+
+      // Mark tiles as occupied
+      this.markOccupied(x, y, def.footprint);
 
       return object;
     }
@@ -122,7 +148,23 @@ export class MapObjectGeneratorService {
   ): boolean {
     return footprint.every(p => {
       const tile = grid[y + p.dy]?.[x + p.dx];
-      return tile && tile.terrain === TerrainType.GRASS;
+      if (!tile || tile.terrain !== TerrainType.GRASS) {
+        return false;
+      }
+      // Check if tile is already occupied by another object
+      const key = `${x + p.dx},${y + p.dy}`;
+      return !this.occupiedTiles.has(key);
+    });
+  }
+
+  private markOccupied(
+    x: number,
+    y: number,
+    footprint: readonly { dx: number; dy: number }[]
+  ): void {
+    footprint.forEach(p => {
+      const key = `${x + p.dx},${y + p.dy}`;
+      this.occupiedTiles.add(key);
     });
   }
 }
