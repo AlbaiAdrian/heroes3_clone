@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { TurnState } from '../models/turn-state.model';
 import { HeroMovementStateService } from './hero-movement/hero-movement-state.service';
-import { Hero } from '../models/hero/hero.model';
 import { GameClockService } from './game-clock.service';
+import { ResourceGenerationService } from './resource-generation.service';
+import { Player } from '../models/player/player.model';
 
 @Injectable({ providedIn: 'root' })
 export class TurnEngineService {
@@ -14,20 +15,31 @@ export class TurnEngineService {
 
   readonly turnState$ = this.state$.asObservable();
 
-  constructor(private movementState: HeroMovementStateService, private readonly gameClock: GameClockService) {}
+  constructor(
+    private movementState: HeroMovementStateService, 
+    private readonly gameClock: GameClockService,
+    private resourceGeneration: ResourceGenerationService
+  ) {}
 
   get snapshot(): TurnState {
     return this.state$.value;
   }
 
-  endTurn(heroes: Hero[]): void {
+  endTurn(player: Player): void {
     this.state$.next(
       {
         currentTurn: this.snapshot.currentTurn + 1,
       });
-    heroes.forEach(hero => {
-      this.gameClock.nextDay();
+    
+    // Advance the game clock once per turn
+    this.gameClock.nextDay();
+
+    // Iterate through player's heroes
+    player.heroes.forEach(hero => {
       this.movementState.reset(hero);
     });
+    
+    // Generate resources from owned mines
+    this.resourceGeneration.generateFromMines(player);
   }
 }

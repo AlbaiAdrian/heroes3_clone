@@ -2,12 +2,32 @@ import { Injectable } from '@angular/core';
 import { MAP_OBJECT_DEFINITIONS } from '../../models/map-objects/map-object-config';
 import { MapObjectType } from '../../models/map-objects/map-object-type.enum';
 import { MapObject } from '../../models/map-objects/map-object.model';
+import { MapObjectMine, MINE_PRODUCTION_CONFIG } from '../../models/map-objects/map-object-mine.model';
 import { TerrainType } from '../../models/terrain/terrain.enum';
 import { Tile } from '../../models/terrain/tile.model';
+import { ResourceType } from '../../models/player/resource-type.enum';
+import { TileInteraction } from '../../models/terrain/tile-interaction.model';
 
+
+/**
+ * Shared interaction factory that uses a WeakMap to associate tiles with their map objects.
+ * This avoids creating a new closure for each mine, improving memory efficiency.
+ */
+class InteractionFactory {
+  private tileToObjectMap = new WeakMap<Tile, MapObject>();
+  
+  createInteraction(tile: Tile, mapObject: MapObject): TileInteraction {
+    this.tileToObjectMap.set(tile, mapObject);
+    return {
+      getInteractionObject: () => this.tileToObjectMap.get(tile) || mapObject
+    };
+  }
+}
 
 @Injectable({ providedIn: 'root' })
 export class MapObjectGeneratorService {
+  private readonly MINE_RESOURCE_TYPES = [ResourceType.Gold, ResourceType.Wood, ResourceType.Stone];
+  private readonly interactionFactory = new InteractionFactory();
 
   generate(grid: Tile[][]): MapObject[] {
     const objects: MapObject[] = [];
@@ -43,15 +63,55 @@ export class MapObjectGeneratorService {
 
       if (!this.canPlace(grid, x, y, def.footprint)) continue;
 
-      return {
-        id: crypto.randomUUID(),
+      // Create mine object as plain object implementing MapObjectMine interface
+      if (type === MapObjectType.MINE) {
+        const randomIndex = Math.floor(Math.random() * this.MINE_RESOURCE_TYPES.length);
+        const resourceType = this.MINE_RESOURCE_TYPES[randomIndex];
+        const productionAmount = MINE_PRODUCTION_CONFIG[resourceType];
+        
+        const mine: MapObjectMine = {
+          type: MapObjectType.MINE,
+          x,
+          y,
+          footprint: def.footprint,
+          entries: def.entries,
+          resourceType: resourceType,
+          productionAmount: productionAmount,
+        };
+        
+        // Set up interaction on entry tiles that returns the mine
+        this.setupMineInteractions(grid, mine);
+        
+        return mine;
+      }
+
+      // Create regular map object
+      const object: MapObject = {
         type,
         x,
         y,
         footprint: def.footprint,
         entries: def.entries,
       };
+
+      return object;
     }
+  }
+
+  private setupMineInteractions(grid: Tile[][], mine: MapObjectMine): void {
+    // Add interaction to each entry tile using the shared interaction factory
+    mine.entries.forEach(entry => {
+      const tileX = mine.x + entry.dx;
+      const tileY = mine.y + entry.dy;
+      
+      // Validate bounds before accessing tile
+      if (tileY >= 0 && tileY < grid.length && tileX >= 0 && tileX < grid[0].length) {
+        const tile = grid[tileY][tileX];
+        if (tile) {
+          tile.interaction = this.interactionFactory.createInteraction(tile, mine);
+        }
+      }
+    });
   }
 
   private canPlace(

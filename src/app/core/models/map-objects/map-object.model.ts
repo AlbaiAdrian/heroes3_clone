@@ -4,7 +4,6 @@ import { MapObjectType } from "./map-object-type.enum";
 
 
 export interface MapObject {
-  readonly id: string;
   readonly type: MapObjectType;
   readonly x: number;
   readonly y: number;

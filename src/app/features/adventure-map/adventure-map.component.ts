@@ -1,4 +1,4 @@
-import { AfterViewInit, ViewChild, ElementRef, Component, OnDestroy } from "@angular/core";
+import { AfterViewInit, ViewChild, ElementRef, Component, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import { combineLatest, map, Observable, Subscription } from "rxjs";
 import { Tile } from "../../core/models/terrain/tile.model";
 import { HeroMovementStateService } from "../../core/services/hero-movement/hero-movement-state.service";
@@ -19,6 +19,7 @@ import { ResourceType } from "../../core/models/player/resource-type.enum";
 import { ViewportService } from "../../core/services/viewport/viewport.service";
 import { EdgeScrollController } from "../../core/services/viewport/edge-scroll-controller.service";
 import { CursorManagerService } from "../../core/services/viewport/cursor-manager.service";
+import { ActivePlayerService } from "../../core/services/active-player.service";
 
 @Component({
   selector: 'app-adventure-map',
@@ -66,7 +67,9 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
       private gameClock: GameClockService,
       private viewport: ViewportService,
       private edgeScroll: EdgeScrollController,
-      private cursorManager: CursorManagerService
+      private cursorManager: CursorManagerService,
+      private activePlayerService: ActivePlayerService,
+      private cdr: ChangeDetectorRef
     ) 
     
   {
@@ -85,8 +88,12 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
         gold: { value: 10000, type: ResourceType.Gold },
         wood: { value: 20, type: ResourceType.Wood },
         stone: { value: 20, type: ResourceType.Stone }
-      }
+      },
+      ownedMines: []
     };
+
+    // Set this player as the active player for the turn-based game
+    this.activePlayerService.setActivePlayer(this.player);
 
     this.turn$ = this.turnEngine.turnState$.pipe(
         map(state => state.currentTurn)
@@ -184,7 +191,7 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   }
 
   endTurn(): void {
-    this.turnEngine.endTurn(this.player.heroes);
+    this.turnEngine.endTurn(this.player);
   }
 
   async moveHero(): Promise<void> {
