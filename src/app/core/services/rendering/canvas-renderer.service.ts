@@ -161,37 +161,8 @@ export class CanvasRendererService {
       const drawX = obj.x * this.tileSize;
       const drawY = obj.y * this.tileSize;
       
-      // Render mines with type-specific sprites
-      if (obj.type === MapObjectType.MINE) {
-        const mine = obj as MapObjectMine;
-        
-        // Draw the mine sprite based on resource type
-        const mineSprite = this.objectsSprite.getMineSprite(mine.resourceType);
-        this.ctx.drawImage(
-          mineSprite,
-          drawX,
-          drawY,
-          drawWidth,
-          drawHeight
-        );
-        
-        // Check if mine is owned by any player and draw flag overlay
-        const allPlayers = this.playerService.getAllPlayers();
-        for (const player of allPlayers) {
-          if (player.ownedMines.some(m => m === mine)) {
-            const flagSprite = this.objectsSprite.getFlagSprite(player.color);
-            this.ctx.drawImage(
-              flagSprite,
-              drawX,
-              drawY,
-              drawWidth,
-              drawHeight
-            );
-            break; // Mine can only be owned by one player
-          }
-        }
-      } else {
-        // Render other objects normally
+      // Render non-mine objects normally
+      if (obj.type !== MapObjectType.MINE) {
         const sprite = this.objectsSprite.get(obj.type);
         this.ctx.drawImage(
           sprite,
@@ -200,6 +171,48 @@ export class CanvasRendererService {
           drawWidth,
           drawHeight
         );
+        continue;
+      }
+      
+      // Render mines with type-specific sprites and ownership flags
+      this.renderFlaggedObject(obj as MapObjectMine, drawX, drawY, drawWidth, drawHeight);
+    }
+  }
+
+  /**
+   * Renders an object with its base sprite and an ownership flag overlay.
+   * Can be extended to support other flaggable objects like cities, shrines, etc.
+   */
+  private renderFlaggedObject(
+    mine: MapObjectMine,
+    drawX: number,
+    drawY: number,
+    drawWidth: number,
+    drawHeight: number
+  ): void {
+    // Draw the base sprite based on resource type
+    const mineSprite = this.objectsSprite.getMineSprite(mine.resourceType);
+    this.ctx.drawImage(
+      mineSprite,
+      drawX,
+      drawY,
+      drawWidth,
+      drawHeight
+    );
+    
+    // Check if object is owned by any player and draw flag overlay
+    const allPlayers = this.playerService.getAllPlayers();
+    for (const player of allPlayers) {
+      if (player.ownedMines.some(m => m === mine)) {
+        const flagSprite = this.objectsSprite.getFlagSprite(player.color);
+        this.ctx.drawImage(
+          flagSprite,
+          drawX,
+          drawY,
+          drawWidth,
+          drawHeight
+        );
+        break; // Object can only be owned by one player
       }
     }
   }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActionHandler } from '../../models/actions/action-handler.interface';
 import { MapObject } from '../../models/map-objects/map-object.model';
-import { PlayerService } from '../player.service';
 import { MineActionHandler } from './mine-action-handler.service';
 
 /**
@@ -13,7 +12,6 @@ export class ActionHandlerRegistry {
   private handlers: ActionHandler[] = [];
 
   constructor(
-    private playerService: PlayerService,
     private mineActionHandler: MineActionHandler
     // Add more handlers here as needed
   ) {
