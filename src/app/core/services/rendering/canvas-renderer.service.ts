@@ -221,8 +221,10 @@ export class CanvasRendererService {
     
     // Check ownership using cached lookup (O(1) instead of O(n*m))
     const ownerColor = this.mineOwnershipCache.get(mine);
+    console.log('Mine rendering - ownerColor:', ownerColor, 'mine:', mine.x, mine.y);
     if (ownerColor) {
       const flagSprite = this.objectsSprite.getFlagSprite(ownerColor);
+      console.log('Drawing flag for mine at', mine.x, mine.y, 'with color', ownerColor);
 
       // Compute a smaller flag size relative to a single tile and position it
       // in the top-right corner of the mine footprint, with a small padding.
@@ -232,6 +234,7 @@ export class CanvasRendererService {
       const padding = this.tileSize * 0.1;
       const flagX = drawX + drawWidth - flagWidth - padding;
       const flagY = drawY + padding;
+      console.log('Flag position:', flagX, flagY, 'size:', flagWidth, flagHeight);
 
       this.ctx.drawImage(
         flagSprite,
