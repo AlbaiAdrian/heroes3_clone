@@ -7,10 +7,14 @@ import { TERRAIN_CONFIG } from '../../models/terrain/terrain-config';
 import { TerrainSpriteService } from './terrain-sprite.service';
 import { Hero } from '../../models/hero/hero.model';
 import { MapObject } from '../../models/map-objects/map-object.model';
+import { MapObjectMine } from '../../models/map-objects/map-object-mine.model';
+import { MapObjectType } from '../../models/map-objects/map-object-type.enum';
 import { ObjectsSpriteService } from './objects-sprite.service';
 import { MAP_OBJECT_DEFINITIONS } from '../../models/map-objects/map-object-config';
 import { getFootprintSize } from './map-object.utils';
 import { ViewportService } from '../viewport/viewport.service';
+import { PlayerService } from '../player.service';
+import { PlayerColor } from '../../models/player/player-color.enum';
 
 @Injectable({ providedIn: 'root' })
 export class CanvasRendererService {
@@ -19,12 +23,14 @@ export class CanvasRendererService {
   private tileSize = 48;
   private canvasWidth = 960;
   private canvasHeight = 720;
+  private mineOwnershipCache = new Map<MapObjectMine, PlayerColor>();
 
   constructor(
     private heroSprite: HeroSpriteService, 
     private terrainSprite: TerrainSpriteService, 
     private objectsSprite: ObjectsSpriteService,
-    private viewport: ViewportService
+    private viewport: ViewportService,
+    private playerService: PlayerService
   ) {}
 
   initialize(ctx: CanvasRenderingContext2D): void {
@@ -33,8 +39,25 @@ export class CanvasRendererService {
     this.canvasHeight = ctx.canvas.height;
   }
 
+  /**
+   * Rebuilds the mine ownership cache for O(1) lookups during rendering.
+   * Should be called when mine ownership changes.
+   */
+  rebuildMineOwnershipCache(): void {
+    this.mineOwnershipCache.clear();
+    const allPlayers = this.playerService.getAllPlayers();
+    for (const player of allPlayers) {
+      for (const mine of player.ownedMines) {
+        this.mineOwnershipCache.set(mine, player.color);
+      }
+    }
+  }
+
   draw(map: Tile[][], objects: MapObject[], hero: Hero): void {
     const camera = this.viewport.getCameraPosition();
+    
+    // Rebuild ownership cache once per frame instead of per-mine
+    this.rebuildMineOwnershipCache();
     
     this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
     
@@ -152,16 +175,70 @@ export class CanvasRendererService {
         continue;
       }
       
-      const sprite = this.objectsSprite.get(obj.type);
       const drawWidth = size.width * this.tileSize;
       const drawHeight = size.height * this.tileSize;
+      const drawX = obj.x * this.tileSize;
+      const drawY = obj.y * this.tileSize;
+      
+      // Render non-mine objects normally
+      if (obj.type !== MapObjectType.MINE) {
+        const sprite = this.objectsSprite.get(obj.type);
+        this.ctx.drawImage(
+          sprite,
+          drawX,
+          drawY,
+          drawWidth,
+          drawHeight
+        );
+        continue;
+      }
+      
+      // Render mines with type-specific sprites and ownership flags
+      this.renderFlaggedObject(obj as MapObjectMine, drawX, drawY, drawWidth, drawHeight);
+    }
+  }
+
+  /**
+   * Renders an object with its base sprite and an ownership flag overlay.
+   * Can be extended to support other flaggable objects like cities, shrines, etc.
+   */
+  private renderFlaggedObject(
+    mine: MapObjectMine,
+    drawX: number,
+    drawY: number,
+    drawWidth: number,
+    drawHeight: number
+  ): void {
+    // Draw the base sprite based on resource type
+    const mineSprite = this.objectsSprite.getMineSprite(mine.resourceType);
+    this.ctx.drawImage(
+      mineSprite,
+      drawX,
+      drawY,
+      drawWidth,
+      drawHeight
+    );
+    
+    // Check ownership using cached lookup (O(1) instead of O(n*m))
+    const ownerColor = this.mineOwnershipCache.get(mine);
+    if (ownerColor) {
+      const flagSprite = this.objectsSprite.getFlagSprite(ownerColor);
+
+      // Compute a smaller flag size relative to a single tile and position it
+      // in the top-right corner of the mine footprint, with a small padding.
+      const flagSize = this.tileSize * 0.5;
+      const flagWidth = flagSize;
+      const flagHeight = flagSize;
+      const padding = this.tileSize * 0.1;
+      const flagX = drawX + drawWidth - flagWidth - padding;
+      const flagY = drawY + padding;
 
       this.ctx.drawImage(
-        sprite,
-        obj.x * this.tileSize,
-        obj.y * this.tileSize,
-        drawWidth,
-        drawHeight
+        flagSprite,
+        flagX,
+        flagY,
+        flagWidth,
+        flagHeight
       );
     }
   }
