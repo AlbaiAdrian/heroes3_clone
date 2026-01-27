@@ -7,10 +7,13 @@ import { TERRAIN_CONFIG } from '../../models/terrain/terrain-config';
 import { TerrainSpriteService } from './terrain-sprite.service';
 import { Hero } from '../../models/hero/hero.model';
 import { MapObject } from '../../models/map-objects/map-object.model';
+import { MapObjectMine } from '../../models/map-objects/map-object-mine.model';
+import { MapObjectType } from '../../models/map-objects/map-object-type.enum';
 import { ObjectsSpriteService } from './objects-sprite.service';
 import { MAP_OBJECT_DEFINITIONS } from '../../models/map-objects/map-object-config';
 import { getFootprintSize } from './map-object.utils';
 import { ViewportService } from '../viewport/viewport.service';
+import { Player } from '../../models/player/player.model';
 
 @Injectable({ providedIn: 'root' })
 export class CanvasRendererService {
@@ -19,6 +22,7 @@ export class CanvasRendererService {
   private tileSize = 48;
   private canvasWidth = 960;
   private canvasHeight = 720;
+  private players: Player[] = [];
 
   constructor(
     private heroSprite: HeroSpriteService, 
@@ -31,6 +35,10 @@ export class CanvasRendererService {
     this.ctx = ctx;
     this.canvasWidth = ctx.canvas.width;
     this.canvasHeight = ctx.canvas.height;
+  }
+
+  setPlayers(players: Player[]): void {
+    this.players = players;
   }
 
   draw(map: Tile[][], objects: MapObject[], hero: Hero): void {
@@ -152,7 +160,23 @@ export class CanvasRendererService {
         continue;
       }
       
-      const sprite = this.objectsSprite.get(obj.type);
+      // Get appropriate sprite based on object type and ownership
+      let sprite: HTMLImageElement;
+      if (obj.type === MapObjectType.MINE) {
+        const mine = obj as MapObjectMine;
+        if (mine.ownerId) {
+          // Find the owner's color
+          const owner = this.players.find(p => p.id === mine.ownerId);
+          sprite = owner 
+            ? this.objectsSprite.getMineSprite(owner.color)
+            : this.objectsSprite.getMineSprite('neutral');
+        } else {
+          sprite = this.objectsSprite.getMineSprite('neutral');
+        }
+      } else {
+        sprite = this.objectsSprite.get(obj.type);
+      }
+      
       const drawWidth = size.width * this.tileSize;
       const drawHeight = size.height * this.tileSize;
 

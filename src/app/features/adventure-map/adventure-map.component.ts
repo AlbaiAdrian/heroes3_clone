@@ -16,6 +16,7 @@ import { MapObject } from "../../core/models/map-objects/map-object.model";
 import { ObjectWalkabilityService } from "../../core/services/map-generation/object-walkability.service";
 import { Player } from "../../core/models/player/player.model";
 import { ResourceType } from "../../core/models/player/resource-type.enum";
+import { PlayerColor } from "../../core/models/player/player-color.enum";
 import { ViewportService } from "../../core/services/viewport/viewport.service";
 import { EdgeScrollController } from "../../core/services/viewport/edge-scroll-controller.service";
 import { CursorManagerService } from "../../core/services/viewport/cursor-manager.service";
@@ -82,6 +83,8 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     const firstHero: Hero = {tile: this.map[5][5], name: 'First Hero', level: 1, movementPoints: 10, maxMovementPoints: 10, path: [], facing:HeroOrientation.West};
     
     this.player = {
+      id: 'player1',
+      color: PlayerColor.Red,
       heroes: [firstHero],
       selectedHero: firstHero,
       resources: {
@@ -111,6 +114,9 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     const ctx = this.canvas.nativeElement.getContext('2d')!;
     this.renderer.initialize(ctx);
+    
+    // Set players for the renderer (for mine color rendering)
+    this.renderer.setPlayers([this.player]);
     
     const canvasWidth = this.canvas.nativeElement.width;
     const canvasHeight = this.canvas.nativeElement.height;

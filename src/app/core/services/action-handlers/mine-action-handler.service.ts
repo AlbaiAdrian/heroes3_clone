@@ -24,7 +24,13 @@ export class MineActionHandler implements ActionHandler {
     
     if (!player) return;
     
-    // Check if mine is already owned by comparing object references
+    // Check if mine is already owned by this player
+    if (mine.ownerId === player.id) return;
+    
+    // Set the mine owner
+    mine.ownerId = player.id;
+    
+    // Add to player's owned mines if not already there
     if (!player.ownedMines.some(m => m === mine)) {
       player.ownedMines.push(mine);
     }
