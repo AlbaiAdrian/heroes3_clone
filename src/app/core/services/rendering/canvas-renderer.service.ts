@@ -184,15 +184,13 @@ export class CanvasRendererService {
           const owner = this.players.find(p => p.id === mine.ownerId);
           if (owner) {
             const flagSprite = this.objectsSprite.getFlagSprite(owner.color);
-            if (flagSprite) {
-              this.ctx.drawImage(
-                flagSprite,
-                drawX,
-                drawY,
-                drawWidth,
-                drawHeight
-              );
-            }
+            this.ctx.drawImage(
+              flagSprite,
+              drawX,
+              drawY,
+              drawWidth,
+              drawHeight
+            );
           }
         }
       } else {

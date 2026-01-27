@@ -13,7 +13,6 @@ export class ObjectsSpriteService {
 
   loadSprites(): void {
     console.log('Loading object sprites...');
-    this.load(MapObjectType.MINE,  'object/mine.png');
     this.load(MapObjectType.ROCK,  'object/rock.png');
     this.load(MapObjectType.TOWN, 'object/town.png');
     this.load(MapObjectType.TREE, 'object/forest.png');
@@ -52,8 +51,12 @@ export class ObjectsSpriteService {
     return sprite;
   }
 
-  getFlagSprite(color: PlayerColor): HTMLImageElement | undefined {
-    return this.flagSprites.get(color);
+  getFlagSprite(color: PlayerColor): HTMLImageElement {
+    const sprite = this.flagSprites.get(color);
+    if (!sprite) {
+      throw new Error(`Flag sprite not found for color: ${color}`);
+    }
+    return sprite;
   }
 
   private load(dir: MapObjectType, src: string) {
