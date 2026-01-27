@@ -160,33 +160,52 @@ export class CanvasRendererService {
         continue;
       }
       
-      // Get appropriate sprite based on object type and ownership
-      let sprite: HTMLImageElement;
-      if (obj.type === MapObjectType.MINE) {
-        const mine = obj as MapObjectMine;
-        if (mine.ownerId) {
-          // Find the owner's color
-          const owner = this.players.find(p => p.id === mine.ownerId);
-          sprite = owner 
-            ? this.objectsSprite.getMineSprite(owner.color)
-            : this.objectsSprite.getMineSprite('neutral');
-        } else {
-          sprite = this.objectsSprite.getMineSprite('neutral');
-        }
-      } else {
-        sprite = this.objectsSprite.get(obj.type);
-      }
-      
       const drawWidth = size.width * this.tileSize;
       const drawHeight = size.height * this.tileSize;
-
-      this.ctx.drawImage(
-        sprite,
-        obj.x * this.tileSize,
-        obj.y * this.tileSize,
-        drawWidth,
-        drawHeight
-      );
+      const drawX = obj.x * this.tileSize;
+      const drawY = obj.y * this.tileSize;
+      
+      // Render mines with type-specific sprites
+      if (obj.type === MapObjectType.MINE) {
+        const mine = obj as MapObjectMine;
+        
+        // Draw the mine sprite based on resource type
+        const mineSprite = this.objectsSprite.getMineSprite(mine.resourceType);
+        this.ctx.drawImage(
+          mineSprite,
+          drawX,
+          drawY,
+          drawWidth,
+          drawHeight
+        );
+        
+        // If mine is owned, draw flag overlay
+        if (mine.ownerId) {
+          const owner = this.players.find(p => p.id === mine.ownerId);
+          if (owner) {
+            const flagSprite = this.objectsSprite.getFlagSprite(owner.color);
+            if (flagSprite) {
+              this.ctx.drawImage(
+                flagSprite,
+                drawX,
+                drawY,
+                drawWidth,
+                drawHeight
+              );
+            }
+          }
+        }
+      } else {
+        // Render other objects normally
+        const sprite = this.objectsSprite.get(obj.type);
+        this.ctx.drawImage(
+          sprite,
+          drawX,
+          drawY,
+          drawWidth,
+          drawHeight
+        );
+      }
     }
   }
 }
