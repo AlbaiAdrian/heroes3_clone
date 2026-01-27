@@ -205,12 +205,22 @@ export class CanvasRendererService {
     for (const player of allPlayers) {
       if (player.ownedMines.some(m => m === mine)) {
         const flagSprite = this.objectsSprite.getFlagSprite(player.color);
+
+        // Compute a smaller flag size relative to a single tile and position it
+        // in the top-right corner of the mine footprint, with a small padding.
+        const flagSize = this.tileSize * 0.5;
+        const flagWidth = flagSize;
+        const flagHeight = flagSize;
+        const padding = this.tileSize * 0.1;
+        const flagX = drawX + drawWidth - flagWidth - padding;
+        const flagY = drawY + padding;
+
         this.ctx.drawImage(
           flagSprite,
-          drawX,
-          drawY,
-          drawWidth,
-          drawHeight
+          flagX,
+          flagY,
+          flagWidth,
+          flagHeight
         );
         break; // Object can only be owned by one player
       }
