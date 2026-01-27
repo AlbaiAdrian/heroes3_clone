@@ -35,10 +35,10 @@ export class ObjectsSpriteService {
     console.log('Object sprites loaded.');
   } 
 
-  get(direction: MapObjectType): HTMLImageElement {
-    const sprite = this.sprites.get(direction);
+  get(objectType: MapObjectType): HTMLImageElement {
+    const sprite = this.sprites.get(objectType);
     if (!sprite) {
-      throw new Error(`Sprite not found for object type: ${direction}`);
+      throw new Error(`Sprite not found for object type: ${objectType}`);
     }
     return sprite;
   }

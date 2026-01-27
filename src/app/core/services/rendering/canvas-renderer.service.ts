@@ -14,6 +14,7 @@ import { MAP_OBJECT_DEFINITIONS } from '../../models/map-objects/map-object-conf
 import { getFootprintSize } from './map-object.utils';
 import { ViewportService } from '../viewport/viewport.service';
 import { PlayerService } from '../player.service';
+import { PlayerColor } from '../../models/player/player-color.enum';
 
 @Injectable({ providedIn: 'root' })
 export class CanvasRendererService {
@@ -22,6 +23,7 @@ export class CanvasRendererService {
   private tileSize = 48;
   private canvasWidth = 960;
   private canvasHeight = 720;
+  private mineOwnershipCache = new Map<MapObjectMine, PlayerColor>();
 
   constructor(
     private heroSprite: HeroSpriteService, 
@@ -37,8 +39,25 @@ export class CanvasRendererService {
     this.canvasHeight = ctx.canvas.height;
   }
 
+  /**
+   * Rebuilds the mine ownership cache for O(1) lookups during rendering.
+   * Should be called when mine ownership changes.
+   */
+  rebuildMineOwnershipCache(): void {
+    this.mineOwnershipCache.clear();
+    const allPlayers = this.playerService.getAllPlayers();
+    for (const player of allPlayers) {
+      for (const mine of player.ownedMines) {
+        this.mineOwnershipCache.set(mine, player.color);
+      }
+    }
+  }
+
   draw(map: Tile[][], objects: MapObject[], hero: Hero): void {
     const camera = this.viewport.getCameraPosition();
+    
+    // Rebuild ownership cache once per frame instead of per-mine
+    this.rebuildMineOwnershipCache();
     
     this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
     
@@ -200,30 +219,27 @@ export class CanvasRendererService {
       drawHeight
     );
     
-    // Check if object is owned by any player and draw flag overlay
-    const allPlayers = this.playerService.getAllPlayers();
-    for (const player of allPlayers) {
-      if (player.ownedMines.some(m => m === mine)) {
-        const flagSprite = this.objectsSprite.getFlagSprite(player.color);
+    // Check ownership using cached lookup (O(1) instead of O(n*m))
+    const ownerColor = this.mineOwnershipCache.get(mine);
+    if (ownerColor) {
+      const flagSprite = this.objectsSprite.getFlagSprite(ownerColor);
 
-        // Compute a smaller flag size relative to a single tile and position it
-        // in the top-right corner of the mine footprint, with a small padding.
-        const flagSize = this.tileSize * 0.5;
-        const flagWidth = flagSize;
-        const flagHeight = flagSize;
-        const padding = this.tileSize * 0.1;
-        const flagX = drawX + drawWidth - flagWidth - padding;
-        const flagY = drawY + padding;
+      // Compute a smaller flag size relative to a single tile and position it
+      // in the top-right corner of the mine footprint, with a small padding.
+      const flagSize = this.tileSize * 0.5;
+      const flagWidth = flagSize;
+      const flagHeight = flagSize;
+      const padding = this.tileSize * 0.1;
+      const flagX = drawX + drawWidth - flagWidth - padding;
+      const flagY = drawY + padding;
 
-        this.ctx.drawImage(
-          flagSprite,
-          flagX,
-          flagY,
-          flagWidth,
-          flagHeight
-        );
-        break; // Object can only be owned by one player
-      }
+      this.ctx.drawImage(
+        flagSprite,
+        flagX,
+        flagY,
+        flagWidth,
+        flagHeight
+      );
     }
   }
 }
