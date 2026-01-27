@@ -5,7 +5,6 @@ import { MapObjectMine } from '../map-objects/map-object-mine.model';
 import { PlayerColor } from './player-color.enum';
 
 export interface Player {
-  id: string;
   color: PlayerColor;
   heroes: Hero[];
   selectedHero: Hero;

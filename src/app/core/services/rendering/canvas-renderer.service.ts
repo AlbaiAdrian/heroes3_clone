@@ -13,7 +13,7 @@ import { ObjectsSpriteService } from './objects-sprite.service';
 import { MAP_OBJECT_DEFINITIONS } from '../../models/map-objects/map-object-config';
 import { getFootprintSize } from './map-object.utils';
 import { ViewportService } from '../viewport/viewport.service';
-import { Player } from '../../models/player/player.model';
+import { PlayerService } from '../player.service';
 
 @Injectable({ providedIn: 'root' })
 export class CanvasRendererService {
@@ -22,23 +22,19 @@ export class CanvasRendererService {
   private tileSize = 48;
   private canvasWidth = 960;
   private canvasHeight = 720;
-  private players: Player[] = [];
 
   constructor(
     private heroSprite: HeroSpriteService, 
     private terrainSprite: TerrainSpriteService, 
     private objectsSprite: ObjectsSpriteService,
-    private viewport: ViewportService
+    private viewport: ViewportService,
+    private playerService: PlayerService
   ) {}
 
   initialize(ctx: CanvasRenderingContext2D): void {
     this.ctx = ctx;
     this.canvasWidth = ctx.canvas.width;
     this.canvasHeight = ctx.canvas.height;
-  }
-
-  setPlayers(players: Player[]): void {
-    this.players = players;
   }
 
   draw(map: Tile[][], objects: MapObject[], hero: Hero): void {
@@ -179,11 +175,11 @@ export class CanvasRendererService {
           drawHeight
         );
         
-        // If mine is owned, draw flag overlay
-        if (mine.ownerId) {
-          const owner = this.players.find(p => p.id === mine.ownerId);
-          if (owner) {
-            const flagSprite = this.objectsSprite.getFlagSprite(owner.color);
+        // Check if mine is owned by any player and draw flag overlay
+        const allPlayers = this.playerService.getAllPlayers();
+        for (const player of allPlayers) {
+          if (player.ownedMines.some(m => m === mine)) {
+            const flagSprite = this.objectsSprite.getFlagSprite(player.color);
             this.ctx.drawImage(
               flagSprite,
               drawX,
@@ -191,6 +187,7 @@ export class CanvasRendererService {
               drawWidth,
               drawHeight
             );
+            break; // Mine can only be owned by one player
           }
         }
       } else {

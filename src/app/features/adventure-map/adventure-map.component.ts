@@ -20,7 +20,7 @@ import { PlayerColor } from "../../core/models/player/player-color.enum";
 import { ViewportService } from "../../core/services/viewport/viewport.service";
 import { EdgeScrollController } from "../../core/services/viewport/edge-scroll-controller.service";
 import { CursorManagerService } from "../../core/services/viewport/cursor-manager.service";
-import { ActivePlayerService } from "../../core/services/active-player.service";
+import { PlayerService } from "../../core/services/player.service";
 
 @Component({
   selector: 'app-adventure-map',
@@ -69,7 +69,7 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
       private viewport: ViewportService,
       private edgeScroll: EdgeScrollController,
       private cursorManager: CursorManagerService,
-      private activePlayerService: ActivePlayerService,
+      private playerService: PlayerService,
       private cdr: ChangeDetectorRef
     ) 
     
@@ -83,7 +83,6 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     const firstHero: Hero = {tile: this.map[5][5], name: 'First Hero', level: 1, movementPoints: 10, maxMovementPoints: 10, path: [], facing:HeroOrientation.West};
     
     this.player = {
-      id: 'player1',
       color: PlayerColor.Red,
       heroes: [firstHero],
       selectedHero: firstHero,
@@ -96,7 +95,8 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     };
 
     // Set this player as the active player for the turn-based game
-    this.activePlayerService.setActivePlayer(this.player);
+    this.playerService.setActivePlayer(this.player);
+    this.playerService.setPlayers([this.player]);
 
     this.turn$ = this.turnEngine.turnState$.pipe(
         map(state => state.currentTurn)
@@ -114,9 +114,6 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     const ctx = this.canvas.nativeElement.getContext('2d')!;
     this.renderer.initialize(ctx);
-    
-    // Set players for the renderer (for mine color rendering)
-    this.renderer.setPlayers([this.player]);
     
     const canvasWidth = this.canvas.nativeElement.width;
     const canvasHeight = this.canvas.nativeElement.height;

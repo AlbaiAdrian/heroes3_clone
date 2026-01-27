@@ -17,5 +17,4 @@ export const MINE_PRODUCTION_CONFIG: Record<ResourceType, number> = {
 export interface MapObjectMine extends MapObject {
   readonly resourceType: ResourceType;
   readonly productionAmount: number;
-  ownerId?: string; // ID of the player who owns this mine, undefined if not captured
 }
