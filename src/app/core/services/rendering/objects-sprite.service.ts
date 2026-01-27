@@ -31,11 +31,20 @@ export class ObjectsSpriteService {
   } 
 
   get(direction: MapObjectType): HTMLImageElement {
-    return this.sprites.get(direction)!;
+    const sprite = this.sprites.get(direction);
+    if (!sprite) {
+      throw new Error(`Sprite not found for object type: ${direction}`);
+    }
+    return sprite;
   }
 
   getMineSprite(color: PlayerColor | 'neutral'): HTMLImageElement {
-    return this.mineSprites.get(color)!;
+    const sprite = this.mineSprites.get(color);
+    if (!sprite) {
+      console.warn(`Mine sprite not found for color: ${color}, falling back to neutral`);
+      return this.mineSprites.get('neutral')!;
+    }
+    return sprite;
   }
 
   private load(dir: MapObjectType, src: string) {
