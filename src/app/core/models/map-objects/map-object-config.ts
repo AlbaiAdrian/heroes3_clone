@@ -9,7 +9,13 @@ export interface MapObjectDefinition {
 export const MAP_OBJECT_DEFINITIONS: Record<MapObjectType, MapObjectDefinition> = {
   [MapObjectType.TREE]: {
     spriteKey: 'tree',
-    footprint: [{ dx: 0, dy: 0 }],
+    footprint: [
+      { dx: 0, dy: 0 },
+      { dx: 1, dy: 0 },
+
+      { dx: 0, dy: 1 },
+      { dx: 1, dy: 1 },
+    ],
     entries: [],
   },
 
@@ -27,11 +33,15 @@ export const MAP_OBJECT_DEFINITIONS: Record<MapObjectType, MapObjectDefinition> 
       { dx: 0, dy: 0 }, // left
       { dx: 1, dy: 0 }, // middle
       { dx: 2, dy: 0 }, // right
+
+      { dx: 0, dy: 1 }, // left
+      { dx: 1, dy: 1 }, // middle
+      { dx: 2, dy: 1 }, // right
     ],
 
     // interaction tile = middle tile
     entries: [
-      { dx: 1, dy: 0 },
+      { dx: 1, dy: 1 },
     ],
   },
     [MapObjectType.TOWN]: {
@@ -46,13 +56,17 @@ export const MAP_OBJECT_DEFINITIONS: Record<MapObjectType, MapObjectDefinition> 
 
       // bottom row
       { dx: 0, dy: 1},
-      { dx: 1, dy: 1}, // GATE / ENTRY
+      { dx: 1, dy: 1}, 
       { dx: 2, dy: 1},
+
+      { dx: 0, dy: 2},
+      { dx: 1, dy: 2}, // GATE / ENTRY
+      { dx: 2, dy: 2},
     ],
 
     // interaction tile is INSIDE the footprint
     entries: [
-      { dx: 1, dy: 1 },
+      { dx: 1, dy: 2 },
     ]
   },
 };

@@ -223,23 +223,12 @@ export class CanvasRendererService {
     const ownerColor = this.mineOwnershipCache.get(mine);
     if (ownerColor) {
       const flagSprite = this.objectsSprite.getFlagSprite(ownerColor);
-
-      // Compute a smaller flag size relative to a single tile and position it
-      // in the top-right corner of the mine footprint, with a small padding.
-      const flagSize = this.tileSize * 0.5;
-      const flagWidth = flagSize;
-      const flagHeight = flagSize;
-      const padding = this.tileSize * 0.1;
-      const flagX = drawX + drawWidth - flagWidth - padding;
-      const flagY = drawY + padding;
-
       this.ctx.drawImage(
-        flagSprite,
-        flagX,
-        flagY,
-        flagWidth,
-        flagHeight
-      );
+          flagSprite,
+          drawX,
+          drawY,
+          drawWidth,
+          drawHeight);
     }
   }
 }
