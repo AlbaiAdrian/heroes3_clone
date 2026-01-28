@@ -1,5 +1,6 @@
 // core/models/creature/creature.model.ts
 import { Faction } from '../faction/faction.enum';
+import { Resource } from '../player/resources.model';
 
 export interface Creature {
   id: string;
@@ -12,17 +13,5 @@ export interface Creature {
   maxDamage: number;
   health: number;
   speed: number;
-  growth: number;
-  cost: CreatureCost;
-}
-
-export interface CreatureCost {
-  gold: number;
-  wood?: number;
-  stone?: number;
-  ore?: number;
-  mercury?: number;
-  sulfur?: number;
-  crystal?: number;
-  gems?: number;
+  cost: Resource[];
 }
