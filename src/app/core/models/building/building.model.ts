@@ -1,11 +1,11 @@
 // core/models/building/building.model.ts
 import { Resource } from '../player/resources.model';
+import { CreatureType } from '../creature/creature-type.enum';
 
 export interface Building {
-  id: string;
   name: string;
-  level: number;
   cost: Resource[];
   prerequisiteBuildings: string[];
+  creatureType?: CreatureType;
   growth?: number;
 }

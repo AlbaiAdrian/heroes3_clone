@@ -1,9 +1,10 @@
 // core/models/creature/creature.model.ts
 import { Faction } from '../faction/faction.enum';
 import { Resource } from '../player/resources.model';
+import { CreatureType } from './creature-type.enum';
 
 export interface Creature {
-  id: string;
+  type: CreatureType;
   name: string;
   faction: Faction;
   level: number;
