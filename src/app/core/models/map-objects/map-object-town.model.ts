@@ -7,8 +7,8 @@ import { Creature } from '../creature/creature.model';
  * Interface for available creatures in a town.
  */
 export interface TownCreature {
-  creature: Creature;
-  available: number;
+  readonly creature: Creature;
+  readonly available: number;
 }
 
 /**
