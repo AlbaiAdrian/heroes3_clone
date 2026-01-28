@@ -3,6 +3,7 @@ import { Hero } from '../hero/hero.model';
 import { Resources } from './resources.model';
 import { MapObjectMine } from '../map-objects/map-object-mine.model';
 import { PlayerColor } from './player-color.enum';
+import { Town } from '../town/town.model';
 
 export interface Player {
   color: PlayerColor;
@@ -10,4 +11,5 @@ export interface Player {
   selectedHero: Hero;
   resources: Resources;
   ownedMines: MapObjectMine[];
+  towns: Town[];
 }

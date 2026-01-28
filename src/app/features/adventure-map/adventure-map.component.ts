@@ -91,7 +91,8 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
         wood: { value: 20, type: ResourceType.Wood },
         stone: { value: 20, type: ResourceType.Stone }
       },
-      ownedMines: []
+      ownedMines: [],
+      towns: []
     };
 
     // Set this player as the active player for the turn-based game
