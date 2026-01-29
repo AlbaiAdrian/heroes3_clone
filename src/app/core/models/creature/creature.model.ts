@@ -5,6 +5,7 @@ import { CreatureAttributes } from './creature-attribute.model';
 export interface Creature {
   /** Reference to the creature type ID from CREATURE_TYPES config */
   typeId: string;
+  /** Configurable creature statistics (attack, defense, damage, health, speed, etc.) */
   attributes: CreatureAttributes;
   cost: Resource[];
 }

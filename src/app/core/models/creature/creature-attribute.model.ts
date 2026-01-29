@@ -10,52 +10,66 @@ export interface CreatureAttribute {
 }
 
 /**
- * Configuration for standard creature attributes.
- * Can be extended in the future to add new attributes without modifying the core class.
+ * Configuration for creature attributes.
+ * Uses a Map for extensibility - new attributes can be added without modifying the class.
+ * Standard attributes include: attack, defense, minDamage, maxDamage, health, speed.
  */
 export class CreatureAttributes {
-  readonly attack: CreatureAttribute;
-  readonly defense: CreatureAttribute;
-  readonly minDamage: CreatureAttribute;
-  readonly maxDamage: CreatureAttribute;
-  readonly health: CreatureAttribute;
-  readonly speed: CreatureAttribute;
+  private attributes: Map<string, CreatureAttribute>;
 
-  constructor(
-    attack: number,
-    defense: number,
-    minDamage: number,
-    maxDamage: number,
-    health: number,
-    speed: number
-  ) {
-    this.attack = { name: 'attack', value: attack };
-    this.defense = { name: 'defense', value: defense };
-    this.minDamage = { name: 'minDamage', value: minDamage };
-    this.maxDamage = { name: 'maxDamage', value: maxDamage };
-    this.health = { name: 'health', value: health };
-    this.speed = { name: 'speed', value: speed };
+  constructor(attributesConfig: Record<string, number>) {
+    this.attributes = new Map();
+    for (const [name, value] of Object.entries(attributesConfig)) {
+      this.attributes.set(name, { name, value });
+    }
+  }
+
+  /**
+   * Get attribute value by name.
+   * Returns undefined if attribute doesn't exist.
+   */
+  getAttribute(name: string): number | undefined {
+    return this.attributes.get(name)?.value;
   }
 
   /**
    * Get all attributes as an array for iteration.
    */
   toArray(): CreatureAttribute[] {
-    return [
-      this.attack,
-      this.defense,
-      this.minDamage,
-      this.maxDamage,
-      this.health,
-      this.speed
-    ];
+    return Array.from(this.attributes.values());
   }
 
   /**
-   * Get attribute value by name.
+   * Check if an attribute exists.
    */
-  getAttribute(name: string): number | undefined {
-    const attr = this.toArray().find(a => a.name === name);
-    return attr?.value;
+  hasAttribute(name: string): boolean {
+    return this.attributes.has(name);
+  }
+
+  /**
+   * Helper getters for standard attributes.
+   */
+  get attack(): number | undefined {
+    return this.getAttribute('attack');
+  }
+
+  get defense(): number | undefined {
+    return this.getAttribute('defense');
+  }
+
+  get minDamage(): number | undefined {
+    return this.getAttribute('minDamage');
+  }
+
+  get maxDamage(): number | undefined {
+    return this.getAttribute('maxDamage');
+  }
+
+  get health(): number | undefined {
+    return this.getAttribute('health');
+  }
+
+  get speed(): number | undefined {
+    return this.getAttribute('speed');
   }
 }

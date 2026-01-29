@@ -247,3 +247,58 @@ export const CREATURE_TYPES: Record<string, CreatureType> = {
 
   // Add more creature types as needed for other factions
 };
+
+/**
+ * Validates the creature types configuration to ensure data integrity.
+ * Checks that all upgrade paths reference valid creature type IDs.
+ * @throws Error if validation fails
+ */
+export function validateCreatureTypes(): void {
+  const errors: string[] = [];
+
+  for (const [id, creatureType] of Object.entries(CREATURE_TYPES)) {
+    // Check that the id matches the key
+    if (creatureType.id !== id) {
+      errors.push(`Creature type key '${id}' does not match id '${creatureType.id}'`);
+    }
+
+    // Check that upgradesTo references exist
+    for (const upgradeId of creatureType.upgradesTo) {
+      if (!CREATURE_TYPES[upgradeId]) {
+        errors.push(`Creature '${id}' upgradesTo '${upgradeId}' which does not exist`);
+      }
+    }
+
+    // Check that upgradesFrom reference exists
+    if (creatureType.upgradesFrom && !CREATURE_TYPES[creatureType.upgradesFrom]) {
+      errors.push(`Creature '${id}' upgradesFrom '${creatureType.upgradesFrom}' which does not exist`);
+    }
+
+    // Check bidirectional consistency
+    if (creatureType.upgradesFrom) {
+      const parent = CREATURE_TYPES[creatureType.upgradesFrom];
+      if (parent && !parent.upgradesTo.includes(id)) {
+        errors.push(`Creature '${id}' has upgradesFrom '${creatureType.upgradesFrom}', but parent does not have '${id}' in upgradesTo`);
+      }
+    }
+
+    for (const upgradeId of creatureType.upgradesTo) {
+      const upgrade = CREATURE_TYPES[upgradeId];
+      if (upgrade && upgrade.upgradesFrom !== id) {
+        errors.push(`Creature '${id}' has '${upgradeId}' in upgradesTo, but '${upgradeId}' does not have upgradesFrom '${id}'`);
+      }
+    }
+  }
+
+  if (errors.length > 0) {
+    throw new Error(`Creature types validation failed:\n${errors.join('\n')}`);
+  }
+}
+
+// Validate on module load (in development)
+// Note: This runs during build time, not runtime
+try {
+  validateCreatureTypes();
+} catch (error) {
+  console.error('Creature types validation error:', error);
+}
