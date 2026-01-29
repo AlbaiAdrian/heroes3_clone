@@ -1,18 +1,10 @@
 // core/models/creature/creature.model.ts
-import { Faction } from '../faction/faction.enum';
 import { Resource } from '../player/resources.model';
-import { CreatureType } from './creature-type.enum';
+import { CreatureAttributes } from './creature-attribute.model';
 
 export interface Creature {
-  type: CreatureType;
-  name: string;
-  faction: Faction;
-  level: number;
-  attack: number;
-  defense: number;
-  minDamage: number;
-  maxDamage: number;
-  health: number;
-  speed: number;
+  /** Reference to the creature type ID from CREATURE_TYPES config */
+  typeId: string;
+  attributes: CreatureAttributes;
   cost: Resource[];
 }
