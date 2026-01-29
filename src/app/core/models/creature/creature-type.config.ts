@@ -295,10 +295,6 @@ export function validateCreatureTypes(): void {
   }
 }
 
-// Validate on module load (in development)
-// Note: This runs during build time, not runtime
-try {
-  validateCreatureTypes();
-} catch (error) {
-  console.error('Creature types validation error:', error);
-}
+// Validate on module load
+// This runs when the module is first imported at runtime
+validateCreatureTypes();
