@@ -95,11 +95,24 @@ export class JsonCreatureRepository implements ICreatureRepository {
 
   /**
    * Validate creature data integrity.
-   * Checks that upgrade relationships are valid.
+   * Checks that upgrade relationships are valid and IDs are unique.
    */
   private validateCreatureData(data: CreatureData[]): void {
-    const ids = new Set(data.map(c => c.id));
+    const ids = new Set<string>();
+    const duplicates = new Set<string>();
     const errors: string[] = [];
+
+    // Check for duplicate IDs
+    data.forEach(creature => {
+      if (ids.has(creature.id)) {
+        duplicates.add(creature.id);
+      }
+      ids.add(creature.id);
+    });
+
+    if (duplicates.size > 0) {
+      errors.push(`Duplicate creature IDs found: ${Array.from(duplicates).join(', ')}`);
+    }
 
     data.forEach(creature => {
       // Validate upgradesTo references

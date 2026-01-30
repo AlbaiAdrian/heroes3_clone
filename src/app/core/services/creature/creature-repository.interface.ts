@@ -1,5 +1,6 @@
 // core/services/creature/creature-repository.interface.ts
 
+import { InjectionToken } from '@angular/core';
 import { CreatureData } from '../../models/creature/creature-data.interface';
 import { Faction } from '../../models/faction/faction.enum';
 import { CreatureLevel } from '../../models/creature/creature-level.enum';
@@ -44,3 +45,11 @@ export interface ICreatureRepository {
    */
   getUpgradeOptions(creatureId: string): CreatureData[];
 }
+
+/**
+ * Injection token for the creature repository.
+ * Use this for dependency injection since interfaces don't exist at runtime.
+ */
+export const CREATURE_REPOSITORY = new InjectionToken<ICreatureRepository>(
+  'ICreatureRepository'
+);

@@ -1,8 +1,7 @@
 // core/services/creature/creature.service.ts
 
-import { Injectable } from '@angular/core';
-import { ICreatureRepository } from './creature-repository.interface';
-import { JsonCreatureRepository } from './json-creature-repository.service';
+import { Injectable, Inject } from '@angular/core';
+import { ICreatureRepository, CREATURE_REPOSITORY } from './creature-repository.interface';
 import { CreatureFactory } from './creature-factory.service';
 import { Creature } from '../../models/creature/creature.model';
 import { CreatureData } from '../../models/creature/creature-data.interface';
@@ -18,15 +17,11 @@ import { CreatureLevel } from '../../models/creature/creature-level.enum';
   providedIn: 'root'
 })
 export class CreatureService {
-  private repository: ICreatureRepository;
 
   constructor(
     private creatureFactory: CreatureFactory,
-    jsonRepository: JsonCreatureRepository
-  ) {
-    // Use Dependency Inversion - depend on ICreatureRepository interface
-    this.repository = jsonRepository;
-  }
+    @Inject(CREATURE_REPOSITORY) private repository: ICreatureRepository
+  ) {}
 
   /**
    * Initialize the service by loading all creature data.

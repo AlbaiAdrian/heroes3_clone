@@ -50,7 +50,23 @@ public/assets/data/
 
 ## Usage
 
-### 1. Initialize the Service
+### 1. Configure Providers
+
+Add the creature providers to your app configuration:
+
+```typescript
+import { ApplicationConfig } from '@angular/core';
+import { CREATURE_PROVIDERS } from './core/services/creature/creature.providers';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    ...CREATURE_PROVIDERS,
+    // ... other providers
+  ]
+};
+```
+
+### 2. Initialize the Service
 
 In your application initialization (e.g., `app.config.ts` or `main.ts`):
 
@@ -62,7 +78,7 @@ const creatureService = inject(CreatureService);
 await creatureService.initialize();
 ```
 
-### 2. Get Creatures
+### 3. Get Creatures
 
 ```typescript
 // Get a specific creature
@@ -129,8 +145,8 @@ export enum CreatureAttributeType {
 ## Validation
 
 The system automatically validates:
-- All creature IDs are unique
-- Upgrade references point to existing creatures
+- All creature IDs are unique (no duplicates)
+- All upgrade references point to existing creatures
 - Bidirectional relationships are consistent (upgradesTo ↔ upgradesFrom)
 
 Validation errors are thrown on initialization, ensuring data integrity.
@@ -155,7 +171,7 @@ Validation errors are thrown on initialization, ensuring data integrity.
 Create `ApiCreatureRepository` implementing `ICreatureRepository`:
 
 ```typescript
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ApiCreatureRepository implements ICreatureRepository {
   async loadAll(): Promise<CreatureData[]> {
     const response = await fetch('/api/creatures');
@@ -165,4 +181,15 @@ export class ApiCreatureRepository implements ICreatureRepository {
 }
 ```
 
-Update dependency injection in `CreatureService` - that's it!
+Update providers configuration:
+
+```typescript
+import { CREATURE_REPOSITORY } from './core/services/creature/creature-repository.interface';
+
+export const CREATURE_PROVIDERS: Provider[] = [
+  {
+    provide: CREATURE_REPOSITORY,
+    useClass: ApiCreatureRepository  // Switch implementation here
+  }
+];
+```

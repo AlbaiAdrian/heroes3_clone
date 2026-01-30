@@ -2,7 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { Creature } from '../../models/creature/creature.model';
-import { CreatureData } from '../../models/creature/creature-data.interface';
+import { CreatureData, CreatureAttributeData, ResourceCostData } from '../../models/creature/creature-data.interface';
 import { CreatureAttribute } from '../../models/creature/creature-attribute.model';
 import { Resource } from '../../models/player/resources.model';
 
@@ -43,7 +43,7 @@ export class CreatureFactory {
   /**
    * Map attribute data to CreatureAttribute array.
    */
-  private mapAttributes(attributeData: Array<{attributeType: any, value: number}>): CreatureAttribute[] {
+  private mapAttributes(attributeData: CreatureAttributeData[]): CreatureAttribute[] {
     return attributeData.map(attr => ({
       attributeType: attr.attributeType,
       value: attr.value
@@ -53,7 +53,7 @@ export class CreatureFactory {
   /**
    * Map cost data to Resource array.
    */
-  private mapCost(costData: Array<{type: any, value: number}>): Resource[] {
+  private mapCost(costData: ResourceCostData[]): Resource[] {
     return costData.map(cost => ({
       type: cost.type,
       value: cost.value
