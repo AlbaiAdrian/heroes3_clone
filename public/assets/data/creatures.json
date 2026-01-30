@@ -1,0 +1,148 @@
+[
+  {
+    "id": "pikeman",
+    "name": "Pikeman",
+    "faction": "castle",
+    "level": 1,
+    "attributes": [
+      { "attributeType": "ATTACK", "value": 4 },
+      { "attributeType": "DEFENSE", "value": 5 },
+      { "attributeType": "MIN_DAMAGE", "value": 1 },
+      { "attributeType": "MAX_DAMAGE", "value": 3 },
+      { "attributeType": "HEALTH", "value": 10 },
+      { "attributeType": "SPEED", "value": 4 }
+    ],
+    "cost": [
+      { "type": "gold", "value": 60 }
+    ],
+    "upgradesTo": ["halberdier"]
+  },
+  {
+    "id": "halberdier",
+    "name": "Halberdier",
+    "faction": "castle",
+    "level": 1,
+    "attributes": [
+      { "attributeType": "ATTACK", "value": 6 },
+      { "attributeType": "DEFENSE", "value": 5 },
+      { "attributeType": "MIN_DAMAGE", "value": 2 },
+      { "attributeType": "MAX_DAMAGE", "value": 3 },
+      { "attributeType": "HEALTH", "value": 10 },
+      { "attributeType": "SPEED", "value": 5 }
+    ],
+    "cost": [
+      { "type": "gold", "value": 75 }
+    ],
+    "upgradesFrom": "pikeman"
+  },
+  {
+    "id": "archer",
+    "name": "Archer",
+    "faction": "castle",
+    "level": 2,
+    "attributes": [
+      { "attributeType": "ATTACK", "value": 6 },
+      { "attributeType": "DEFENSE", "value": 3 },
+      { "attributeType": "MIN_DAMAGE", "value": 2 },
+      { "attributeType": "MAX_DAMAGE", "value": 3 },
+      { "attributeType": "HEALTH", "value": 10 },
+      { "attributeType": "SPEED", "value": 4 }
+    ],
+    "cost": [
+      { "type": "gold", "value": 100 },
+      { "type": "wood", "value": 5 }
+    ],
+    "upgradesTo": ["marksman"]
+  },
+  {
+    "id": "marksman",
+    "name": "Marksman",
+    "faction": "castle",
+    "level": 2,
+    "attributes": [
+      { "attributeType": "ATTACK", "value": 6 },
+      { "attributeType": "DEFENSE", "value": 3 },
+      { "attributeType": "MIN_DAMAGE", "value": 2 },
+      { "attributeType": "MAX_DAMAGE", "value": 3 },
+      { "attributeType": "HEALTH", "value": 10 },
+      { "attributeType": "SPEED", "value": 6 }
+    ],
+    "cost": [
+      { "type": "gold", "value": 150 },
+      { "type": "wood", "value": 5 }
+    ],
+    "upgradesFrom": "archer"
+  },
+  {
+    "id": "griffin",
+    "name": "Griffin",
+    "faction": "castle",
+    "level": 3,
+    "attributes": [
+      { "attributeType": "ATTACK", "value": 8 },
+      { "attributeType": "DEFENSE", "value": 8 },
+      { "attributeType": "MIN_DAMAGE", "value": 3 },
+      { "attributeType": "MAX_DAMAGE", "value": 6 },
+      { "attributeType": "HEALTH", "value": 25 },
+      { "attributeType": "SPEED", "value": 6 }
+    ],
+    "cost": [
+      { "type": "gold", "value": 200 }
+    ],
+    "upgradesTo": ["royal_griffin"]
+  },
+  {
+    "id": "royal_griffin",
+    "name": "Royal Griffin",
+    "faction": "castle",
+    "level": 3,
+    "attributes": [
+      { "attributeType": "ATTACK", "value": 9 },
+      { "attributeType": "DEFENSE", "value": 9 },
+      { "attributeType": "MIN_DAMAGE", "value": 3 },
+      { "attributeType": "MAX_DAMAGE", "value": 6 },
+      { "attributeType": "HEALTH", "value": 25 },
+      { "attributeType": "SPEED", "value": 9 }
+    ],
+    "cost": [
+      { "type": "gold", "value": 240 }
+    ],
+    "upgradesFrom": "griffin"
+  },
+  {
+    "id": "centaur",
+    "name": "Centaur",
+    "faction": "rampart",
+    "level": 1,
+    "attributes": [
+      { "attributeType": "ATTACK", "value": 5 },
+      { "attributeType": "DEFENSE", "value": 3 },
+      { "attributeType": "MIN_DAMAGE", "value": 2 },
+      { "attributeType": "MAX_DAMAGE", "value": 3 },
+      { "attributeType": "HEALTH", "value": 8 },
+      { "attributeType": "SPEED", "value": 6 }
+    ],
+    "cost": [
+      { "type": "gold", "value": 70 }
+    ],
+    "upgradesTo": ["centaur_captain"]
+  },
+  {
+    "id": "centaur_captain",
+    "name": "Centaur Captain",
+    "faction": "rampart",
+    "level": 1,
+    "attributes": [
+      { "attributeType": "ATTACK", "value": 6 },
+      { "attributeType": "DEFENSE", "value": 3 },
+      { "attributeType": "MIN_DAMAGE", "value": 2 },
+      { "attributeType": "MAX_DAMAGE", "value": 3 },
+      { "attributeType": "HEALTH", "value": 10 },
+      { "attributeType": "SPEED", "value": 8 }
+    ],
+    "cost": [
+      { "type": "gold", "value": 90 }
+    ],
+    "upgradesFrom": "centaur"
+  }
+]
