@@ -14,7 +14,6 @@ export class CreatureDataService {
   constructor(private readonly http: HttpClient) {}
 
   getCreatures(): Observable<Creature[]> {
-    console.log
     return this.http.get<CreatureData[]>(this.creaturesUrl).pipe(
       map((data) =>
         data.map((creature) => ({
