@@ -1,0 +1,496 @@
+[
+  {
+    "id": "abyss_lord",
+    "name": "Abyss Lord",
+    "faction": "dungeon",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 15
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 12
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 14
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 68
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 10
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1600
+      }
+    ]
+  },
+  {
+    "id": "assassin",
+    "name": "Assassin",
+    "faction": "dungeon",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 12
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 7
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 9
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 24
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 12
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 600
+      }
+    ]
+  },
+  {
+    "id": "black_dragon",
+    "name": "Black Dragon",
+    "faction": "dungeon",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 14
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 11
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 12
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 60
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 11
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1100
+      }
+    ]
+  },
+  {
+    "id": "demon_knight",
+    "name": "Demon Knight",
+    "faction": "dungeon",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 14
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 11
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 13
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 58
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 9
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1300
+      }
+    ]
+  },
+  {
+    "id": "dragon",
+    "name": "Dragon",
+    "faction": "dungeon",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 10
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 8
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 8
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 35
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 8
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 500
+      }
+    ]
+  },
+  {
+    "id": "golden_dragon",
+    "name": "Golden Dragon",
+    "faction": "dungeon",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 11
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 9
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 9
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 40
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 9
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 600
+      }
+    ]
+  },
+  {
+    "id": "harpy",
+    "name": "Harpy",
+    "faction": "dungeon",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 6
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 3
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 10
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 120
+      }
+    ]
+  },
+  {
+    "id": "harpy_hag",
+    "name": "Harpy Hag",
+    "faction": "dungeon",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 7
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 4
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 12
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 8
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 180
+      }
+    ]
+  },
+  {
+    "id": "hellfire_dragon",
+    "name": "Hellfire Dragon",
+    "faction": "dungeon",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 16
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 13
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 7
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 15
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 80
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 12
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2000
+      }
+    ]
+  },
+  {
+    "id": "infernal_troglodyte",
+    "name": "Infernal Troglodyte",
+    "faction": "dungeon",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 6
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 4
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 10
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 80
+      }
+    ]
+  },
+  {
+    "id": "rogue",
+    "name": "Rogue",
+    "faction": "dungeon",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 11
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 6
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 8
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 20
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 11
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 450
+      }
+    ]
+  },
+  {
+    "id": "shadow_dragon",
+    "name": "Shadow Dragon",
+    "faction": "dungeon",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 13
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 11
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 50
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 10
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 900
+      }
+    ]
+  },
+  {
+    "id": "troglodyte",
+    "name": "Troglodyte",
+    "faction": "dungeon",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 5
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 3
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 8
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 60
+      }
+    ]
+  }
+]

@@ -1,0 +1,496 @@
+[
+  {
+    "id": "ancient_lich",
+    "name": "Ancient Lich",
+    "faction": "necropolis",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 13
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 9
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 11
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 40
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 9
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      }
+    ]
+  },
+  {
+    "id": "death_lord",
+    "name": "Death Lord",
+    "faction": "necropolis",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 15
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 11
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 7
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 14
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 70
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 10
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1800
+      }
+    ]
+  },
+  {
+    "id": "ghost",
+    "name": "Ghost",
+    "faction": "necropolis",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 10
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 6
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 8
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 24
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 10
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 500
+      }
+    ]
+  },
+  {
+    "id": "lich",
+    "name": "Lich",
+    "faction": "necropolis",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 12
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 8
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 10
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 32
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 8
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 800
+      }
+    ]
+  },
+  {
+    "id": "mutant_zombie",
+    "name": "Mutant Zombie",
+    "faction": "necropolis",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 6
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 7
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 20
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 3
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 180
+      }
+    ]
+  },
+  {
+    "id": "phantom",
+    "name": "Phantom",
+    "faction": "necropolis",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 13
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 9
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 12
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 48
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 12
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1100
+      }
+    ]
+  },
+  {
+    "id": "skeleton",
+    "name": "Skeleton",
+    "faction": "necropolis",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 4
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 4
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 8
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 40
+      }
+    ]
+  },
+  {
+    "id": "skeleton_warrior",
+    "name": "Skeleton Warrior",
+    "faction": "necropolis",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 5
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 5
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 10
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 60
+      }
+    ]
+  },
+  {
+    "id": "spectre",
+    "name": "Spectre",
+    "faction": "necropolis",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 14
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 13
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 55
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 13
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1400
+      }
+    ]
+  },
+  {
+    "id": "vampire",
+    "name": "Vampire",
+    "faction": "necropolis",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 8
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 5
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 18
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 8
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 300
+      }
+    ]
+  },
+  {
+    "id": "vampire_lord",
+    "name": "Vampire Lord",
+    "faction": "necropolis",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 9
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 6
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 7
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 22
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 9
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 400
+      }
+    ]
+  },
+  {
+    "id": "wraith",
+    "name": "Wraith",
+    "faction": "necropolis",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 11
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 7
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 9
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 28
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 11
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 650
+      }
+    ]
+  },
+  {
+    "id": "zombie",
+    "name": "Zombie",
+    "faction": "necropolis",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 5
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 6
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 16
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 2
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 120
+      }
+    ]
+  }
+]

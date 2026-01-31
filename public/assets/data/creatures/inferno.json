@@ -1,0 +1,496 @@
+[
+  {
+    "id": "arch_devil",
+    "name": "Arch Devil",
+    "faction": "inferno",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 11
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 8
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 8
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 35
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 8
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 500
+      }
+    ]
+  },
+  {
+    "id": "chaos_dragon",
+    "name": "Chaos Dragon",
+    "faction": "inferno",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 15
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 11
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 14
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 65
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 10
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1500
+      }
+    ]
+  },
+  {
+    "id": "dark_overlord",
+    "name": "Dark Overlord",
+    "faction": "inferno",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 13
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 10
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 45
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 750
+      }
+    ]
+  },
+  {
+    "id": "demon",
+    "name": "Demon",
+    "faction": "inferno",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 8
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 5
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 18
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 200
+      }
+    ]
+  },
+  {
+    "id": "demon_lord",
+    "name": "Demon Lord",
+    "faction": "inferno",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 14
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 12
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 50
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 11
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      }
+    ]
+  },
+  {
+    "id": "devil",
+    "name": "Devil",
+    "faction": "inferno",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 10
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 7
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 7
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 30
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 400
+      }
+    ]
+  },
+  {
+    "id": "gog",
+    "name": "Gog",
+    "faction": "inferno",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 5
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 3
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 8
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 70
+      }
+    ]
+  },
+  {
+    "id": "horned_demon",
+    "name": "Horned Demon",
+    "faction": "inferno",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 9
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 6
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 22
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 280
+      }
+    ]
+  },
+  {
+    "id": "imp",
+    "name": "Imp",
+    "faction": "inferno",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 4
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 2
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 6
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 50
+      }
+    ]
+  },
+  {
+    "id": "infernal_wyvern",
+    "name": "Infernal Wyvern",
+    "faction": "inferno",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 14
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 13
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 55
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 9
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1200
+      }
+    ]
+  },
+  {
+    "id": "pit_lord",
+    "name": "Pit Lord",
+    "faction": "inferno",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 12
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 9
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 9
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 40
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 600
+      }
+    ]
+  },
+  {
+    "id": "succubus",
+    "name": "Succubus",
+    "faction": "inferno",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 13
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 9
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 11
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 35
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 10
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 800
+      }
+    ]
+  },
+  {
+    "id": "supreme_demon",
+    "name": "Supreme Demon",
+    "faction": "inferno",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 16
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 12
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 7
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 15
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 75
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 11
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2000
+      }
+    ]
+  }
+]
