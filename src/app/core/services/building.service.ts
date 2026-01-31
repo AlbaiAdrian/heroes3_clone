@@ -67,7 +67,7 @@ export class BuildingService {
    * JSON files: castle.json, rampart.json, ...
    * 
    * @param faction The faction
-   * @returns The filename (without extension)
+   * @returns The faction enum value, which matches the JSON filename (without extension)
    */
   private getFactionFileName(faction: Faction): string {
     return faction;
