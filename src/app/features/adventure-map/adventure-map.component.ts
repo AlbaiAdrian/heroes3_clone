@@ -2,25 +2,18 @@ import { AfterViewInit, ViewChild, ElementRef, Component, OnDestroy, ChangeDetec
 import { combineLatest, map, Observable, Subscription } from "rxjs";
 import { Tile } from "../../core/models/terrain/tile.model";
 import { HeroMovementStateService } from "../../core/services/hero-movement/hero-movement-state.service";
-import { MapGeneratorService } from "../../core/services/map-generation/map-generator.service";
 import { CanvasRendererService } from "../../core/services/rendering/canvas-renderer.service";
 import { TurnEngineService } from "../../core/services/turn-engine.service";
 import { HeroMovementService } from "../../core/services/hero-movement/hero-movement.service";
 import { AsyncPipe } from "@angular/common";
-import { HeroOrientation } from "../../core/models/hero/hero-orientation.enum";
-import { Hero } from "../../core/models/hero/hero.model";
-import { GameClockService } from "../../core/services/game-clock.service";
+import { GameClockService } from "../../core/services/game/game-clock.service";
 import { GameTime } from "../../core/models/game-time.model";
-import { MapObjectGeneratorService } from "../../core/services/map-generation/map-object-generator.service";
 import { MapObject } from "../../core/models/map-objects/map-object.model";
-import { ObjectWalkabilityService } from "../../core/services/map-generation/object-walkability.service";
 import { Player } from "../../core/models/player/player.model";
-import { ResourceType } from "../../core/models/player/resource-type.enum";
-import { PlayerColor } from "../../core/models/player/player-color.enum";
 import { ViewportService } from "../../core/services/viewport/viewport.service";
 import { EdgeScrollController } from "../../core/services/viewport/edge-scroll-controller.service";
 import { CursorManagerService } from "../../core/services/viewport/cursor-manager.service";
-import { PlayerService } from "../../core/services/player.service";
+import { GameSessionService } from "../../core/services/game/game-session.service";
 
 @Component({
   selector: 'app-adventure-map',
@@ -28,7 +21,6 @@ import { PlayerService } from "../../core/services/player.service";
   imports: [AsyncPipe],
   templateUrl: './adventure-map.component.html',
   styleUrls: ['./adventure-map.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdventureMapComponent implements AfterViewInit, OnDestroy {
 
@@ -58,9 +50,6 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
   private boundOnMouseLeave!: () => void;
 
   constructor(
-      private mapGenerator: MapGeneratorService,
-      private objectGenerator: MapObjectGeneratorService,
-      private objectWalkability: ObjectWalkabilityService,
       private heroMovement: HeroMovementService,
       private renderer: CanvasRendererService,
       private movementState: HeroMovementStateService,
@@ -69,35 +58,17 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
       private viewport: ViewportService,
       private edgeScroll: EdgeScrollController,
       private cursorManager: CursorManagerService,
-      private playerService: PlayerService,
-      private cdr: ChangeDetectorRef
+      private gameSession: GameSessionService,
     ) 
     
   {
-    // this sequence must be reworked
-    this.map = this.mapGenerator.generate(this.MAP_WIDTH, this.MAP_HEIGHT);
-    this.objects = this.objectGenerator.generate(this.map);
-    this.objectWalkability.applyObjects(this.map, this.objects)
+    this.map = this.gameSession.getMap();
+    this.objects = this.gameSession.getObjects();
+    this.player = this.gameSession.getPlayer();
 
-    // Initialize player with starting hero and resources
-    const firstHero: Hero = {tile: this.map[5][5], name: 'First Hero', level: 1, movementPoints: 10, maxMovementPoints: 10, path: [], facing:HeroOrientation.West};
-    
-    this.player = {
-      color: PlayerColor.Red,
-      heroes: [firstHero],
-      selectedHero: firstHero,
-      resources: {
-        gold: { value: 10000, type: ResourceType.Gold },
-        wood: { value: 20, type: ResourceType.Wood },
-        stone: { value: 20, type: ResourceType.Stone }
-      },
-      ownedMines: [],
-      towns: []
-    };
-
-    // Set this player as the active player for the turn-based game
-    this.playerService.setActivePlayer(this.player);
-    this.playerService.setPlayers([this.player]);
+    if (!this.map || !this.objects || !this.player) {
+      throw new Error('Game session not initialized. Start a new game from the main menu.');
+    }
 
     this.turn$ = this.turnEngine.turnState$.pipe(
         map(state => state.currentTurn)

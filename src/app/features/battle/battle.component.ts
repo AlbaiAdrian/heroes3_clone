@@ -1,7 +1,7 @@
 // features/battle/battle.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GameEngineService } from '../../core/services/game-engine.service';
+import { GameEngineService } from '../../core/services/game/game-engine.service';
 
 @Component({
   standalone: true,

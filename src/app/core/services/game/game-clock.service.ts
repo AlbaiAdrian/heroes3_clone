@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { GameTime } from '../models/game-time.model';
+import { GameTime } from '../../models/game-time.model';
 
 const DAYS_PER_WEEK = 7;
 const WEEKS_PER_MONTH = 4;

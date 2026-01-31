@@ -1,0 +1,23 @@
+<div class="heroes-root">
+  <section class="menu-card">
+    <div class="menu-header">
+      <h1 class="title">Heroes III</h1>
+      <p class="subtitle">Adventure Awaits</p>
+    </div>
+    
+    <div class="menu-content">
+      <button 
+        class="btn btn-primary" 
+        (click)="newGame()"
+        [disabled]="!(canStartGame$ | async)"
+        [attr.aria-label]="(canStartGame$ | async) ? 'Start New Game' : 'Loading game data...'"
+      >
+        {{ (canStartGame$ | async) ? 'New Game' : 'Loading...' }}
+      </button>
+    </div>
+
+    <div class="menu-footer" *ngIf="!(canStartGame$ | async)">
+      <p class="loading-text">Initializing game...</p>
+    </div>
+  </section>
+</div>

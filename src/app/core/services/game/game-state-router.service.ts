@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameStateService } from './game-state.service';
-import { GameState } from '../models/game-state.enum';
+import { GameState } from '../../models/game-state.enum';
 
 @Injectable({ providedIn: 'root' })
 export class GameStateRouterService {

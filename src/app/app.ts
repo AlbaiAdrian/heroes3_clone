@@ -1,7 +1,7 @@
 // app.ts
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { GameStateRouterService } from './core/services/game-state-router.service';
+import { GameStateRouterService } from './core/services/game/game-state-router.service';
 
 export function initGameStateRouter(
     routerService: GameStateRouterService
