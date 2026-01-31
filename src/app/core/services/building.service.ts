@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Building } from '../models/building/building.model';
 import { Faction } from '../models/faction/faction.enum';
 
@@ -37,31 +38,26 @@ export class BuildingService {
   }
 
   /**
-   * Load buildings for all factions
+   * Load buildings for all factions in parallel
    * @returns Observable of Map with faction as key and buildings as value
    */
   getAllBuildings(): Observable<Map<Faction, Building[]>> {
     const allFactions = Object.values(Faction);
-    const buildingsMap = new Map<Faction, Building[]>();
+    const requests: Record<string, Observable<Building[]>> = {};
     
-    // This is a simplified example. In production, you might want to use forkJoin
-    // to load all factions in parallel
-    return new Observable(observer => {
-      let loaded = 0;
-      allFactions.forEach(faction => {
-        this.getBuildingsByFaction(faction).subscribe({
-          next: buildings => {
-            buildingsMap.set(faction, buildings);
-            loaded++;
-            if (loaded === allFactions.length) {
-              observer.next(buildingsMap);
-              observer.complete();
-            }
-          },
-          error: err => observer.error(err)
-        });
-      });
+    allFactions.forEach(faction => {
+      requests[faction] = this.getBuildingsByFaction(faction);
     });
+    
+    return forkJoin(requests).pipe(
+      map(results => {
+        const buildingsMap = new Map<Faction, Building[]>();
+        allFactions.forEach(faction => {
+          buildingsMap.set(faction, results[faction]);
+        });
+        return buildingsMap;
+      })
+    );
   }
 
   /**
