@@ -1,0 +1,276 @@
+[
+  {
+    "name": "Village Hall",
+    "cost": [],
+    "prerequisiteBuildings": []
+  },
+  {
+    "name": "Town Hall",
+    "cost": [
+      { "type": "gold", "value": 2500 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Village Hall", "Tavern"]
+  },
+  {
+    "name": "City Hall",
+    "cost": [
+      { "type": "gold", "value": 5000 },
+      { "type": "wood", "value": 10 },
+      { "type": "stone", "value": 10 }
+    ],
+    "prerequisiteBuildings": ["Town Hall", "Blacksmith", "Marketplace"]
+  },
+  {
+    "name": "Capitol",
+    "cost": [
+      { "type": "gold", "value": 10000 },
+      { "type": "wood", "value": 20 },
+      { "type": "stone", "value": 20 }
+    ],
+    "prerequisiteBuildings": ["City Hall", "Castle"]
+  },
+  {
+    "name": "Fort",
+    "cost": [
+      { "type": "gold", "value": 5000 },
+      { "type": "wood", "value": 20 },
+      { "type": "stone", "value": 20 }
+    ],
+    "prerequisiteBuildings": []
+  },
+  {
+    "name": "Citadel",
+    "cost": [
+      { "type": "gold", "value": 2500 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Fort"]
+  },
+  {
+    "name": "Castle",
+    "cost": [
+      { "type": "gold", "value": 5000 },
+      { "type": "wood", "value": 20 },
+      { "type": "stone", "value": 20 }
+    ],
+    "prerequisiteBuildings": ["Citadel"]
+  },
+  {
+    "name": "Tavern",
+    "cost": [
+      { "type": "gold", "value": 500 },
+      { "type": "wood", "value": 5 }
+    ],
+    "prerequisiteBuildings": []
+  },
+  {
+    "name": "Blacksmith",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "wood", "value": 5 }
+    ],
+    "prerequisiteBuildings": []
+  },
+  {
+    "name": "Marketplace",
+    "cost": [
+      { "type": "gold", "value": 500 },
+      { "type": "wood", "value": 5 }
+    ],
+    "prerequisiteBuildings": []
+  },
+  {
+    "name": "Mage Guild Level 1",
+    "cost": [
+      { "type": "gold", "value": 2000 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": []
+  },
+  {
+    "name": "Mage Guild Level 2",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Mage Guild Level 1"]
+  },
+  {
+    "name": "Mage Guild Level 3",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Mage Guild Level 2"]
+  },
+  {
+    "name": "Mage Guild Level 4",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Mage Guild Level 3"]
+  },
+  {
+    "name": "Mage Guild Level 5",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Mage Guild Level 4"]
+  },
+  {
+    "name": "Workshop",
+    "cost": [
+      { "type": "gold", "value": 400 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 1,
+    "growth": 12
+  },
+  {
+    "name": "Upgraded Workshop",
+    "cost": [
+      { "type": "gold", "value": 400 },
+      { "type": "wood", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Workshop"],
+    "creatureLevel": 1,
+    "growth": 12
+  },
+  {
+    "name": "Parapet",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 2,
+    "growth": 9
+  },
+  {
+    "name": "Upgraded Parapet",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Parapet"],
+    "creatureLevel": 2,
+    "growth": 9
+  },
+  {
+    "name": "Golem Factory",
+    "cost": [
+      { "type": "gold", "value": 1500 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 3,
+    "growth": 6
+  },
+  {
+    "name": "Upgraded Golem Factory",
+    "cost": [
+      { "type": "gold", "value": 1500 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Golem Factory"],
+    "creatureLevel": 3,
+    "growth": 6
+  },
+  {
+    "name": "Mage Tower",
+    "cost": [
+      { "type": "gold", "value": 2000 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Mage Guild Level 1"],
+    "creatureLevel": 4,
+    "growth": 4
+  },
+  {
+    "name": "Upgraded Mage Tower",
+    "cost": [
+      { "type": "gold", "value": 1500 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Mage Tower"],
+    "creatureLevel": 4,
+    "growth": 4
+  },
+  {
+    "name": "Altar of Wishes",
+    "cost": [
+      { "type": "gold", "value": 3000 },
+      { "type": "stone", "value": 10 }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 5,
+    "growth": 3
+  },
+  {
+    "name": "Upgraded Altar of Wishes",
+    "cost": [
+      { "type": "gold", "value": 2000 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Altar of Wishes"],
+    "creatureLevel": 5,
+    "growth": 3
+  },
+  {
+    "name": "Golden Pavilion",
+    "cost": [
+      { "type": "gold", "value": 10000 },
+      { "type": "wood", "value": 10 }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 6,
+    "growth": 2
+  },
+  {
+    "name": "Upgraded Golden Pavilion",
+    "cost": [
+      { "type": "gold", "value": 5000 },
+      { "type": "wood", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Golden Pavilion"],
+    "creatureLevel": 6,
+    "growth": 2
+  },
+  {
+    "name": "Cloud Temple",
+    "cost": [
+      { "type": "gold", "value": 20000 },
+      { "type": "wood", "value": 20 },
+      { "type": "stone", "value": 20 }
+    ],
+    "prerequisiteBuildings": ["Castle", "Mage Guild Level 2"],
+    "creatureLevel": 7,
+    "growth": 1
+  },
+  {
+    "name": "Upgraded Cloud Temple",
+    "cost": [
+      { "type": "gold", "value": 10000 },
+      { "type": "wood", "value": 10 },
+      { "type": "stone", "value": 10 }
+    ],
+    "prerequisiteBuildings": ["Cloud Temple"],
+    "creatureLevel": 7,
+    "growth": 1
+  }
+]

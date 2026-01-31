@@ -1,0 +1,275 @@
+[
+  {
+    "name": "Village Hall",
+    "cost": [],
+    "prerequisiteBuildings": []
+  },
+  {
+    "name": "Town Hall",
+    "cost": [
+      { "type": "gold", "value": 2500 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Village Hall", "Tavern"]
+  },
+  {
+    "name": "City Hall",
+    "cost": [
+      { "type": "gold", "value": 5000 },
+      { "type": "wood", "value": 10 },
+      { "type": "stone", "value": 10 }
+    ],
+    "prerequisiteBuildings": ["Town Hall", "Blacksmith", "Marketplace"]
+  },
+  {
+    "name": "Capitol",
+    "cost": [
+      { "type": "gold", "value": 10000 },
+      { "type": "wood", "value": 20 },
+      { "type": "stone", "value": 20 }
+    ],
+    "prerequisiteBuildings": ["City Hall", "Castle"]
+  },
+  {
+    "name": "Fort",
+    "cost": [
+      { "type": "gold", "value": 5000 },
+      { "type": "wood", "value": 20 },
+      { "type": "stone", "value": 20 }
+    ],
+    "prerequisiteBuildings": []
+  },
+  {
+    "name": "Citadel",
+    "cost": [
+      { "type": "gold", "value": 2500 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Fort"]
+  },
+  {
+    "name": "Castle",
+    "cost": [
+      { "type": "gold", "value": 5000 },
+      { "type": "wood", "value": 20 },
+      { "type": "stone", "value": 20 }
+    ],
+    "prerequisiteBuildings": ["Citadel"]
+  },
+  {
+    "name": "Tavern",
+    "cost": [
+      { "type": "gold", "value": 500 },
+      { "type": "wood", "value": 5 }
+    ],
+    "prerequisiteBuildings": []
+  },
+  {
+    "name": "Blacksmith",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "wood", "value": 5 }
+    ],
+    "prerequisiteBuildings": []
+  },
+  {
+    "name": "Marketplace",
+    "cost": [
+      { "type": "gold", "value": 500 },
+      { "type": "wood", "value": 5 }
+    ],
+    "prerequisiteBuildings": []
+  },
+  {
+    "name": "Mage Guild Level 1",
+    "cost": [
+      { "type": "gold", "value": 2000 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": []
+  },
+  {
+    "name": "Mage Guild Level 2",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Mage Guild Level 1"]
+  },
+  {
+    "name": "Mage Guild Level 3",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Mage Guild Level 2"]
+  },
+  {
+    "name": "Mage Guild Level 4",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Mage Guild Level 3"]
+  },
+  {
+    "name": "Mage Guild Level 5",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Mage Guild Level 4"]
+  },
+  {
+    "name": "Centaur Stables",
+    "cost": [
+      { "type": "gold", "value": 500 },
+      { "type": "wood", "value": 10 }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 1,
+    "growth": 14
+  },
+  {
+    "name": "Upgraded Centaur Stables",
+    "cost": [
+      { "type": "gold", "value": 500 },
+      { "type": "wood", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Centaur Stables"],
+    "creatureLevel": 1,
+    "growth": 14
+  },
+  {
+    "name": "Dwarf Cottage",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "wood", "value": 5 }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 2,
+    "growth": 8
+  },
+  {
+    "name": "Upgraded Dwarf Cottage",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Dwarf Cottage"],
+    "creatureLevel": 2,
+    "growth": 8
+  },
+  {
+    "name": "Homestead",
+    "cost": [
+      { "type": "gold", "value": 1500 },
+      { "type": "wood", "value": 10 }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 3,
+    "growth": 7
+  },
+  {
+    "name": "Upgraded Homestead",
+    "cost": [
+      { "type": "gold", "value": 1000 },
+      { "type": "wood", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Homestead"],
+    "creatureLevel": 3,
+    "growth": 7
+  },
+  {
+    "name": "Enchanted Spring",
+    "cost": [
+      { "type": "gold", "value": 2000 },
+      { "type": "stone", "value": 10 }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 4,
+    "growth": 4
+  },
+  {
+    "name": "Upgraded Enchanted Spring",
+    "cost": [
+      { "type": "gold", "value": 1500 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Enchanted Spring"],
+    "creatureLevel": 4,
+    "growth": 4
+  },
+  {
+    "name": "Dendroid Arches",
+    "cost": [
+      { "type": "gold", "value": 2500 },
+      { "type": "wood", "value": 10 },
+      { "type": "stone", "value": 10 }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 5,
+    "growth": 3
+  },
+  {
+    "name": "Upgraded Dendroid Arches",
+    "cost": [
+      { "type": "gold", "value": 2000 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Dendroid Arches"],
+    "creatureLevel": 5,
+    "growth": 3
+  },
+  {
+    "name": "Unicorn Glade",
+    "cost": [
+      { "type": "gold", "value": 5000 },
+      { "type": "wood", "value": 10 },
+      { "type": "stone", "value": 10 }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 6,
+    "growth": 2
+  },
+  {
+    "name": "Upgraded Unicorn Glade",
+    "cost": [
+      { "type": "gold", "value": 3000 },
+      { "type": "wood", "value": 5 },
+      { "type": "stone", "value": 5 }
+    ],
+    "prerequisiteBuildings": ["Unicorn Glade"],
+    "creatureLevel": 6,
+    "growth": 2
+  },
+  {
+    "name": "Dragon Cliffs",
+    "cost": [
+      { "type": "gold", "value": 20000 },
+      { "type": "wood", "value": 20 },
+      { "type": "stone", "value": 20 }
+    ],
+    "prerequisiteBuildings": ["Castle"],
+    "creatureLevel": 7,
+    "growth": 1
+  },
+  {
+    "name": "Upgraded Dragon Cliffs",
+    "cost": [
+      { "type": "gold", "value": 10000 },
+      { "type": "wood", "value": 10 },
+      { "type": "stone", "value": 10 }
+    ],
+    "prerequisiteBuildings": ["Dragon Cliffs"],
+    "creatureLevel": 7,
+    "growth": 1
+  }
+]
