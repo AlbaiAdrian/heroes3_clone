@@ -24,7 +24,7 @@ interface Building {
   name: string;                    // Building name
   cost: Resource[];                // Array of resources required to build
   prerequisiteBuildings: string[]; // Names of buildings that must be built first
-  creatureLevel?: number;          // Optional: Creature level (1-7) for dwelling buildings
+  creatureLevel?: CreatureLevel;   // Optional: Creature level (CreatureLevel enum, values 1-7 in JSON) for dwelling buildings
   growth?: number;                 // Optional: Weekly creature growth for dwelling buildings
 }
 ```
