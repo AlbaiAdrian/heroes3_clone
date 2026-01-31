@@ -1,7 +1,7 @@
 // core/services/game-state.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { GameState } from '../models/game-state.enum';
+import { GameState } from '../../models/game-state.enum';
 
 
 @Injectable({ providedIn: 'root' })

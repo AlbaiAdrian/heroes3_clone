@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { TurnState } from '../models/turn-state.model';
 import { HeroMovementStateService } from './hero-movement/hero-movement-state.service';
-import { GameClockService } from './game-clock.service';
+import { GameClockService } from './game/game-clock.service';
 import { ResourceGenerationService } from './resource-generation.service';
 import { Player } from '../models/player/player.model';
 
