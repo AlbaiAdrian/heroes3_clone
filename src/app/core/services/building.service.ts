@@ -61,11 +61,15 @@ export class BuildingService {
   }
 
   /**
-   * Get the filename for a faction
+   * Get the filename for a faction.
+   * Note: This assumes the Faction enum values directly match the JSON filenames.
+   * Faction enum: { Castle = 'castle', Rampart = 'rampart', ... }
+   * JSON files: castle.json, rampart.json, ...
+   * 
    * @param faction The faction
    * @returns The filename (without extension)
    */
   private getFactionFileName(faction: Faction): string {
-    return faction; // The enum values match the file names
+    return faction;
   }
 }

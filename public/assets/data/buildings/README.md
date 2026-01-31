@@ -70,6 +70,9 @@ Each faction has 7 levels of creature dwellings, with basic and upgraded version
 - Level 6: Growth 2 per week
 - Level 7: Growth 1 per week
 
+**Note:** Some factions have unique prerequisite requirements for their level 7 dwellings:
+- Tower's Cloud Temple requires both Castle and Mage Guild Level 2 (reflecting the magical nature of Titans)
+
 ## Usage
 
 To load building data in your Angular components or services:
