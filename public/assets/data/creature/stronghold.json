@@ -1,119 +1,5 @@
 [
   {
-    "id": "basilisk",
-    "name": "Basilisk",
-    "faction": "stronghold",
-    "level": 6,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 15
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 11
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 6
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 13
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 70
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 8
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 1600
-      }
-    ]
-  },
-  {
-    "id": "cyclops",
-    "name": "Cyclops",
-    "faction": "stronghold",
-    "level": 5,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 13
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 9
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 5
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 10
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 50
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 6
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 900
-      }
-    ]
-  },
-  {
-    "id": "cyclops_king",
-    "name": "Cyclops King",
-    "faction": "stronghold",
-    "level": 5,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 14
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 10
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 5
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 11
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 58
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 7
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 1100
-      }
-    ]
-  },
-  {
     "id": "goblin",
     "name": "Goblin",
     "faction": "stronghold",
@@ -137,11 +23,11 @@
       },
       {
         "attributeType": "HEALTH",
-        "value": 6
+        "value": 5
       },
       {
         "attributeType": "SPEED",
-        "value": 6
+        "value": 5
       }
     ],
     "cost": [
@@ -171,249 +57,21 @@
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 3
+        "value": 2
       },
       {
         "attributeType": "HEALTH",
-        "value": 8
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 7
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 60
-      }
-    ]
-  },
-  {
-    "id": "manticore",
-    "name": "Manticore",
-    "faction": "stronghold",
-    "level": 6,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 14
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 10
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 6
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 12
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 60
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 10
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 1300
-      }
-    ]
-  },
-  {
-    "id": "ogre",
-    "name": "Ogre",
-    "faction": "stronghold",
-    "level": 3,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 9
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 6
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 3
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 6
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 28
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 4
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 350
-      }
-    ]
-  },
-  {
-    "id": "ogre_mage",
-    "name": "Ogre Mage",
-    "faction": "stronghold",
-    "level": 3,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 10
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 7
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 3
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 7
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 32
-      },
-      {
-        "attributeType": "SPEED",
         "value": 5
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 480
-      }
-    ]
-  },
-  {
-    "id": "roc",
-    "name": "Roc",
-    "faction": "stronghold",
-    "level": 4,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 11
       },
       {
-        "attributeType": "DEFENSE",
+        "attributeType": "SPEED",
         "value": 7
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 4
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 8
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 38
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 9
       }
     ],
     "cost": [
       {
         "type": "gold",
-        "value": 600
-      }
-    ]
-  },
-  {
-    "id": "thunderbird_king",
-    "name": "Thunderbird King",
-    "faction": "stronghold",
-    "level": 7,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 16
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 12
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 7
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 14
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 80
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 12
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 2000
-      }
-    ]
-  },
-  {
-    "id": "war_roc",
-    "name": "War Roc",
-    "faction": "stronghold",
-    "level": 4,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 12
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 8
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 4
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 9
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 42
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 10
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 750
+        "value": 50
       }
     ]
   },
@@ -425,44 +83,6 @@
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 6
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 4
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 2
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 4
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 14
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 8
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 150
-      }
-    ]
-  },
-  {
-    "id": "wolf_rider_elite",
-    "name": "Elite Wolf Rider",
-    "faction": "stronghold",
-    "level": 2,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
         "value": 7
       },
       {
@@ -475,11 +95,429 @@
       },
       {
         "attributeType": "MAX_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 10
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 100
+      }
+    ]
+  },
+  {
+    "id": "wolf_raider",
+    "name": "Wolf Raider",
+    "faction": "stronghold",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 8
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 5
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 10
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 8
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 140
+      }
+    ]
+  },
+  {
+    "id": "orc",
+    "name": "Orc",
+    "faction": "stronghold",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 8
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 4
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
         "value": 5
       },
       {
         "attributeType": "HEALTH",
+        "value": 15
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 150
+      }
+    ]
+  },
+  {
+    "id": "orc_chieftain",
+    "name": "Orc Chieftain",
+    "faction": "stronghold",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 8
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 4
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 20
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 165
+      }
+    ]
+  },
+  {
+    "id": "ogre",
+    "name": "Ogre",
+    "faction": "stronghold",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 13
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 7
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 12
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 40
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 300
+      }
+    ]
+  },
+  {
+    "id": "ogre_mage",
+    "name": "Ogre Mage",
+    "faction": "stronghold",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 13
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 7
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 12
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 60
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 400
+      }
+    ]
+  },
+  {
+    "id": "roc",
+    "name": "Roc",
+    "faction": "stronghold",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 13
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 11
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 11
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 15
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 60
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 600
+      }
+    ]
+  },
+  {
+    "id": "thunderbird",
+    "name": "Thunderbird",
+    "faction": "stronghold",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 13
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 11
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 11
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 15
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 60
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 11
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 700
+      }
+    ]
+  },
+  {
+    "id": "cyclops",
+    "name": "Cyclops",
+    "faction": "stronghold",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 15
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 12
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
         "value": 16
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 20
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 70
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 750
+      }
+    ]
+  },
+  {
+    "id": "cyclops_king",
+    "name": "Cyclops King",
+    "faction": "stronghold",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 17
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 13
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 16
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 20
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 70
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 8
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1100
+      }
+    ]
+  },
+  {
+    "id": "behemoth",
+    "name": "Behemoth",
+    "faction": "stronghold",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 17
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 17
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 30
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 50
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 160
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1500
+      }
+    ]
+  },
+  {
+    "id": "ancient_behemoth",
+    "name": "Ancient Behemoth",
+    "faction": "stronghold",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 19
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 19
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 30
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 50
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 300
       },
       {
         "attributeType": "SPEED",
@@ -489,7 +527,11 @@
     "cost": [
       {
         "type": "gold",
-        "value": 220
+        "value": 3000
+      },
+      {
+        "type": "crystal",
+        "value": 1
       }
     ]
   }

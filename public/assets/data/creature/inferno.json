@@ -1,71 +1,219 @@
 [
   {
-    "id": "ancient_mage",
-    "name": "Ancient Mage",
-    "faction": "tower",
-    "level": 7,
+    "id": "imp",
+    "name": "Imp",
+    "faction": "inferno",
+    "level": 1,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 15
+        "value": 2
       },
       {
         "attributeType": "DEFENSE",
-        "value": 13
+        "value": 3
       },
       {
         "attributeType": "MIN_DAMAGE",
-        "value": 7
+        "value": 1
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 13
+        "value": 2
       },
       {
         "attributeType": "HEALTH",
-        "value": 65
+        "value": 4
       },
       {
         "attributeType": "SPEED",
-        "value": 14
+        "value": 5
       }
     ],
     "cost": [
       {
         "type": "gold",
-        "value": 1500
-      },
-      {
-        "type": "stone",
-        "value": 30
+        "value": 50
       }
     ]
   },
   {
-    "id": "arch_mage",
-    "name": "Arch Mage",
-    "faction": "tower",
+    "id": "familiar",
+    "name": "Familiar",
+    "faction": "inferno",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 4
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 4
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 4
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 60
+      }
+    ]
+  },
+  {
+    "id": "gog",
+    "name": "Gog",
+    "faction": "inferno",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 6
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 4
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 13
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 125
+      }
+    ]
+  },
+  {
+    "id": "magog",
+    "name": "Magog",
+    "faction": "inferno",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 7
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 4
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 13
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 175
+      }
+    ]
+  },
+  {
+    "id": "hell_hound",
+    "name": "Hell Hound",
+    "faction": "inferno",
     "level": 3,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 9
+        "value": 10
       },
       {
         "attributeType": "DEFENSE",
-        "value": 5
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 3
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
         "value": 6
       },
       {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 7
+      },
+      {
         "attributeType": "HEALTH",
-        "value": 15
+        "value": 25
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 200
+      }
+    ]
+  },
+  {
+    "id": "cerberus",
+    "name": "Cerberus",
+    "faction": "inferno",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 10
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 8
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 7
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 25
       },
       {
         "attributeType": "SPEED",
@@ -75,14 +223,90 @@
     "cost": [
       {
         "type": "gold",
-        "value": 320
+        "value": 250
       }
     ]
   },
   {
-    "id": "archmage_supreme",
-    "name": "Archmage Supreme",
-    "faction": "tower",
+    "id": "demon",
+    "name": "Demon",
+    "faction": "inferno",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 10
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 7
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 9
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 35
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 250
+      }
+    ]
+  },
+  {
+    "id": "horned_demon",
+    "name": "Horned Demon",
+    "faction": "inferno",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 10
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 7
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 9
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 40
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 270
+      }
+    ]
+  },
+  {
+    "id": "pit_fiend",
+    "name": "Pit Fiend",
+    "faction": "inferno",
     "level": 5,
     "attributes": [
       {
@@ -91,57 +315,53 @@
       },
       {
         "attributeType": "DEFENSE",
-        "value": 9
+        "value": 13
       },
       {
         "attributeType": "MIN_DAMAGE",
-        "value": 5
+        "value": 13
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 10
+        "value": 17
       },
       {
         "attributeType": "HEALTH",
-        "value": 35
+        "value": 45
       },
       {
         "attributeType": "SPEED",
-        "value": 12
+        "value": 6
       }
     ],
     "cost": [
       {
         "type": "gold",
-        "value": 750
-      },
-      {
-        "type": "stone",
-        "value": 7
+        "value": 500
       }
     ]
   },
   {
-    "id": "crystal_guardian",
-    "name": "Crystal Guardian",
-    "faction": "tower",
-    "level": 6,
+    "id": "pit_lord",
+    "name": "Pit Lord",
+    "faction": "inferno",
+    "level": 5,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 12
+        "value": 13
       },
       {
         "attributeType": "DEFENSE",
-        "value": 11
+        "value": 13
       },
       {
         "attributeType": "MIN_DAMAGE",
-        "value": 5
+        "value": 13
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 11
+        "value": 17
       },
       {
         "attributeType": "HEALTH",
@@ -155,39 +375,35 @@
     "cost": [
       {
         "type": "gold",
-        "value": 900
-      },
-      {
-        "type": "stone",
-        "value": 15
+        "value": 700
       }
     ]
   },
   {
-    "id": "enchanter",
-    "name": "Enchanter",
-    "faction": "tower",
-    "level": 4,
+    "id": "efreeti",
+    "name": "Efreeti",
+    "faction": "inferno",
+    "level": 6,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 10
+        "value": 16
       },
       {
         "attributeType": "DEFENSE",
-        "value": 6
+        "value": 12
       },
       {
         "attributeType": "MIN_DAMAGE",
-        "value": 4
+        "value": 16
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 7
+        "value": 24
       },
       {
         "attributeType": "HEALTH",
-        "value": 20
+        "value": 90
       },
       {
         "attributeType": "SPEED",
@@ -197,39 +413,35 @@
     "cost": [
       {
         "type": "gold",
-        "value": 400
-      },
-      {
-        "type": "stone",
-        "value": 2
+        "value": 900
       }
     ]
   },
   {
-    "id": "god_of_magic",
-    "name": "God of Magic",
-    "faction": "tower",
+    "id": "efreet_sultan",
+    "name": "Efreet Sultan",
+    "faction": "inferno",
     "level": 6,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 14
+        "value": 16
       },
       {
         "attributeType": "DEFENSE",
-        "value": 12
+        "value": 14
       },
       {
         "attributeType": "MIN_DAMAGE",
-        "value": 6
+        "value": 16
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 12
+        "value": 24
       },
       {
         "attributeType": "HEALTH",
-        "value": 55
+        "value": 90
       },
       {
         "attributeType": "SPEED",
@@ -239,197 +451,37 @@
     "cost": [
       {
         "type": "gold",
-        "value": 1200
-      },
-      {
-        "type": "stone",
-        "value": 20
+        "value": 1100
       }
     ]
   },
   {
-    "id": "gremlin",
-    "name": "Gremlin",
-    "faction": "tower",
-    "level": 1,
+    "id": "devil",
+    "name": "Devil",
+    "faction": "inferno",
+    "level": 7,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 3
+        "value": 19
       },
       {
         "attributeType": "DEFENSE",
-        "value": 3
+        "value": 21
       },
       {
         "attributeType": "MIN_DAMAGE",
-        "value": 1
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 2
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 4
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 5
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 40
-      }
-    ]
-  },
-  {
-    "id": "iron_golem",
-    "name": "Iron Golem",
-    "faction": "tower",
-    "level": 2,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 8
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 9
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 2
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 6
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 25
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 2
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 300
-      },
-      {
-        "type": "stone",
-        "value": 8
-      }
-    ]
-  },
-  {
-    "id": "mage",
-    "name": "Mage",
-    "faction": "tower",
-    "level": 3,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 7
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 4
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 3
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 5
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 12
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 7
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 250
-      }
-    ]
-  },
-  {
-    "id": "master_gremlin",
-    "name": "Master Gremlin",
-    "faction": "tower",
-    "level": 1,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 4
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 3
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 1
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 3
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 5
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 6
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 60
-      }
-    ]
-  },
-  {
-    "id": "sorcerer",
-    "name": "Sorcerer",
-    "faction": "tower",
-    "level": 5,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 12
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 8
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 5
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 9
-      },
-      {
-        "attributeType": "HEALTH",
         "value": 30
       },
       {
+        "attributeType": "MAX_DAMAGE",
+        "value": 40
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 160
+      },
+      {
         "attributeType": "SPEED",
         "value": 11
       }
@@ -437,95 +489,53 @@
     "cost": [
       {
         "type": "gold",
-        "value": 600
+        "value": 2700
       },
       {
-        "type": "stone",
-        "value": 5
+        "type": "mercury",
+        "value": 1
       }
     ]
   },
   {
-    "id": "stone_golem",
-    "name": "Stone Golem",
-    "faction": "tower",
-    "level": 2,
+    "id": "arch_devil",
+    "name": "Arch Devil",
+    "faction": "inferno",
+    "level": 7,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 6
+        "value": 26
       },
       {
         "attributeType": "DEFENSE",
-        "value": 8
+        "value": 28
       },
       {
         "attributeType": "MIN_DAMAGE",
-        "value": 2
+        "value": 30
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 5
+        "value": 40
       },
       {
         "attributeType": "HEALTH",
-        "value": 20
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 2
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
         "value": 200
       },
       {
-        "type": "stone",
-        "value": 5
-      }
-    ]
-  },
-  {
-    "id": "wizard",
-    "name": "Wizard",
-    "faction": "tower",
-    "level": 4,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 11
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 7
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 4
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 8
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 25
-      },
-      {
         "attributeType": "SPEED",
-        "value": 10
+        "value": 17
       }
     ],
     "cost": [
       {
         "type": "gold",
-        "value": 500
+        "value": 4500
       },
       {
-        "type": "stone",
-        "value": 3
+        "type": "mercury",
+        "value": 2
       }
     ]
   }

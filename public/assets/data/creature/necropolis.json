@@ -1,429 +1,17 @@
 [
   {
-    "id": "angel",
-    "name": "Angel",
-    "faction": "castle",
-    "level": 5,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 12
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 12
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 5
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 9
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 45
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 8
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 500
-      },
-      {
-        "type": "wood",
-        "value": 10
-      }
-    ]
-  },
-  {
-    "id": "archangel",
-    "name": "Archangel",
-    "faction": "castle",
-    "level": 5,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 13
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 13
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 5
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 10
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 50
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 9
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 600
-      },
-      {
-        "type": "wood",
-        "value": 15
-      }
-    ]
-  },
-  {
-    "id": "archer",
-    "name": "Archer",
-    "faction": "castle",
-    "level": 2,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 6
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 3
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 2
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 3
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 10
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 4
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 100
-      },
-      {
-        "type": "wood",
-        "value": 5
-      }
-    ]
-  },
-  {
-    "id": "avatar",
-    "name": "Avatar",
-    "faction": "castle",
-    "level": 7,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 16
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 15
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 7
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 13
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 70
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 9
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 1200
-      },
-      {
-        "type": "wood",
-        "value": 20
-      }
-    ]
-  },
-  {
-    "id": "champion",
-    "name": "Champion",
-    "faction": "castle",
-    "level": 6,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 14
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 13
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 6
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 11
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 55
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 7
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 700
-      },
-      {
-        "type": "wood",
-        "value": 5
-      }
-    ]
-  },
-  {
-    "id": "crusader",
-    "name": "Crusader",
-    "faction": "castle",
-    "level": 4,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 10
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 10
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 4
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 7
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 35
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 5
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 300
-      },
-      {
-        "type": "wood",
-        "value": 3
-      }
-    ]
-  },
-  {
-    "id": "griffin",
-    "name": "Griffin",
-    "faction": "castle",
-    "level": 3,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 8
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 8
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 3
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 6
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 25
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 6
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 200
-      }
-    ]
-  },
-  {
-    "id": "halberdier",
-    "name": "Halberdier",
-    "faction": "castle",
+    "id": "skeleton",
+    "name": "Skeleton",
+    "faction": "necropolis",
     "level": 1,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 6
-      },
-      {
-        "attributeType": "DEFENSE",
         "value": 5
       },
       {
-        "attributeType": "MIN_DAMAGE",
-        "value": 2
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 3
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 10
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 5
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 75
-      }
-    ]
-  },
-  {
-    "id": "marksman",
-    "name": "Marksman",
-    "faction": "castle",
-    "level": 2,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 6
-      },
-      {
         "attributeType": "DEFENSE",
-        "value": 3
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 2
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 3
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 10
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 6
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 150
-      },
-      {
-        "type": "wood",
-        "value": 5
-      }
-    ]
-  },
-  {
-    "id": "paladin",
-    "name": "Paladin",
-    "faction": "castle",
-    "level": 4,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 11
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 11
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
         "value": 4
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 8
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 40
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 6
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 400
-      },
-      {
-        "type": "wood",
-        "value": 5
-      }
-    ]
-  },
-  {
-    "id": "pikeman",
-    "name": "Pikeman",
-    "faction": "castle",
-    "level": 1,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 4
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 5
       },
       {
         "attributeType": "MIN_DAMAGE",
@@ -435,7 +23,7 @@
       },
       {
         "attributeType": "HEALTH",
-        "value": 10
+        "value": 6
       },
       {
         "attributeType": "SPEED",
@@ -450,18 +38,132 @@
     ]
   },
   {
-    "id": "royal_griffin",
-    "name": "Royal Griffin",
-    "faction": "castle",
+    "id": "skeleton_warrior",
+    "name": "Skeleton Warrior",
+    "faction": "necropolis",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 6
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 6
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 6
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 70
+      }
+    ]
+  },
+  {
+    "id": "walking_dead",
+    "name": "Walking Dead",
+    "faction": "necropolis",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 5
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 5
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 15
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 3
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 100
+      }
+    ]
+  },
+  {
+    "id": "zombie",
+    "name": "Zombie",
+    "faction": "necropolis",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 5
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 5
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 20
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 125
+      }
+    ]
+  },
+  {
+    "id": "wight",
+    "name": "Wight",
+    "faction": "necropolis",
     "level": 3,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 9
+        "value": 7
       },
       {
         "attributeType": "DEFENSE",
-        "value": 9
+        "value": 7
       },
       {
         "attributeType": "MIN_DAMAGE",
@@ -469,11 +171,125 @@
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 6
+        "value": 5
       },
       {
         "attributeType": "HEALTH",
-        "value": 25
+        "value": 18
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 200
+      }
+    ]
+  },
+  {
+    "id": "wraith",
+    "name": "Wraith",
+    "faction": "necropolis",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 7
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 7
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 18
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 230
+      }
+    ]
+  },
+  {
+    "id": "vampire",
+    "name": "Vampire",
+    "faction": "necropolis",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 10
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 9
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 8
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 30
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 360
+      }
+    ]
+  },
+  {
+    "id": "vampire_lord",
+    "name": "Vampire Lord",
+    "faction": "necropolis",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 10
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 8
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 40
       },
       {
         "attributeType": "SPEED",
@@ -483,49 +299,239 @@
     "cost": [
       {
         "type": "gold",
-        "value": 240
+        "value": 500
       }
     ]
   },
   {
-    "id": "titan",
-    "name": "Titan",
-    "faction": "castle",
-    "level": 6,
+    "id": "lich",
+    "name": "Lich",
+    "faction": "necropolis",
+    "level": 5,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 15
+        "value": 13
       },
       {
         "attributeType": "DEFENSE",
-        "value": 14
+        "value": 10
       },
       {
         "attributeType": "MIN_DAMAGE",
-        "value": 6
+        "value": 11
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 12
+        "value": 13
       },
       {
         "attributeType": "HEALTH",
-        "value": 60
+        "value": 30
       },
       {
         "attributeType": "SPEED",
-        "value": 8
+        "value": 6
       }
     ],
     "cost": [
       {
         "type": "gold",
-        "value": 900
+        "value": 550
+      }
+    ]
+  },
+  {
+    "id": "power_lich",
+    "name": "Power Lich",
+    "faction": "necropolis",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 13
       },
       {
-        "type": "wood",
+        "attributeType": "DEFENSE",
         "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 11
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 15
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 40
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 600
+      }
+    ]
+  },
+  {
+    "id": "black_knight",
+    "name": "Black Knight",
+    "faction": "necropolis",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 16
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 16
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 15
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 30
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 120
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1200
+      }
+    ]
+  },
+  {
+    "id": "dread_knight",
+    "name": "Dread Knight",
+    "faction": "necropolis",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 18
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 18
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 15
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 30
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 120
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 9
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1500
+      }
+    ]
+  },
+  {
+    "id": "bone_dragon",
+    "name": "Bone Dragon",
+    "faction": "necropolis",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 17
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 15
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 25
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 50
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 150
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 9
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1800
+      }
+    ]
+  },
+  {
+    "id": "ghost_dragon",
+    "name": "Ghost Dragon",
+    "faction": "necropolis",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 19
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 17
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 25
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 50
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 200
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 14
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 3000
+      },
+      {
+        "type": "mercury",
+        "value": 1
       }
     ]
   }

@@ -1,89 +1,51 @@
 [
   {
-    "id": "ancient_lich",
-    "name": "Ancient Lich",
-    "faction": "necropolis",
-    "level": 5,
+    "id": "gnoll",
+    "name": "Gnoll",
+    "faction": "fortress",
+    "level": 1,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 13
+        "value": 3
       },
       {
         "attributeType": "DEFENSE",
-        "value": 9
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
         "value": 5
       },
       {
-        "attributeType": "MAX_DAMAGE",
-        "value": 11
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 40
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 9
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 1000
-      }
-    ]
-  },
-  {
-    "id": "death_lord",
-    "name": "Death Lord",
-    "faction": "necropolis",
-    "level": 7,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 15
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 11
-      },
-      {
         "attributeType": "MIN_DAMAGE",
-        "value": 7
+        "value": 2
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 14
+        "value": 3
       },
       {
         "attributeType": "HEALTH",
-        "value": 70
+        "value": 6
       },
       {
         "attributeType": "SPEED",
-        "value": 10
+        "value": 4
       }
     ],
     "cost": [
       {
         "type": "gold",
-        "value": 1800
+        "value": 50
       }
     ]
   },
   {
-    "id": "ghost",
-    "name": "Ghost",
-    "faction": "necropolis",
-    "level": 4,
+    "id": "gnoll_marauder",
+    "name": "Gnoll Marauder",
+    "faction": "fortress",
+    "level": 1,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 10
+        "value": 4
       },
       {
         "attributeType": "DEFENSE",
@@ -91,70 +53,70 @@
       },
       {
         "attributeType": "MIN_DAMAGE",
-        "value": 4
+        "value": 2
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 8
+        "value": 3
       },
       {
         "attributeType": "HEALTH",
-        "value": 24
+        "value": 6
       },
       {
         "attributeType": "SPEED",
-        "value": 10
+        "value": 5
       }
     ],
     "cost": [
       {
         "type": "gold",
-        "value": 500
+        "value": 70
       }
     ]
   },
   {
-    "id": "lich",
-    "name": "Lich",
-    "faction": "necropolis",
-    "level": 5,
+    "id": "lizardman",
+    "name": "Lizardman",
+    "faction": "fortress",
+    "level": 2,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 12
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 8
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
         "value": 5
       },
       {
+        "attributeType": "DEFENSE",
+        "value": 6
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
         "attributeType": "MAX_DAMAGE",
-        "value": 10
+        "value": 3
       },
       {
         "attributeType": "HEALTH",
-        "value": 32
+        "value": 14
       },
       {
         "attributeType": "SPEED",
-        "value": 8
+        "value": 4
       }
     ],
     "cost": [
       {
         "type": "gold",
-        "value": 800
+        "value": 110
       }
     ]
   },
   {
-    "id": "mutant_zombie",
-    "name": "Mutant Zombie",
-    "faction": "necropolis",
+    "id": "lizard_warrior",
+    "name": "Lizard Warrior",
+    "faction": "fortress",
     "level": 2,
     "attributes": [
       {
@@ -163,7 +125,45 @@
       },
       {
         "attributeType": "DEFENSE",
+        "value": 8
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 15
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 140
+      }
+    ]
+  },
+  {
+    "id": "serpent_fly",
+    "name": "Serpent Fly",
+    "faction": "fortress",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
         "value": 7
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 9
       },
       {
         "attributeType": "MIN_DAMAGE",
@@ -179,29 +179,67 @@
       },
       {
         "attributeType": "SPEED",
-        "value": 3
+        "value": 9
       }
     ],
     "cost": [
       {
         "type": "gold",
-        "value": 180
+        "value": 220
       }
     ]
   },
   {
-    "id": "phantom",
-    "name": "Phantom",
-    "faction": "necropolis",
-    "level": 6,
+    "id": "dragonfly",
+    "name": "Dragon Fly",
+    "faction": "fortress",
+    "level": 3,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 13
+        "value": 8
       },
       {
         "attributeType": "DEFENSE",
-        "value": 9
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 20
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 13
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 240
+      }
+    ]
+  },
+  {
+    "id": "basilisk",
+    "name": "Basilisk",
+    "faction": "fortress",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 11
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 11
       },
       {
         "attributeType": "MIN_DAMAGE",
@@ -209,205 +247,53 @@
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 12
+        "value": 10
       },
       {
         "attributeType": "HEALTH",
-        "value": 48
+        "value": 35
       },
       {
         "attributeType": "SPEED",
-        "value": 12
+        "value": 5
       }
     ],
     "cost": [
       {
         "type": "gold",
-        "value": 1100
+        "value": 325
       }
     ]
   },
   {
-    "id": "skeleton",
-    "name": "Skeleton",
-    "faction": "necropolis",
-    "level": 1,
+    "id": "greater_basilisk",
+    "name": "Greater Basilisk",
+    "faction": "fortress",
+    "level": 4,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 4
+        "value": 12
       },
       {
         "attributeType": "DEFENSE",
-        "value": 4
+        "value": 12
       },
       {
         "attributeType": "MIN_DAMAGE",
-        "value": 1
+        "value": 6
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 2
+        "value": 10
       },
       {
         "attributeType": "HEALTH",
-        "value": 8
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 4
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
         "value": 40
-      }
-    ]
-  },
-  {
-    "id": "skeleton_warrior",
-    "name": "Skeleton Warrior",
-    "faction": "necropolis",
-    "level": 1,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 5
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 5
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 2
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 3
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 10
       },
       {
         "attributeType": "SPEED",
-        "value": 4
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 60
-      }
-    ]
-  },
-  {
-    "id": "spectre",
-    "name": "Spectre",
-    "faction": "necropolis",
-    "level": 6,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 14
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 10
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 6
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 13
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 55
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 13
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 1400
-      }
-    ]
-  },
-  {
-    "id": "vampire",
-    "name": "Vampire",
-    "faction": "necropolis",
-    "level": 3,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 8
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 5
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 3
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 6
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 18
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 8
-      }
-    ],
-    "cost": [
-      {
-        "type": "gold",
-        "value": 300
-      }
-    ]
-  },
-  {
-    "id": "vampire_lord",
-    "name": "Vampire Lord",
-    "faction": "necropolis",
-    "level": 3,
-    "attributes": [
-      {
-        "attributeType": "ATTACK",
-        "value": 9
-      },
-      {
-        "attributeType": "DEFENSE",
-        "value": 6
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 3
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
         "value": 7
-      },
-      {
-        "attributeType": "HEALTH",
-        "value": 22
-      },
-      {
-        "attributeType": "SPEED",
-        "value": 9
       }
     ],
     "cost": [
@@ -418,78 +304,234 @@
     ]
   },
   {
-    "id": "wraith",
-    "name": "Wraith",
-    "faction": "necropolis",
-    "level": 4,
+    "id": "gorgon",
+    "name": "Gorgon",
+    "faction": "fortress",
+    "level": 5,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 11
+        "value": 10
       },
       {
         "attributeType": "DEFENSE",
-        "value": 7
+        "value": 14
       },
       {
         "attributeType": "MIN_DAMAGE",
-        "value": 4
+        "value": 12
       },
       {
         "attributeType": "MAX_DAMAGE",
-        "value": 9
+        "value": 16
       },
       {
         "attributeType": "HEALTH",
-        "value": 28
+        "value": 70
       },
       {
         "attributeType": "SPEED",
-        "value": 11
+        "value": 5
       }
     ],
     "cost": [
       {
         "type": "gold",
-        "value": 650
+        "value": 525
       }
     ]
   },
   {
-    "id": "zombie",
-    "name": "Zombie",
-    "faction": "necropolis",
-    "level": 2,
+    "id": "mighty_gorgon",
+    "name": "Mighty Gorgon",
+    "faction": "fortress",
+    "level": 5,
     "attributes": [
       {
         "attributeType": "ATTACK",
-        "value": 5
+        "value": 11
       },
       {
         "attributeType": "DEFENSE",
-        "value": 6
-      },
-      {
-        "attributeType": "MIN_DAMAGE",
-        "value": 2
-      },
-      {
-        "attributeType": "MAX_DAMAGE",
-        "value": 4
-      },
-      {
-        "attributeType": "HEALTH",
         "value": 16
       },
       {
+        "attributeType": "MIN_DAMAGE",
+        "value": 12
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 16
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 70
+      },
+      {
         "attributeType": "SPEED",
-        "value": 2
+        "value": 6
       }
     ],
     "cost": [
       {
         "type": "gold",
-        "value": 120
+        "value": 600
+      }
+    ]
+  },
+  {
+    "id": "wyvern",
+    "name": "Wyvern",
+    "faction": "fortress",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 14
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 14
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 14
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 18
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 70
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 800
+      }
+    ]
+  },
+  {
+    "id": "wyvern_monarch",
+    "name": "Wyvern Monarch",
+    "faction": "fortress",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 14
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 14
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 18
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 22
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 70
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 11
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1100
+      }
+    ]
+  },
+  {
+    "id": "hydra",
+    "name": "Hydra",
+    "faction": "fortress",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 16
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 18
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 25
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 45
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 175
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2200
+      }
+    ]
+  },
+  {
+    "id": "chaos_hydra",
+    "name": "Chaos Hydra",
+    "faction": "fortress",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 18
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 20
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 25
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 45
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 250
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 3500
+      },
+      {
+        "type": "sulfur",
+        "value": 1
       }
     ]
   }

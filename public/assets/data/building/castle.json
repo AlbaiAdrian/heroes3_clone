@@ -1,0 +1,561 @@
+﻿[
+  {
+    "name": "Village Hall",
+    "cost": [],
+    "prerequisiteBuildings": [],
+    "faction": "castle"
+  },
+  {
+    "name": "Town Hall",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2500
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Village Hall",
+      "Tavern"
+    ],
+    "faction": "castle"
+  },
+  {
+    "name": "City Hall",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 5000
+      },
+      {
+        "type": "wood",
+        "value": 10
+      },
+      {
+        "type": "stone",
+        "value": 10
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Town Hall",
+      "Blacksmith",
+      "Marketplace"
+    ],
+    "faction": "castle"
+  },
+  {
+    "name": "Capitol",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 10000
+      },
+      {
+        "type": "wood",
+        "value": 20
+      },
+      {
+        "type": "stone",
+        "value": 20
+      }
+    ],
+    "prerequisiteBuildings": [
+      "City Hall",
+      "Castle"
+    ],
+    "faction": "castle"
+  },
+  {
+    "name": "Fort",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 5000
+      },
+      {
+        "type": "wood",
+        "value": 20
+      },
+      {
+        "type": "stone",
+        "value": 20
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "faction": "castle"
+  },
+  {
+    "name": "Citadel",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2500
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Fort"
+    ],
+    "faction": "castle"
+  },
+  {
+    "name": "Castle",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 5000
+      },
+      {
+        "type": "wood",
+        "value": 20
+      },
+      {
+        "type": "stone",
+        "value": 20
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Citadel"
+    ],
+    "faction": "castle"
+  },
+  {
+    "name": "Tavern",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 500
+      },
+      {
+        "type": "wood",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "faction": "castle"
+  },
+  {
+    "name": "Blacksmith",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "faction": "castle"
+  },
+  {
+    "name": "Marketplace",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 500
+      },
+      {
+        "type": "wood",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "faction": "castle"
+  },
+  {
+    "name": "Mage Guild Level 1",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "faction": "castle"
+  },
+  {
+    "name": "Mage Guild Level 2",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Mage Guild Level 1"
+    ],
+    "faction": "castle"
+  },
+  {
+    "name": "Mage Guild Level 3",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Mage Guild Level 2"
+    ],
+    "faction": "castle"
+  },
+  {
+    "name": "Mage Guild Level 4",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Mage Guild Level 3"
+    ],
+    "faction": "castle"
+  },
+  {
+    "name": "Mage Guild Level 5",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Mage Guild Level 4"
+    ],
+    "faction": "castle"
+  },
+  {
+    "name": "Guardhouse",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 300
+      },
+      {
+        "type": "wood",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 1,
+    "growth": 14,
+    "faction": "castle"
+  },
+  {
+    "name": "Upgraded Guardhouse",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 200
+      },
+      {
+        "type": "wood",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Guardhouse"
+    ],
+    "creatureLevel": 1,
+    "growth": 14,
+    "faction": "castle"
+  },
+  {
+    "name": "Archers\u0027 Tower",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 2,
+    "growth": 9,
+    "faction": "castle"
+  },
+  {
+    "name": "Upgraded Archers\u0027 Tower",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Archers\u0027 Tower"
+    ],
+    "creatureLevel": 2,
+    "growth": 9,
+    "faction": "castle"
+  },
+  {
+    "name": "Griffin Tower",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 3,
+    "growth": 7,
+    "faction": "castle"
+  },
+  {
+    "name": "Upgraded Griffin Tower",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Griffin Tower"
+    ],
+    "creatureLevel": 3,
+    "growth": 7,
+    "faction": "castle"
+  },
+  {
+    "name": "Barracks",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2000
+      },
+      {
+        "type": "stone",
+        "value": 10
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Blacksmith"
+    ],
+    "creatureLevel": 4,
+    "growth": 4,
+    "faction": "castle"
+  },
+  {
+    "name": "Upgraded Barracks",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1500
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Barracks"
+    ],
+    "creatureLevel": 4,
+    "growth": 4,
+    "faction": "castle"
+  },
+  {
+    "name": "Monastery",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 3000
+      },
+      {
+        "type": "wood",
+        "value": 10
+      },
+      {
+        "type": "stone",
+        "value": 10
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 5,
+    "growth": 3,
+    "faction": "castle"
+  },
+  {
+    "name": "Upgraded Monastery",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Monastery"
+    ],
+    "creatureLevel": 5,
+    "growth": 3,
+    "faction": "castle"
+  },
+  {
+    "name": "Training Grounds",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 5000
+      },
+      {
+        "type": "stone",
+        "value": 20
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 6,
+    "growth": 2,
+    "faction": "castle"
+  },
+  {
+    "name": "Upgraded Training Grounds",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 3000
+      },
+      {
+        "type": "stone",
+        "value": 10
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Training Grounds"
+    ],
+    "creatureLevel": 6,
+    "growth": 2,
+    "faction": "castle"
+  },
+  {
+    "name": "Portal of Glory",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 20000
+      },
+      {
+        "type": "wood",
+        "value": 20
+      },
+      {
+        "type": "stone",
+        "value": 20
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Castle"
+    ],
+    "creatureLevel": 7,
+    "growth": 1,
+    "faction": "castle"
+  },
+  {
+    "name": "Upgraded Portal of Glory",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 10000
+      },
+      {
+        "type": "wood",
+        "value": 10
+      },
+      {
+        "type": "stone",
+        "value": 10
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Portal of Glory"
+    ],
+    "creatureLevel": 7,
+    "growth": 1,
+    "faction": "castle"
+  }
+]
+
