@@ -1,0 +1,558 @@
+[
+  {
+    "id": "pikeman",
+    "name": "Pikeman",
+    "faction": "castle",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 4
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 5
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 10
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 60
+      }
+    ]
+  },
+  {
+    "id": "halberdier",
+    "name": "Halberdier",
+    "faction": "castle",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 6
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 5
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 10
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 75
+      }
+    ]
+  },
+  {
+    "id": "archer",
+    "name": "Archer",
+    "faction": "castle",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 6
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 3
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 10
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 100
+      },
+      {
+        "type": "wood",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "marksman",
+    "name": "Marksman",
+    "faction": "castle",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 6
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 3
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 10
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 150
+      },
+      {
+        "type": "wood",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "griffin",
+    "name": "Griffin",
+    "faction": "castle",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 8
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 8
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 25
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 200
+      }
+    ]
+  },
+  {
+    "id": "royal_griffin",
+    "name": "Royal Griffin",
+    "faction": "castle",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 9
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 9
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 25
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 9
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 240
+      }
+    ]
+  },
+  {
+    "id": "swordsman",
+    "name": "Swordsman",
+    "faction": "castle",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 10
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 12
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 9
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 35
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 300
+      }
+    ]
+  },
+  {
+    "id": "crusader",
+    "name": "Crusader",
+    "faction": "castle",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 12
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 12
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 7
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 10
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 35
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 400
+      },
+      {
+        "type": "wood",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "monk",
+    "name": "Monk",
+    "faction": "castle",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 12
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 7
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 10
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 12
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 30
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 400
+      }
+    ]
+  },
+  {
+    "id": "zealot",
+    "name": "Zealot",
+    "faction": "castle",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 12
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 10
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 12
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 30
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 450
+      }
+    ]
+  },
+  {
+    "id": "cavalier",
+    "name": "Cavalier",
+    "faction": "castle",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 15
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 15
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 15
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 25
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 100
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      }
+    ]
+  },
+  {
+    "id": "champion",
+    "name": "Champion",
+    "faction": "castle",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 16
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 16
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 20
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 25
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 100
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 9
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1200
+      },
+      {
+        "type": "wood",
+        "value": 20
+      }
+    ]
+  },
+  {
+    "id": "angel",
+    "name": "Angel",
+    "faction": "castle",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 20
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 20
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 50
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 50
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 200
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 12
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 3000
+      },
+      {
+        "type": "gem",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "archangel",
+    "name": "Archangel",
+    "faction": "castle",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 30
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 30
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 50
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 50
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 250
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 18
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 5000
+      },
+      {
+        "type": "gem",
+        "value": 3
+      }
+    ]
+  }
+]

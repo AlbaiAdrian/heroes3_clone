@@ -1,0 +1,541 @@
+[
+  {
+    "id": "troglodyte",
+    "name": "Troglodyte",
+    "faction": "dungeon",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 4
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 3
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 5
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 50
+      }
+    ]
+  },
+  {
+    "id": "infernal_troglodyte",
+    "name": "Infernal Troglodyte",
+    "faction": "dungeon",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 5
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 4
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 6
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 65
+      }
+    ]
+  },
+  {
+    "id": "harpy",
+    "name": "Harpy",
+    "faction": "dungeon",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 6
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 5
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 14
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 130
+      }
+    ]
+  },
+  {
+    "id": "harpy_hag",
+    "name": "Harpy Hag",
+    "faction": "dungeon",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 6
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 6
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 14
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 9
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 170
+      }
+    ]
+  },
+  {
+    "id": "beholder",
+    "name": "Beholder",
+    "faction": "dungeon",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 9
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 7
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 22
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 250
+      }
+    ]
+  },
+  {
+    "id": "evil_eye",
+    "name": "Evil Eye",
+    "faction": "dungeon",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 10
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 8
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 22
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 280
+      }
+    ]
+  },
+  {
+    "id": "medusa",
+    "name": "Medusa",
+    "faction": "dungeon",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 9
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 9
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 8
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 25
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 300
+      }
+    ]
+  },
+  {
+    "id": "medusa_queen",
+    "name": "Medusa Queen",
+    "faction": "dungeon",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 10
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 8
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 30
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 330
+      }
+    ]
+  },
+  {
+    "id": "minotaur",
+    "name": "Minotaur",
+    "faction": "dungeon",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 14
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 12
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 12
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 20
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 50
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 500
+      }
+    ]
+  },
+  {
+    "id": "minotaur_king",
+    "name": "Minotaur King",
+    "faction": "dungeon",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 15
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 15
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 12
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 20
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 50
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 8
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 575
+      }
+    ]
+  },
+  {
+    "id": "manticore",
+    "name": "Manticore",
+    "faction": "dungeon",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 15
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 13
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 14
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 20
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 80
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 850
+      }
+    ]
+  },
+  {
+    "id": "scorpicore",
+    "name": "Scorpicore",
+    "faction": "dungeon",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 16
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 14
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 14
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 20
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 80
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 11
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1050
+      }
+    ]
+  },
+  {
+    "id": "red_dragon",
+    "name": "Red Dragon",
+    "faction": "dungeon",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 19
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 19
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 40
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 50
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 180
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 11
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2500
+      },
+      {
+        "type": "sulfur",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "black_dragon",
+    "name": "Black Dragon",
+    "faction": "dungeon",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 25
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 25
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 40
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 50
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 300
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 15
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 4000
+      },
+      {
+        "type": "sulfur",
+        "value": 2
+      }
+    ]
+  }]

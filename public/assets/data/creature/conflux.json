@@ -1,0 +1,538 @@
+[
+  {
+    "id": "pixie",
+    "name": "Pixie",
+    "faction": "conflux",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 2
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 2
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 3
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 25
+      }
+    ]
+  },
+  {
+    "id": "sprite",
+    "name": "Sprite",
+    "faction": "conflux",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 2
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 2
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 3
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 9
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 30
+      }
+    ]
+  },
+  {
+    "id": "air_elemental",
+    "name": "Air Elemental",
+    "faction": "conflux",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 9
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 9
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 8
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 25
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 250
+      }
+    ]
+  },
+  {
+    "id": "storm_elemental",
+    "name": "Storm Elemental",
+    "faction": "conflux",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 9
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 9
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 8
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 25
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 8
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 275
+      }
+    ]
+  },
+  {
+    "id": "water_elemental",
+    "name": "Water Elemental",
+    "faction": "conflux",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 8
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 7
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 30
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 300
+      }
+    ]
+  },
+  {
+    "id": "ice_elemental",
+    "name": "Ice Elemental",
+    "faction": "conflux",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 8
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 7
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 30
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 375
+      }
+    ]
+  },
+  {
+    "id": "fire_elemental",
+    "name": "Fire Elemental",
+    "faction": "conflux",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 10
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 8
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 35
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 350
+      }
+    ]
+  },
+  {
+    "id": "energy_elemental",
+    "name": "Energy Elemental",
+    "faction": "conflux",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 12
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 8
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 35
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 8
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 400
+      }
+    ]
+  },
+  {
+    "id": "earth_elemental",
+    "name": "Earth Elemental",
+    "faction": "conflux",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 10
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 8
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 40
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 400
+      }
+    ]
+  },
+  {
+    "id": "magma_elemental",
+    "name": "Magma Elemental",
+    "faction": "conflux",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 11
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 11
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 6
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 10
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 40
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 500
+      }
+    ]
+  },
+  {
+    "id": "psychic_elemental",
+    "name": "Psychic Elemental",
+    "faction": "conflux",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 15
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 13
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 10
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 20
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 75
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 950
+      }
+    ]
+  },
+  {
+    "id": "magic_elemental",
+    "name": "Magic Elemental",
+    "faction": "conflux",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 15
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 13
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 15
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 25
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 80
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 9
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1200
+      }
+    ]
+  },
+  {
+    "id": "firebird",
+    "name": "Firebird",
+    "faction": "conflux",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 18
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 18
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 30
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 40
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 150
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 15
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2000
+      }
+    ]
+  },
+  {
+    "id": "phoenix",
+    "name": "Phoenix",
+    "faction": "conflux",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 21
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 18
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 30
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 40
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 200
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 21
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 3000
+      },
+      {
+        "type": "mercury",
+        "value": 1
+      }
+    ]
+  }
+]

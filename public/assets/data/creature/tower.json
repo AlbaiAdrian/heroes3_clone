@@ -1,0 +1,542 @@
+[
+  {
+    "id": "gremlin",
+    "name": "Gremlin",
+    "faction": "tower",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 3
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 3
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 4
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 4
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 30
+      }
+    ]
+  },
+  {
+    "id": "master_gremlin",
+    "name": "Master Gremlin",
+    "faction": "tower",
+    "level": 1,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 4
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 4
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 1
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 4
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 40
+      }
+    ]
+  },
+  {
+    "id": "stone_gargoyle",
+    "name": "Stone Gargoyle",
+    "faction": "tower",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 6
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 6
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 16
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 6
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 130
+      }
+    ]
+  },
+  {
+    "id": "obsidian_gargoyle",
+    "name": "Obsidian Gargoyle",
+    "faction": "tower",
+    "level": 2,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 7
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 7
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 2
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 3
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 16
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 9
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 160
+      }
+    ]
+  },
+  {
+    "id": "stone_golem",
+    "name": "Stone Golem",
+    "faction": "tower",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 7
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 30
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 3
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 150
+      }
+    ]
+  },
+  {
+    "id": "iron_golem",
+    "name": "Iron Golem",
+    "faction": "tower",
+    "level": 3,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 9
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 10
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 4
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 5
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 35
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 200
+      }
+    ]
+  },
+  {
+    "id": "mage",
+    "name": "Mage",
+    "faction": "tower",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 11
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 8
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 7
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 9
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 25
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 350
+      }
+    ]
+  },
+  {
+    "id": "arch_mage",
+    "name": "Arch Mage",
+    "faction": "tower",
+    "level": 4,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 12
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 9
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 7
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 9
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 30
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 450
+      }
+    ]
+  },
+  {
+    "id": "genie",
+    "name": "Genie",
+    "faction": "tower",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 12
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 12
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 13
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 16
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 40
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 550
+      }
+    ]
+  },
+  {
+    "id": "master_genie",
+    "name": "Master Genie",
+    "faction": "tower",
+    "level": 5,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 12
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 12
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 13
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 16
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 40
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 11
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 600
+      }
+    ]
+  },
+  {
+    "id": "naga",
+    "name": "Naga",
+    "faction": "tower",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 16
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 13
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 20
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 20
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 110
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 5
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1100
+      }
+    ]
+  },
+  {
+    "id": "naga_queen",
+    "name": "Naga Queen",
+    "faction": "tower",
+    "level": 6,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 16
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 13
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 30
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 30
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 110
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1600
+      }
+    ]
+  },
+  {
+    "id": "giant",
+    "name": "Giant",
+    "faction": "tower",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 19
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 16
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 40
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 60
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 150
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 7
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2000
+      },
+      {
+        "type": "gem",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "titan",
+    "name": "Titan",
+    "faction": "tower",
+    "level": 7,
+    "attributes": [
+      {
+        "attributeType": "ATTACK",
+        "value": 24
+      },
+      {
+        "attributeType": "DEFENSE",
+        "value": 24
+      },
+      {
+        "attributeType": "MIN_DAMAGE",
+        "value": 40
+      },
+      {
+        "attributeType": "MAX_DAMAGE",
+        "value": 60
+      },
+      {
+        "attributeType": "HEALTH",
+        "value": 300
+      },
+      {
+        "attributeType": "SPEED",
+        "value": 11
+      }
+    ],
+    "cost": [
+      {
+        "type": "gold",
+        "value": 5000
+      },
+      {
+        "type": "gem",
+        "value": 2
+      }
+    ]
+  }
+]

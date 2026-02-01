@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { forkJoin, map, Observable } from 'rxjs';
 import { Creature } from '../../models/creature/creature.model';
 import { CreatureData } from '../../models/creature/creature-data.interface';
+import { Faction } from '../../models/faction/faction.enum';
 
-/**
- * Loads creature definitions from JSON and exposes them as `Creature` objects.
- */
+
 @Injectable({ providedIn: 'root' })
 export class CreatureDataService {
-  private readonly creaturesUrl = 'assets/data/creatures.json';
+  private readonly creaturesPath = 'assets/data/creature';
 
   constructor(private readonly http: HttpClient) {}
 
-  getCreatures(): Observable<Creature[]> {
-    return this.http.get<CreatureData[]>(this.creaturesUrl).pipe(
+  /**
+   * Load creatures for a specific faction
+   * @param faction The faction to load creatures for
+   * @returns Observable of Creature array
+   */
+  getCreaturesByFaction(faction: Faction): Observable<Creature[]> {
+    return this.http.get<CreatureData[]>(`${this.creaturesPath}/${faction}.json`).pipe(
       map((data) =>
         data.map((creature) => ({
           level: creature.level,
@@ -24,6 +28,20 @@ export class CreatureDataService {
           cost: creature.cost,
         }))
       )
+    );
+  }
+
+
+  /**
+   * Load creatures for all factions in parallel
+   * @returns Observable of a flat Creature array
+   */
+  getCreatures(): Observable<Creature[]> {
+    const allFactions = Object.values(Faction);
+    const requests = allFactions.map((faction) => this.getCreaturesByFaction(faction));
+
+    return forkJoin(requests).pipe(
+      map((results) => results.flat())
     );
   }
 }

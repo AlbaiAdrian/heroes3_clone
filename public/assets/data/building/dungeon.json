@@ -1,0 +1,535 @@
+﻿[
+  {
+    "name": "Village Hall",
+    "cost": [],
+    "prerequisiteBuildings": [],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Town Hall",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2500
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Village Hall",
+      "Tavern"
+    ],
+    "faction": "dungeon"
+  },
+  {
+    "name": "City Hall",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 5000
+      },
+      {
+        "type": "wood",
+        "value": 10
+      },
+      {
+        "type": "stone",
+        "value": 10
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Town Hall",
+      "Blacksmith",
+      "Marketplace"
+    ],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Capitol",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 10000
+      },
+      {
+        "type": "wood",
+        "value": 20
+      },
+      {
+        "type": "stone",
+        "value": 20
+      }
+    ],
+    "prerequisiteBuildings": [
+      "City Hall",
+      "Castle"
+    ],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Fort",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 5000
+      },
+      {
+        "type": "wood",
+        "value": 20
+      },
+      {
+        "type": "stone",
+        "value": 20
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Citadel",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2500
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Fort"
+    ],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Castle",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 5000
+      },
+      {
+        "type": "wood",
+        "value": 20
+      },
+      {
+        "type": "stone",
+        "value": 20
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Citadel"
+    ],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Tavern",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 500
+      },
+      {
+        "type": "wood",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Blacksmith",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Marketplace",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 500
+      },
+      {
+        "type": "wood",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Mage Guild Level 1",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Mage Guild Level 2",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Mage Guild Level 1"
+    ],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Mage Guild Level 3",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Mage Guild Level 2"
+    ],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Mage Guild Level 4",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Mage Guild Level 3"
+    ],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Mage Guild Level 5",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "wood",
+        "value": 5
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Mage Guild Level 4"
+    ],
+    "faction": "dungeon"
+  },
+  {
+    "name": "Warren",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 400
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 1,
+    "growth": 12,
+    "faction": "dungeon"
+  },
+  {
+    "name": "Upgraded Warren",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 300
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Warren"
+    ],
+    "creatureLevel": 1,
+    "growth": 12,
+    "faction": "dungeon"
+  },
+  {
+    "name": "Harpy Loft",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 2,
+    "growth": 8,
+    "faction": "dungeon"
+  },
+  {
+    "name": "Upgraded Harpy Loft",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1000
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Harpy Loft"
+    ],
+    "creatureLevel": 2,
+    "growth": 8,
+    "faction": "dungeon"
+  },
+  {
+    "name": "Pillar of Eyes",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1500
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 3,
+    "growth": 7,
+    "faction": "dungeon"
+  },
+  {
+    "name": "Upgraded Pillar of Eyes",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1500
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Pillar of Eyes"
+    ],
+    "creatureLevel": 3,
+    "growth": 7,
+    "faction": "dungeon"
+  },
+  {
+    "name": "Chapel of Stilled Voices",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2000
+      },
+      {
+        "type": "stone",
+        "value": 10
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 4,
+    "growth": 4,
+    "faction": "dungeon"
+  },
+  {
+    "name": "Upgraded Chapel of Stilled Voices",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 1500
+      },
+      {
+        "type": "stone",
+        "value": 5
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Chapel of Stilled Voices"
+    ],
+    "creatureLevel": 4,
+    "growth": 4,
+    "faction": "dungeon"
+  },
+  {
+    "name": "Labyrinth",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 3000
+      },
+      {
+        "type": "stone",
+        "value": 15
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 5,
+    "growth": 3,
+    "faction": "dungeon"
+  },
+  {
+    "name": "Upgraded Labyrinth",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 2000
+      },
+      {
+        "type": "stone",
+        "value": 10
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Labyrinth"
+    ],
+    "creatureLevel": 5,
+    "growth": 3,
+    "faction": "dungeon"
+  },
+  {
+    "name": "Manticore Lair",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 4000
+      },
+      {
+        "type": "stone",
+        "value": 15
+      }
+    ],
+    "prerequisiteBuildings": [],
+    "creatureLevel": 6,
+    "growth": 2,
+    "faction": "dungeon"
+  },
+  {
+    "name": "Upgraded Manticore Lair",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 3000
+      },
+      {
+        "type": "stone",
+        "value": 10
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Manticore Lair"
+    ],
+    "creatureLevel": 6,
+    "growth": 2,
+    "faction": "dungeon"
+  },
+  {
+    "name": "Dragon Cave",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 25000
+      },
+      {
+        "type": "stone",
+        "value": 30
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Castle"
+    ],
+    "creatureLevel": 7,
+    "growth": 1,
+    "faction": "dungeon"
+  },
+  {
+    "name": "Upgraded Dragon Cave",
+    "cost": [
+      {
+        "type": "gold",
+        "value": 15000
+      },
+      {
+        "type": "stone",
+        "value": 15
+      }
+    ],
+    "prerequisiteBuildings": [
+      "Dragon Cave"
+    ],
+    "creatureLevel": 7,
+    "growth": 1,
+    "faction": "dungeon"
+  }
+]
+

@@ -8,10 +8,14 @@ import { HeroSpriteService } from '../rendering/hero-sprite.service';
 import { ObjectsSpriteService } from '../rendering/objects-sprite.service';
 import { CreatureDataService } from '../creature/creature-data.service';
 import { CreatureStoreService } from '../creature/creature-store.service';
+import { BuildingDataService } from '../building/building-data.service';
+import { BuildingStoreService } from '../building/building-store.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameEngineService {
   private canStartGame$ = new BehaviorSubject<boolean>(false);
+  private creaturesLoaded = false;
+  private buildingsLoaded = false;
   
   constructor(
     private gameState: GameStateService,
@@ -19,7 +23,9 @@ export class GameEngineService {
     objectsSprite: ObjectsSpriteService,
     heroSprite: HeroSpriteService,
     creatureData: CreatureDataService,
-    creatureStore: CreatureStoreService
+    creatureStore: CreatureStoreService,
+    buildingData: BuildingDataService,
+    buildingStore: BuildingStoreService
   ) {
     heroSprite.loadSprites();
     objectsSprite.loadSprites();
@@ -29,14 +35,37 @@ export class GameEngineService {
       next: (creatures) => {
         console.log('Creatures loaded:', creatures);
         creatureStore.setCreatures(creatures);
-        this.canStartGame$.next(true);
+        this.creaturesLoaded = true;
+        this.updateCanStartGame();
       },
       error: (err) => {
         console.error('Failed to load creatures:', err);
         // Allow game to proceed even if creatures fail
-        this.canStartGame$.next(true);
+        this.creaturesLoaded = true;
+        this.updateCanStartGame();
       }
     });
+
+    buildingData.getBuildings().subscribe({
+      next: (buildings) => {
+        console.log('Buildings loaded:', buildings);
+        buildingStore.setBuildings(buildings);
+        this.buildingsLoaded = true;
+        this.updateCanStartGame();
+      },
+      error: (err) => {
+        console.error('Failed to load buildings:', err);
+        // Allow game to proceed even if buildings fail
+        this.buildingsLoaded = true;
+        this.updateCanStartGame();
+      }
+    });
+  }
+
+  private updateCanStartGame(): void {
+    if (this.creaturesLoaded && this.buildingsLoaded) {
+      this.canStartGame$.next(true);
+    }
   }
 
   canStartGame(): Observable<boolean> {
