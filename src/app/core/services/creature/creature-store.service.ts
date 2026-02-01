@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Creature } from '../../models/creature/creature.model';
+import { CreatureType } from '../../models/creature/creature.model';
 
 /**
  * In-memory creature store available app-wide.
  */
 @Injectable({ providedIn: 'root' })
 export class CreatureStoreService {
-  private creatures: Creature[] = [];
+  private creatures: CreatureType[] = [];
 
-  setCreatures(creatures: Creature[]): void {
+  setCreatures(creatures: CreatureType[]): void {
     this.creatures = creatures;
   }
 
-  getCreatures(): Creature[] {
+  getCreatures(): CreatureType[] {
     return this.creatures;
   }
 }

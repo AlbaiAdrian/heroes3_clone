@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, map, Observable } from 'rxjs';
-import { Creature } from '../../models/creature/creature.model';
+import { CreatureType } from '../../models/creature/creature.model';
 import { Faction } from '../../models/faction/faction.enum';
 
 
@@ -14,10 +14,10 @@ export class CreatureDataService {
   /**
    * Load creatures for a specific faction
    * @param faction The faction to load creatures for
-   * @returns Observable of Creature array
+   * @returns Observable of CreatureType array
    */
-  getCreaturesByFaction(faction: Faction): Observable<Creature[]> {
-    return this.http.get<Creature[]>(`${this.creaturesPath}/${faction}.json`).pipe(
+  getCreaturesByFaction(faction: Faction): Observable<CreatureType[]> {
+    return this.http.get<CreatureType[]>(`${this.creaturesPath}/${faction}.json`).pipe(
       map((data) =>
         data.map((creature) => ({
           level: creature.level,
@@ -33,9 +33,9 @@ export class CreatureDataService {
 
   /**
    * Load creatures for all factions in parallel
-   * @returns Observable of a flat Creature array
+   * @returns Observable of a flat CreatureType array
    */
-  getCreatures(): Observable<Creature[]> {
+  getCreatures(): Observable<CreatureType[]> {
     const allFactions = Object.values(Faction);
     const requests = allFactions.map((faction) => this.getCreaturesByFaction(faction));
 

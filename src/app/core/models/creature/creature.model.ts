@@ -4,7 +4,7 @@ import { Resource } from '../player/resources.model';
 import { CreatureAttribute } from './creature-attribute.model';
 import { CreatureLevel } from './creature-level.enum';
 
-export interface Creature {
+export interface CreatureType {
   level: CreatureLevel;
   faction: Faction;
   name: string;

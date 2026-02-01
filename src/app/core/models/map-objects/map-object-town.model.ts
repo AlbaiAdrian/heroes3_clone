@@ -1,13 +1,13 @@
 import { MapObject } from './map-object.model';
 import { Faction } from '../faction/faction.enum';
 import { Building } from '../building/building.model';
-import { Creature } from '../creature/creature.model';
+import { CreatureType } from '../creature/creature.model';
 
 /**
  * Interface for available creatures in a town.
  */
 export interface TownCreature {
-  readonly creature: Creature;
+  readonly creature: CreatureType;
   readonly available: number;
 }
 
