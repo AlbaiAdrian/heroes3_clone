@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, map, Observable } from 'rxjs';
 import { Creature } from '../../models/creature/creature.model';
-import { CreatureData } from '../../models/creature/creature-data.interface';
 import { Faction } from '../../models/faction/faction.enum';
 
 
@@ -18,7 +17,7 @@ export class CreatureDataService {
    * @returns Observable of Creature array
    */
   getCreaturesByFaction(faction: Faction): Observable<Creature[]> {
-    return this.http.get<CreatureData[]>(`${this.creaturesPath}/${faction}.json`).pipe(
+    return this.http.get<Creature[]>(`${this.creaturesPath}/${faction}.json`).pipe(
       map((data) =>
         data.map((creature) => ({
           level: creature.level,
