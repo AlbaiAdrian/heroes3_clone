@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, map, Observable } from 'rxjs';
-import { CreatureType } from '../../models/creature/creature.model';
+import { CreatureType } from '../../models/creature/creature-type.model';
 import { Faction } from '../../models/faction/faction.enum';
 
 
 @Injectable({ providedIn: 'root' })
-export class CreatureDataService {
+export class CreatureTypeDataService {
   private readonly creaturesPath = 'assets/data/creature';
 
   constructor(private readonly http: HttpClient) {}

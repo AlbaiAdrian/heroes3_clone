@@ -1,7 +1,7 @@
 import { MapObject } from './map-object.model';
 import { Faction } from '../faction/faction.enum';
 import { Building } from '../building/building.model';
-import { CreatureType } from '../creature/creature.model';
+import { CreatureType } from '../creature/creature-type.model';
 
 /**
  * Interface for available creatures in a town.
