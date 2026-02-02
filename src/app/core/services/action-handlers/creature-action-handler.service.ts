@@ -20,7 +20,8 @@ export class CreatureActionHandler implements ActionHandler {
 
   handle(interactionObject: MapObject): void {
     const creature = interactionObject as MapObjectCreature;
-    console.log(`Initiating battle with ${creature.quantity} ${creature.creatureName}(s)`);
+    const creatureList = creature.creatures.map(c => `${c.quantity} ${c.type.name}`).join(', ');
+    console.log(`Initiating battle with: ${creatureList}`);
     this.gameEngineService.enterBattle();
   }
 }

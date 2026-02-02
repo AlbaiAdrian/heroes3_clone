@@ -8,6 +8,8 @@ import { TerrainType } from '../../models/terrain/terrain.enum';
 import { Tile } from '../../models/terrain/tile.model';
 import { ResourceType } from '../../models/player/resource-type.enum';
 import { TileInteraction } from '../../models/terrain/tile-interaction.model';
+import { CreatureTypeStoreService } from '../creature/creature-type-store.service';
+import { CreatureType } from '../../models/creature/creature-type.model';
 
 
 /**
@@ -31,6 +33,8 @@ export class MapObjectGeneratorService {
   private readonly interactionFactory = new InteractionFactory();
   private occupiedTiles = new Set<string>();
 
+  constructor(private creatureTypeStore: CreatureTypeStoreService) {}
+
   generate(grid: Tile[][]): MapObject[] {
     const objects: MapObject[] = [];
     // Reset occupied tiles for each generation
@@ -47,9 +51,17 @@ export class MapObjectGeneratorService {
     objects.push(...this.placeMultiple(grid, MapObjectType.TREE, 20));
     
     // Place creatures on the map
-    objects.push(this.placeCreature(grid, 'Goblin', 5));
-    objects.push(this.placeCreature(grid, 'Wolf', 3));
-    objects.push(this.placeCreature(grid, 'Dragon', 1));
+    const creatures = this.creatureTypeStore.getCreatures();
+    if (creatures.length > 0) {
+      // Find specific creature types by name
+      const goblin = creatures.find(c => c.name.toLowerCase().includes('goblin'));
+      const wolf = creatures.find(c => c.name.toLowerCase().includes('wolf'));
+      const dragon = creatures.find(c => c.name.toLowerCase().includes('dragon'));
+      
+      if (goblin) objects.push(this.placeCreature(grid, [{ type: goblin, quantity: 5 }]));
+      if (wolf) objects.push(this.placeCreature(grid, [{ type: wolf, quantity: 3 }]));
+      if (dragon) objects.push(this.placeCreature(grid, [{ type: dragon, quantity: 1 }]));
+    }
 
     return objects;
   }
@@ -148,8 +160,7 @@ export class MapObjectGeneratorService {
 
   private placeCreature(
     grid: Tile[][],
-    creatureName: string,
-    quantity: number
+    creatures: { type: CreatureType; quantity: number }[]
   ): MapObjectCreature {
     const def = MAP_OBJECT_DEFINITIONS[MapObjectType.CREATURE];
     const width = grid[0].length;
@@ -167,8 +178,7 @@ export class MapObjectGeneratorService {
         y,
         footprint: def.footprint,
         entries: def.entries,
-        creatureName,
-        quantity,
+        creatures,
       };
 
       // Mark tiles as occupied
