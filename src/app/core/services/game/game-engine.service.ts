@@ -22,7 +22,7 @@ export class GameEngineService {
     terrainSprite: TerrainSpriteService,
     objectsSprite: ObjectsSpriteService,
     heroSprite: HeroSpriteService,
-    creatureData: CreatureTypeDataService,
+    creatureTypeData: CreatureTypeDataService,
     creatureStore: CreatureTypeStoreService,
     buildingData: BuildingDataService,
     buildingStore: BuildingStoreService
@@ -31,10 +31,10 @@ export class GameEngineService {
     objectsSprite.loadSprites();
     terrainSprite.loadSprites();
 
-    creatureData.getCreatures().subscribe({
-      next: (creatures) => {
-        console.log('Creatures loaded:', creatures);
-        creatureStore.setCreatures(creatures);
+    creatureTypeData.getCreatureTypes().subscribe({
+      next: (creatureTypes) => {
+        console.log('Creatures loaded:', creatureTypes);
+        creatureStore.setCreatureTypes(creatureTypes);
         this.creaturesLoaded = true;
         this.updateCanStartGame();
       },

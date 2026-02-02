@@ -16,7 +16,7 @@ export class ObjectsSpriteService {
     this.load(MapObjectType.ROCK,  'object/rock.png');
     this.load(MapObjectType.TOWN, 'object/town.png');
     this.load(MapObjectType.TREE, 'object/forest.png');
-    this.load(MapObjectType.CREATURE, 'object/rock.png'); // Placeholder sprite for creatures
+    this.load(MapObjectType.CREATURE, 'creature/orc.png'); // Placeholder sprite for creatures
     
     // Load mine type sprites (distinct for each resource)
     this.loadMineSprite(ResourceType.Gold, 'object/gold-mine.png');

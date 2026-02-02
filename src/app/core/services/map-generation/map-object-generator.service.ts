@@ -51,12 +51,12 @@ export class MapObjectGeneratorService {
     objects.push(...this.placeMultiple(grid, MapObjectType.TREE, 20));
     
     // Place creatures on the map
-    const creatures = this.creatureTypeStore.getCreatures();
-    if (creatures.length > 0) {
+    const creatureTypes = this.creatureTypeStore.getCreatureTypes();
+    if (creatureTypes.length > 0) {
       // Find specific creature types by exact name match
-      const goblin = creatures.find(c => c.name.toLowerCase() === 'goblin');
-      const wolf = creatures.find(c => c.name.toLowerCase() === 'wolf');
-      const dragon = creatures.find(c => c.name.toLowerCase() === 'dragon');
+      const goblin = creatureTypes.find(c => c.name.toLowerCase() === 'goblin');
+      const wolf = creatureTypes.find(c => c.name.toLowerCase() === 'wolf_rider');
+      const dragon = creatureTypes.find(c => c.name.toLowerCase() === 'dragon');
       
       if (goblin) objects.push(this.placeCreature(grid, [{ type: goblin, quantity: 5 }]));
       if (wolf) objects.push(this.placeCreature(grid, [{ type: wolf, quantity: 3 }]));

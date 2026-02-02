@@ -16,7 +16,7 @@ export class CreatureTypeDataService {
    * @param faction The faction to load creatures for
    * @returns Observable of CreatureType array
    */
-  getCreaturesByFaction(faction: Faction): Observable<CreatureType[]> {
+  getCreatureTypesByFaction(faction: Faction): Observable<CreatureType[]> {
     return this.http.get<CreatureType[]>(`${this.creaturesPath}/${faction}.json`).pipe(
       map((data) =>
         data.map((creature) => ({
@@ -35,9 +35,9 @@ export class CreatureTypeDataService {
    * Load creatures for all factions in parallel
    * @returns Observable of a flat CreatureType array
    */
-  getCreatures(): Observable<CreatureType[]> {
+  getCreatureTypes(): Observable<CreatureType[]> {
     const allFactions = Object.values(Faction);
-    const requests = allFactions.map((faction) => this.getCreaturesByFaction(faction));
+    const requests = allFactions.map((faction) => this.getCreatureTypesByFaction(faction));
 
     return forkJoin(requests).pipe(
       map((results) => results.flat())
