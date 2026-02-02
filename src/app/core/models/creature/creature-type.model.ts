@@ -1,4 +1,4 @@
-// core/models/creature/creature.model.ts
+// core/models/creature/creature-type.model.ts
 import { Faction } from '../faction/faction.enum';
 import { Resource } from '../player/resources.model';
 import { CreatureAttribute } from './creature-attribute.model';
