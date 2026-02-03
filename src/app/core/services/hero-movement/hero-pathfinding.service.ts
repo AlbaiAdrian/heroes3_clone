@@ -23,8 +23,9 @@ export class HeroPathfindingService {
         // if (!cameFrom.has(neighbor) && terrain.walkable) {
         
         // Tiles with interactions can only be walked on if they are the target tile
+        const isTargetTile = neighbor.x === target.x && neighbor.y === target.y;
         const canWalkOnTile = neighbor.walkable && 
-          (!neighbor.interaction || neighbor === target);
+          (!neighbor.interaction || isTargetTile);
         
         if (!cameFrom.has(neighbor) && canWalkOnTile) {
           queue.push(neighbor);
