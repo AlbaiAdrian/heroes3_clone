@@ -14,7 +14,7 @@ export class HeroPathfindingService {
     while (queue.length > 0) {
       const current = queue.shift()!;
 
-      if (current === target) {
+      if (current.x === target.x && current.y === target.y) {
         return this.reconstructPath(cameFrom, current);
       }
 
