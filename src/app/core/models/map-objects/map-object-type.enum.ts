@@ -3,4 +3,5 @@ export enum MapObjectType {
   ROCK = 'ROCK',
   TOWN = 'TOWN',
   MINE = 'MINE',
+  CREATURE = 'CREATURE',
 }

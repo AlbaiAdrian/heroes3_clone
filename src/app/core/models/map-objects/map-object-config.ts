@@ -69,4 +69,14 @@ export const MAP_OBJECT_DEFINITIONS: Record<MapObjectType, MapObjectDefinition> 
       { dx: 1, dy: 2 },
     ]
   },
+
+  [MapObjectType.CREATURE]: {
+    spriteKey: 'creature',
+    footprint: [
+      { dx: 0, dy: 0 },
+    ],
+    entries: [
+      { dx: 0, dy: 0 },
+    ],
+  },
 };

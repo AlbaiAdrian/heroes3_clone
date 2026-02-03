@@ -6,13 +6,13 @@ import { CreatureType } from '../../models/creature/creature-type.model';
  */
 @Injectable({ providedIn: 'root' })
 export class CreatureTypeStoreService {
-  private creatures: CreatureType[] = [];
+  private creatureTypes: CreatureType[] = [];
 
-  setCreatures(creatures: CreatureType[]): void {
-    this.creatures = creatures;
+  setCreatureTypes(creatureTypes: CreatureType[]): void {
+    this.creatureTypes = creatureTypes;
   }
 
-  getCreatures(): CreatureType[] {
-    return this.creatures;
+  getCreatureTypes(): CreatureType[] {
+    return this.creatureTypes;
   }
 }

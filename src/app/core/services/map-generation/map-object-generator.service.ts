@@ -3,10 +3,13 @@ import { MAP_OBJECT_DEFINITIONS } from '../../models/map-objects/map-object-conf
 import { MapObjectType } from '../../models/map-objects/map-object-type.enum';
 import { MapObject } from '../../models/map-objects/map-object.model';
 import { MapObjectMine, MINE_PRODUCTION_CONFIG } from '../../models/map-objects/map-object-mine.model';
+import { MapObjectCreature } from '../../models/map-objects/map-object-creature.model';
 import { TerrainType } from '../../models/terrain/terrain.enum';
 import { Tile } from '../../models/terrain/tile.model';
 import { ResourceType } from '../../models/player/resource-type.enum';
 import { TileInteraction } from '../../models/terrain/tile-interaction.model';
+import { CreatureTypeStoreService } from '../creature/creature-type-store.service';
+import { CreatureType } from '../../models/creature/creature-type.model';
 
 
 /**
@@ -30,6 +33,8 @@ export class MapObjectGeneratorService {
   private readonly interactionFactory = new InteractionFactory();
   private occupiedTiles = new Set<string>();
 
+  constructor(private creatureTypeStore: CreatureTypeStoreService) {}
+
   generate(grid: Tile[][]): MapObject[] {
     const objects: MapObject[] = [];
     // Reset occupied tiles for each generation
@@ -44,6 +49,19 @@ export class MapObjectGeneratorService {
     }
     
     objects.push(...this.placeMultiple(grid, MapObjectType.TREE, 20));
+    
+    // Place creatures on the map
+    const creatureTypes = this.creatureTypeStore.getCreatureTypes();
+    if (creatureTypes.length > 0) {
+      // Find specific creature types by exact name match
+      const goblin = creatureTypes.find(c => c.name.toLowerCase() === 'goblin');
+      const wolf = creatureTypes.find(c => c.name.toLowerCase() === 'wolf_rider');
+      const dragon = creatureTypes.find(c => c.name.toLowerCase() === 'dragon');
+      
+      if (goblin) objects.push(this.placeCreature(grid, [{ type: goblin, quantity: 5 }]));
+      if (wolf) objects.push(this.placeCreature(grid, [{ type: wolf, quantity: 3 }]));
+      if (dragon) objects.push(this.placeCreature(grid, [{ type: dragon, quantity: 1 }]));
+    }
 
     return objects;
   }
@@ -135,6 +153,55 @@ export class MapObjectGeneratorService {
         const tile = grid[tileY][tileX];
         if (tile) {
           tile.interaction = this.interactionFactory.createInteraction(tile, mine);
+        }
+      }
+    });
+  }
+
+  private placeCreature(
+    grid: Tile[][],
+    creatures: { type: CreatureType; quantity: number }[]
+  ): MapObjectCreature {
+    const def = MAP_OBJECT_DEFINITIONS[MapObjectType.CREATURE];
+    const width = grid[0].length;
+    const height = grid.length;
+
+    while (true) {
+      const x = Math.floor(Math.random() * width);
+      const y = Math.floor(Math.random() * height);
+
+      if (!this.canPlace(grid, x, y, def.footprint)) continue;
+
+      const creature: MapObjectCreature = {
+        type: MapObjectType.CREATURE,
+        x,
+        y,
+        footprint: def.footprint,
+        entries: def.entries,
+        creatures,
+      };
+
+      // Mark tiles as occupied
+      this.markOccupied(x, y, def.footprint);
+
+      // Set up interaction on entry tiles
+      this.setupCreatureInteractions(grid, creature);
+
+      return creature;
+    }
+  }
+
+  private setupCreatureInteractions(grid: Tile[][], creature: MapObjectCreature): void {
+    // Add interaction to each entry tile using the shared interaction factory
+    creature.entries.forEach(entry => {
+      const tileX = creature.x + entry.dx;
+      const tileY = creature.y + entry.dy;
+
+      // Validate bounds before accessing tile
+      if (tileY >= 0 && tileY < grid.length && tileX >= 0 && tileX < grid[0].length) {
+        const tile = grid[tileY][tileX];
+        if (tile) {
+          tile.interaction = this.interactionFactory.createInteraction(tile, creature);
         }
       }
     });

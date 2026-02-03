@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActionHandler } from '../../models/actions/action-handler.interface';
 import { MapObject } from '../../models/map-objects/map-object.model';
 import { MineActionHandler } from './mine-action-handler.service';
+import { CreatureActionHandler } from './creature-action-handler.service';
 
 /**
  * Registry for action handlers using Strategy Pattern.
@@ -12,11 +13,13 @@ export class ActionHandlerRegistry {
   private handlers: ActionHandler[] = [];
 
   constructor(
-    private mineActionHandler: MineActionHandler
+    private mineActionHandler: MineActionHandler,
+    private creatureActionHandler: CreatureActionHandler
     // Add more handlers here as needed
   ) {
     // Register all handlers
     this.registerHandler(this.mineActionHandler);
+    this.registerHandler(this.creatureActionHandler);
     // Future: this.registerHandler(new SpellActionHandler());
     // Future: this.registerHandler(new BonusActionHandler());
   }
