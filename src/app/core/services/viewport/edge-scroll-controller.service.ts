@@ -34,7 +34,7 @@ export class EdgeScrollController implements OnDestroy {
   /**
    * Enable edge scrolling
    */
-  private enable(): void {
+  enable(): void {
     this.isEnabled = true;
   }
   
