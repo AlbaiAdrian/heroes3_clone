@@ -96,6 +96,9 @@ export class AdventureMapComponent implements AfterViewInit, OnDestroy {
     // Center camera on hero initially
     this.viewport.centerOnTile(this.player.selectedHero.tile.x, this.player.selectedHero.tile.y);
 
+    // Re-enable edge scrolling (it may have been disabled when component was destroyed)
+    this.edgeScroll.enable();
+
     // Bind event listeners for proper cleanup
     this.boundOnClick = (e: MouseEvent) => this.onClick(e);
     this.boundOnDoubleClick = (e: MouseEvent) => this.onDoubleClick(e);
