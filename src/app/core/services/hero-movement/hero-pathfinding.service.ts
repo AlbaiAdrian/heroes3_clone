@@ -14,18 +14,14 @@ export class HeroPathfindingService {
     while (queue.length > 0) {
       const current = queue.shift()!;
 
-      if (current.x === target.x && current.y === target.y) {
+      if (current === target) {
         return this.reconstructPath(cameFrom, current);
       }
 
-      for (const neighbor of this.getNeighbors(current, grid)) {
-        // const terrain = TERRAIN_CONFIG[neighbor.terrain];
-        // if (!cameFrom.has(neighbor) && terrain.walkable) {
-        
+      for (const neighbor of this.getNeighbors(current, grid)) {        
         // Tiles with interactions can only be walked on if they are the target tile
-        const isTargetTile = neighbor.x === target.x && neighbor.y === target.y;
-        const canWalkOnTile = neighbor.walkable && 
-          (!neighbor.interaction || isTargetTile);
+        const isTargetTile = neighbor === target;
+        const canWalkOnTile = neighbor.walkable && (!neighbor.interaction || isTargetTile);
         
         if (!cameFrom.has(neighbor) && canWalkOnTile) {
           queue.push(neighbor);
