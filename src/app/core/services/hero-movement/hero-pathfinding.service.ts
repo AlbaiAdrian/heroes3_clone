@@ -18,10 +18,12 @@ export class HeroPathfindingService {
         return this.reconstructPath(cameFrom, current);
       }
 
-      for (const neighbor of this.getNeighbors(current, grid)) {
-        // const terrain = TERRAIN_CONFIG[neighbor.terrain];
-        // if (!cameFrom.has(neighbor) && terrain.walkable) {
-        if (!cameFrom.has(neighbor) && neighbor.walkable) {
+      for (const neighbor of this.getNeighbors(current, grid)) {        
+        // Tiles with interactions can only be walked on if they are the target tile
+        const isTargetTile = neighbor === target;
+        const canWalkOnTile = neighbor.walkable && (!neighbor.interaction || isTargetTile);
+        
+        if (!cameFrom.has(neighbor) && canWalkOnTile) {
           queue.push(neighbor);
           cameFrom.set(neighbor, current);
         }
