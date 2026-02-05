@@ -386,7 +386,7 @@
     "level": 6,
     "attributes": [
       {
-        "attributeType": "ATTACK_TYPE_RANGED",
+        "attributeType": "ATTACK_TYPE_MELEE",
         "value": 15
       },
       {
@@ -424,7 +424,7 @@
     "level": 6,
     "attributes": [
       {
-        "attributeType": "ATTACK_TYPE_RANGED",
+        "attributeType": "ATTACK_TYPE_MELEE",
         "value": 15
       },
       {
