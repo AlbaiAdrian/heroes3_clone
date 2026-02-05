@@ -6,7 +6,7 @@
     "level": 1,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_MELEE",
         "value": 4
       },
       {
@@ -44,7 +44,7 @@
     "level": 1,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_MELEE",
         "value": 6
       },
       {
@@ -82,7 +82,7 @@
     "level": 2,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_RANGED",
         "value": 6
       },
       {
@@ -124,7 +124,7 @@
     "level": 2,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_RANGED",
         "value": 6
       },
       {
@@ -166,7 +166,7 @@
     "level": 3,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_MELEE",
         "value": 8
       },
       {
@@ -204,7 +204,7 @@
     "level": 3,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_MELEE",
         "value": 9
       },
       {
@@ -242,7 +242,7 @@
     "level": 4,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_MELEE",
         "value": 10
       },
       {
@@ -280,7 +280,7 @@
     "level": 4,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_MELEE",
         "value": 12
       },
       {
@@ -322,7 +322,7 @@
     "level": 5,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_RANGED",
         "value": 12
       },
       {
@@ -360,7 +360,7 @@
     "level": 5,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_RANGED",
         "value": 12
       },
       {
@@ -398,7 +398,7 @@
     "level": 6,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_MELEE",
         "value": 15
       },
       {
@@ -436,7 +436,7 @@
     "level": 6,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_MELEE",
         "value": 16
       },
       {
@@ -478,7 +478,7 @@
     "level": 7,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_MELEE",
         "value": 20
       },
       {
@@ -520,7 +520,7 @@
     "level": 7,
     "attributes": [
       {
-        "attributeType": "ATTACK",
+        "attributeType": "ATTACK_TYPE_MELEE",
         "value": 30
       },
       {
