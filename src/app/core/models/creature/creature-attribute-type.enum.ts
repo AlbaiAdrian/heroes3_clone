@@ -1,5 +1,4 @@
 export enum CreatureAttributeType {
-    Attack= 'ATTACK',
     Defense= 'DEFENSE',
  
     MinDamage= 'MIN_DAMAGE',
@@ -8,7 +7,6 @@ export enum CreatureAttributeType {
     Speed= 'SPEED',
     AttackTypeRanged= 'ATTACK_TYPE_RANGED',
     AttackTypeMelee= 'ATTACK_TYPE_MELEE',
-    AttackTypeMagic= 'ATTACK_TYPE_MAGIC',
     Health= 'HEALTH',
     Damage= 'DAMAGE',
 }
