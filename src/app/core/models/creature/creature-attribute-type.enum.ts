@@ -6,6 +6,9 @@ export enum CreatureAttributeType {
     MaxDamage= 'MAX_DAMAGE',
 
     Speed= 'SPEED',
+    AttackTypeRanged= 'ATTACK_TYPE_RANGED',
+    AttackTypeMelee= 'ATTACK_TYPE_MELEE',
+    AttackTypeMagic= 'ATTACK_TYPE_MAGIC',
     Health= 'HEALTH',
     Damage= 'DAMAGE',
 }

@@ -28,6 +28,10 @@
       {
         "attributeType": "SPEED",
         "value": 5
+      },
+      {
+        "attributeType": "ATTACK_TYPE_MELEE",
+        "value": 1
       }
     ],
     "cost": [
@@ -66,6 +70,10 @@
       {
         "attributeType": "SPEED",
         "value": 7
+      },
+      {
+        "attributeType": "ATTACK_TYPE_MELEE",
+        "value": 1
       }
     ],
     "cost": [
@@ -104,6 +112,10 @@
       {
         "attributeType": "SPEED",
         "value": 4
+      },
+      {
+        "attributeType": "ATTACK_TYPE_RANGED",
+        "value": 1
       }
     ],
     "cost": [
@@ -142,6 +154,10 @@
       {
         "attributeType": "SPEED",
         "value": 6
+      },
+      {
+        "attributeType": "ATTACK_TYPE_RANGED",
+        "value": 1
       }
     ],
     "cost": [
@@ -180,6 +196,10 @@
       {
         "attributeType": "SPEED",
         "value": 7
+      },
+      {
+        "attributeType": "ATTACK_TYPE_MELEE",
+        "value": 1
       }
     ],
     "cost": [
@@ -218,6 +238,10 @@
       {
         "attributeType": "SPEED",
         "value": 8
+      },
+      {
+        "attributeType": "ATTACK_TYPE_MELEE",
+        "value": 1
       }
     ],
     "cost": [
@@ -256,6 +280,10 @@
       {
         "attributeType": "SPEED",
         "value": 5
+      },
+      {
+        "attributeType": "ATTACK_TYPE_MELEE",
+        "value": 1
       }
     ],
     "cost": [
@@ -294,6 +322,10 @@
       {
         "attributeType": "SPEED",
         "value": 6
+      },
+      {
+        "attributeType": "ATTACK_TYPE_MELEE",
+        "value": 1
       }
     ],
     "cost": [
@@ -332,6 +364,10 @@
       {
         "attributeType": "SPEED",
         "value": 6
+      },
+      {
+        "attributeType": "ATTACK_TYPE_MELEE",
+        "value": 1
       }
     ],
     "cost": [
@@ -370,6 +406,10 @@
       {
         "attributeType": "SPEED",
         "value": 7
+      },
+      {
+        "attributeType": "ATTACK_TYPE_MELEE",
+        "value": 1
       }
     ],
     "cost": [
@@ -408,6 +448,10 @@
       {
         "attributeType": "SPEED",
         "value": 9
+      },
+      {
+        "attributeType": "ATTACK_TYPE_MELEE",
+        "value": 1
       }
     ],
     "cost": [
@@ -446,6 +490,10 @@
       {
         "attributeType": "SPEED",
         "value": 13
+      },
+      {
+        "attributeType": "ATTACK_TYPE_MELEE",
+        "value": 1
       }
     ],
     "cost": [
@@ -484,6 +532,10 @@
       {
         "attributeType": "SPEED",
         "value": 11
+      },
+      {
+        "attributeType": "ATTACK_TYPE_MELEE",
+        "value": 1
       }
     ],
     "cost": [
@@ -526,6 +578,10 @@
       {
         "attributeType": "SPEED",
         "value": 17
+      },
+      {
+        "attributeType": "ATTACK_TYPE_MELEE",
+        "value": 1
       }
     ],
     "cost": [
