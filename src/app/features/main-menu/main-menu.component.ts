@@ -12,6 +12,7 @@ import { HeroOrientation } from '../../core/models/hero/hero-orientation.enum';
 import { PlayerColor } from '../../core/models/player/player-color.enum';
 import { ResourceType } from '../../core/models/player/resource-type.enum';
 import { Observable } from 'rxjs';
+import { CreatureTypeStoreService } from '../../core/services/creature/creature-type-store.service';
 
 @Component({
   standalone: true,
@@ -33,7 +34,8 @@ export class MainMenuComponent {
     private objectGenerator: MapObjectGeneratorService,
     private objectWalkability: ObjectWalkabilityService,
     private playerService: PlayerService,
-    private gameSession: GameSessionService
+    private gameSession: GameSessionService,
+    private creatureTypeStore: CreatureTypeStoreService,
   ) {
     this.canStartGame$ = this.gameEngine.canStartGame();
   }
@@ -43,6 +45,10 @@ export class MainMenuComponent {
     const objects = this.objectGenerator.generate(map);
     this.objectWalkability.applyObjects(map, objects);
 
+    // Build starting army from loaded creature types
+    const creatureTypes = this.creatureTypeStore.getCreatureTypes();
+    const startingArmy = this.buildStartingArmy(creatureTypes);
+
     // Initialize player with starting hero and resources
     const firstHero: Hero = {
       tile: map[5][5],
@@ -51,7 +57,8 @@ export class MainMenuComponent {
       movementPoints: 10,
       maxMovementPoints: 10,
       path: [],
-      facing: HeroOrientation.West
+      facing: HeroOrientation.West,
+      army: startingArmy,
     };
 
     const player = {
@@ -78,5 +85,23 @@ export class MainMenuComponent {
 
     // FSM transition → Adventure
     this.gameEngine.startNewGame();
+  }
+
+  private buildStartingArmy(creatureTypes: any[]): any[] {
+    if (creatureTypes.length === 0) return [];
+
+    const goblin = creatureTypes.find((c: any) => c.name.toLowerCase() === 'goblin');
+    const wolfRider = creatureTypes.find((c: any) => c.name.toLowerCase() === 'wolf rider');
+
+    const army = [];
+    if (goblin) army.push({ type: goblin, quantity: 10 });
+    if (wolfRider) army.push({ type: wolfRider, quantity: 5 });
+
+    // Fallback: take the first available creature type if none matched
+    if (army.length === 0 && creatureTypes.length > 0) {
+      army.push({ type: creatureTypes[0], quantity: 10 });
+    }
+
+    return army;
   }
 }

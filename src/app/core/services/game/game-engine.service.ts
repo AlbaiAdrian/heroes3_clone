@@ -10,12 +10,16 @@ import { CreatureTypeDataService } from '../creature/creature-type-data.service'
 import { CreatureTypeStoreService } from '../creature/creature-type-store.service';
 import { BuildingDataService } from '../building/building-data.service';
 import { BuildingStoreService } from '../building/building-store.service';
+import { MapObjectCreature } from '../../models/map-objects/map-object-creature.model';
 
 @Injectable({ providedIn: 'root' })
 export class GameEngineService {
   private canStartGame$ = new BehaviorSubject<boolean>(false);
   private creaturesLoaded = false;
   private buildingsLoaded = false;
+
+  /** The map creature object currently being fought, if any. */
+  private currentBattleCreature: MapObjectCreature | null = null;
   
   constructor(
     private gameState: GameStateService,
@@ -82,11 +86,17 @@ export class GameEngineService {
     this.gameState.transitionTo(GameState.Load);
   }
 
-  enterBattle(): void {
+  enterBattle(creature?: MapObjectCreature): void {
+    this.currentBattleCreature = creature ?? null;
     this.gameState.transitionTo(GameState.Battle);
   }
 
+  getBattleCreature(): MapObjectCreature | null {
+    return this.currentBattleCreature;
+  }
+
   returnToMap(): void {
+    this.currentBattleCreature = null;
     this.gameState.transitionTo(GameState.Adventure);
   }
 }
