@@ -138,7 +138,7 @@ export class BattleService {
     return this.getAttribute(creature, CreatureAttributeType.Speed);
   }
 
-  getAttribute(creature: Creature, attrType: CreatureAttributeType): number {
+  private getAttribute(creature: Creature, attrType: CreatureAttributeType): number {
     return this.tryGetAttribute(creature, attrType) ?? 0;
   }
 

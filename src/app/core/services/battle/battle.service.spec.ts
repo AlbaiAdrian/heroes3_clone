@@ -93,8 +93,8 @@ describe('BattleService', () => {
     expect(state.attackerArmy.length).toBeGreaterThan(0);
   });
 
-  it('getAttribute returns 0 for missing attribute', () => {
-    const creature: Creature = {
+  it('handles creatures with missing attributes without errors', () => {
+    const bare: Creature = {
       type: {
         name: 'Bare',
         level: CreatureLevel.Level1,
@@ -105,7 +105,12 @@ describe('BattleService', () => {
       quantity: 1,
     };
 
-    expect(service.getAttribute(creature, CreatureAttributeType.Speed)).toBe(0);
+    const strong: Creature[] = [makeCreature('Strong', 10, 10, 10, 50, 50, 100, 10)];
+
+    stateService.initBattle([bare], strong);
+    // Should not throw despite missing attributes
+    const result = service.resolveBattle();
+    expect(result).toBe(BattleResult.DefenderWins);
   });
 
   it('faster stacks attack first', () => {

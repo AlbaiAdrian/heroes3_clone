@@ -13,6 +13,8 @@ import { PlayerColor } from '../../core/models/player/player-color.enum';
 import { ResourceType } from '../../core/models/player/resource-type.enum';
 import { Observable } from 'rxjs';
 import { CreatureTypeStoreService } from '../../core/services/creature/creature-type-store.service';
+import { Creature } from '../../core/models/creature/creature.model';
+import { CreatureType } from '../../core/models/creature/creature-type.model';
 
 @Component({
   standalone: true,
@@ -87,13 +89,13 @@ export class MainMenuComponent {
     this.gameEngine.startNewGame();
   }
 
-  private buildStartingArmy(creatureTypes: any[]): any[] {
+  private buildStartingArmy(creatureTypes: CreatureType[]): Creature[] {
     if (creatureTypes.length === 0) return [];
 
-    const goblin = creatureTypes.find((c: any) => c.name.toLowerCase() === 'goblin');
-    const wolfRider = creatureTypes.find((c: any) => c.name.toLowerCase() === 'wolf rider');
+    const goblin = creatureTypes.find(c => c.name.toLowerCase() === 'goblin');
+    const wolfRider = creatureTypes.find(c => c.name.toLowerCase() === 'wolf rider');
 
-    const army = [];
+    const army: Creature[] = [];
     if (goblin) army.push({ type: goblin, quantity: 10 });
     if (wolfRider) army.push({ type: wolfRider, quantity: 5 });
 

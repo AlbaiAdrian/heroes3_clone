@@ -18,7 +18,7 @@ export class BattleStateService {
     return this.state$.value;
   }
 
-  initBattle(attackerArmy: Creature[], defenderArmy: Creature[]): void {
+  initBattle(attackerArmy: readonly Creature[], defenderArmy: readonly Creature[]): void {
     this.state$.next({
       attackerArmy: attackerArmy.map(c => ({ ...c })),
       defenderArmy: defenderArmy.map(c => ({ ...c })),

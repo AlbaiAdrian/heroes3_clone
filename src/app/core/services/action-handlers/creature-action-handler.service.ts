@@ -36,7 +36,7 @@ export class CreatureActionHandler implements ActionHandler {
     // Initialize battle state with hero's army vs map creatures
     this.battleStateService.initBattle(
       hero.army,
-      creature.creatures as any[],
+      creature.creatures,
     );
 
     this.gameEngineService.enterBattle(creature);
