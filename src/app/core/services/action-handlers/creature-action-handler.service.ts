@@ -30,6 +30,6 @@ export class CreatureActionHandler implements ActionHandler {
     const player = this.playerService.getActivePlayer();
     const attackerArmy = player?.selectedHero?.army ?? [];
 
-    this.gameEngineService.enterBattle(attackerArmy, [...creature.creatures]);
+    this.gameEngineService.enterBattle(attackerArmy, [...creature.creatures], creature);
   }
 }

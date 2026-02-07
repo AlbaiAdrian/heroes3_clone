@@ -236,16 +236,11 @@ export class BattleComponent implements OnInit, OnDestroy {
   }
 
   retreat(): void {
-    if (this.state) {
-      this.state.result = BattleResult.Retreat;
-      this.state.log.push('Attacker retreats from battle!');
-      this.resultText = this.getResultText(this.state.result);
-    }
+    this.battleStateService.retreat();
   }
 
   endBattle(): void {
-    this.battleStateService.endBattle();
-    this.gameEngine.returnToMap();
+    this.gameEngine.resolveBattle();
   }
 
   private getResultText(result: BattleResult | null): string {

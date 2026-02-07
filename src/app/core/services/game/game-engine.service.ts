@@ -12,6 +12,11 @@ import { BuildingDataService } from '../building/building-data.service';
 import { BuildingStoreService } from '../building/building-store.service';
 import { Creature } from '../../models/creature/creature.model';
 import { BattleStateService } from '../battle/battle-state.service';
+import { BattleOutcomeService } from '../battle/battle-outcome.service';
+import { BattleResult } from '../../models/battle/battle-result.enum';
+import { MapObjectCreature } from '../../models/map-objects/map-object-creature.model';
+import { PlayerService } from '../player.service';
+import { GameSessionService } from './game-session.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameEngineService {
@@ -22,6 +27,9 @@ export class GameEngineService {
   constructor(
     private gameState: GameStateService,
     private battleState: BattleStateService,
+    private battleOutcome: BattleOutcomeService,
+    private playerService: PlayerService,
+    private gameSession: GameSessionService,
     terrainSprite: TerrainSpriteService,
     objectsSprite: ObjectsSpriteService,
     heroSprite: HeroSpriteService,
@@ -85,12 +93,53 @@ export class GameEngineService {
     this.gameState.transitionTo(GameState.Load);
   }
 
-  enterBattle(attackerArmy: Creature[], defenderArmy: Creature[]): void {
-    this.battleState.startBattle(attackerArmy, defenderArmy);
+  enterBattle(attackerArmy: Creature[], defenderArmy: Creature[], creatureObject: MapObjectCreature): void {
+    this.battleState.startBattle(attackerArmy, defenderArmy, creatureObject);
     this.gameState.transitionTo(GameState.Battle);
+  }
+
+  /**
+   * Apply battle outcome and return to map, or trigger game over.
+   */
+  resolveBattle(): void {
+    const state = this.battleState.snapshot;
+    const creatureObject = this.battleState.creatureObject;
+    const player = this.playerService.getActivePlayer();
+
+    if (!state?.result || !player) {
+      this.battleState.endBattle();
+      this.gameState.transitionTo(GameState.Adventure);
+      return;
+    }
+
+    const hero = player.selectedHero;
+    const objects = this.gameSession.getObjects();
+    const map = this.gameSession.getMap();
+
+    const isGameOver = this.battleOutcome.applyOutcome(
+      state.result,
+      state,
+      hero,
+      player,
+      creatureObject!,
+      objects,
+      map
+    );
+
+    this.battleState.endBattle();
+
+    if (isGameOver) {
+      this.gameState.transitionTo(GameState.GameOver);
+    } else {
+      this.gameState.transitionTo(GameState.Adventure);
+    }
   }
 
   returnToMap(): void {
     this.gameState.transitionTo(GameState.Adventure);
+  }
+
+  returnToMenu(): void {
+    this.gameState.transitionTo(GameState.MainMenu);
   }
 }

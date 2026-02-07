@@ -89,9 +89,12 @@ export class BattleService {
    * Calculate damage dealt by attacker to target using Heroes III-style formula.
    * Damage = quantity * random(minDmg, maxDmg) * attackModifier
    * attackModifier = 1 + 0.05 * (attack - defense), clamped to [0.01, 4.0]
+   * A creature uses its ranged attack value if it has one, otherwise melee.
    */
   calculateDamage(attacker: BattleUnit, target: BattleUnit): number {
-    const attack = this.getUnitAttribute(attacker, CreatureAttributeType.AttackTypeMelee);
+    const ranged = this.getUnitAttribute(attacker, CreatureAttributeType.AttackTypeRanged);
+    const melee = this.getUnitAttribute(attacker, CreatureAttributeType.AttackTypeMelee);
+    const attack = ranged > 0 ? ranged : melee;
     const defense = this.getUnitAttribute(target, CreatureAttributeType.Defense);
     const minDmg = this.getUnitAttribute(attacker, CreatureAttributeType.MinDamage);
     const maxDmg = this.getUnitAttribute(attacker, CreatureAttributeType.MaxDamage);
