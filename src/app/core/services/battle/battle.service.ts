@@ -179,7 +179,7 @@ export class BattleService {
     const attackerAlive = state.attackerUnits.some(u => !u.isDead);
     const defenderAlive = state.defenderUnits.some(u => !u.isDead);
 
-    if (!attackerAlive && !defenderAlive) return BattleResult.AttackerWins;
+    if (!attackerAlive && !defenderAlive) return BattleResult.DefenderWins;
     if (!defenderAlive) return BattleResult.AttackerWins;
     if (!attackerAlive) return BattleResult.DefenderWins;
     return null;
