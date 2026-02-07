@@ -10,6 +10,8 @@ import { CreatureTypeDataService } from '../creature/creature-type-data.service'
 import { CreatureTypeStoreService } from '../creature/creature-type-store.service';
 import { BuildingDataService } from '../building/building-data.service';
 import { BuildingStoreService } from '../building/building-store.service';
+import { Creature } from '../../models/creature/creature.model';
+import { BattleStateService } from '../battle/battle-state.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameEngineService {
@@ -19,6 +21,7 @@ export class GameEngineService {
   
   constructor(
     private gameState: GameStateService,
+    private battleState: BattleStateService,
     terrainSprite: TerrainSpriteService,
     objectsSprite: ObjectsSpriteService,
     heroSprite: HeroSpriteService,
@@ -82,7 +85,8 @@ export class GameEngineService {
     this.gameState.transitionTo(GameState.Load);
   }
 
-  enterBattle(): void {
+  enterBattle(attackerArmy: Creature[], defenderArmy: Creature[]): void {
+    this.battleState.startBattle(attackerArmy, defenderArmy);
     this.gameState.transitionTo(GameState.Battle);
   }
 

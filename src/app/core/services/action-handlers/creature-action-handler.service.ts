@@ -4,6 +4,7 @@ import { MapObject } from '../../models/map-objects/map-object.model';
 import { MapObjectCreature } from '../../models/map-objects/map-object-creature.model';
 import { MapObjectType } from '../../models/map-objects/map-object-type.enum';
 import { GameEngineService } from '../game/game-engine.service';
+import { PlayerService } from '../player.service';
 
 /**
  * Handler for creature battle interactions.
@@ -12,7 +13,10 @@ import { GameEngineService } from '../game/game-engine.service';
 @Injectable({ providedIn: 'root' })
 export class CreatureActionHandler implements ActionHandler {
 
-  constructor(private gameEngineService: GameEngineService) {}
+  constructor(
+    private gameEngineService: GameEngineService,
+    private playerService: PlayerService
+  ) {}
 
   canHandle(interactionObject: MapObject): boolean {
     return interactionObject.type === MapObjectType.CREATURE;
@@ -22,6 +26,10 @@ export class CreatureActionHandler implements ActionHandler {
     const creature = interactionObject as MapObjectCreature;
     const creatureList = creature.creatures.map(c => `${c.quantity} ${c.type.name}`).join(', ');
     console.log(`Initiating battle with: ${creatureList}`);
-    this.gameEngineService.enterBattle();
+
+    const player = this.playerService.getActivePlayer();
+    const attackerArmy = player?.selectedHero?.army ?? [];
+
+    this.gameEngineService.enterBattle(attackerArmy, [...creature.creatures]);
   }
 }
