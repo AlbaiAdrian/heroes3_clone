@@ -10,7 +10,8 @@ description:
 
 # My Agent
 
-Build an Angular application clone of Heroes3 game
+Build an Angular application clone of Heroes3 game.
+Try to reproduce the game as close as possible.
 Use the latest Angular framework.
 Keep code clean.
 Keep the code as lean as possible.
