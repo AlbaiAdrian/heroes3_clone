@@ -28,48 +28,27 @@ describe('CreatureSpriteService', () => {
 
   it('loads sprites for available faction folders', () => {
     const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
-    const originalImage = globalThis.Image;
-    class TestImage {
-      onload: (() => void) | null = null;
-      onerror: (() => void) | null = null;
-      set src(_value: string) {
-        this.onload?.();
-      }
-    }
-    Object.defineProperty(globalThis, 'Image', {
-      value: TestImage,
-      configurable: true,
-      writable: true,
-    });
     vi.spyOn(service, 'folderExists').mockImplementation((faction) =>
       of(faction === Faction.Castle)
     );
 
-    try {
-      service.loadSprites();
+    service.loadSprites();
 
-      const req = httpMock.expectOne('assets/data/creature/castle.json');
-      expect(req.request.method).toBe('GET');
-      req.flush([
-        {
-          code: 'pikeman',
-          level: CreatureLevel.Level1,
-          faction: Faction.Castle,
-          name: 'Pikeman',
-          attributes: [{ attributeType: CreatureAttributeType.Defense, value: 1 }],
-          cost: [{ type: ResourceType.Gold, value: 60 }],
-        },
-      ]);
+    const req = httpMock.expectOne('assets/data/creature/castle.json');
+    expect(req.request.method).toBe('GET');
+    req.flush([
+      {
+        code: 'pikeman',
+        level: CreatureLevel.Level1,
+        faction: Faction.Castle,
+        name: 'Pikeman',
+        attributes: [{ attributeType: CreatureAttributeType.Defense, value: 1 }],
+        cost: [{ type: ResourceType.Gold, value: 60 }],
+      },
+    ]);
 
-      expect(service.get(Faction.Castle, 'pikeman')).toBeDefined();
-      expect(warnSpy).toHaveBeenCalledTimes(Object.values(Faction).length - 1);
-    } finally {
-      Object.defineProperty(globalThis, 'Image', {
-        value: originalImage,
-        configurable: true,
-        writable: true,
-      });
-      warnSpy.mockRestore();
-    }
+    expect(service.get(Faction.Castle, 'pikeman')).toBeDefined();
+    expect(warnSpy).toHaveBeenCalledTimes(Object.values(Faction).length - 1);
+    warnSpy.mockRestore();
   });
 });
