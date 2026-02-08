@@ -1,7 +1,7 @@
 import { DestroyRef, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, catchError, filter, map, Observable, of, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, filter, finalize, map, Observable, of, switchMap } from 'rxjs';
 import { CreatureType } from '../../models/creature/creature-type.model';
 import { Faction } from '../../models/faction/faction.enum';
 
@@ -35,15 +35,14 @@ export class CreatureSpriteService {
             return exists;
           }),
           switchMap(() => this.http.get<CreatureType[]>(`${this.creatureDataPath}/${faction}.json`)),
-          takeUntilDestroyed(this.destroyRef)
+          takeUntilDestroyed(this.destroyRef),
+          finalize(() => this.completeFactionLoad())
         )
         .subscribe({
           next: (creatures) => this.loadFactionSprites(faction, creatures),
           error: (err) => {
             console.error(`Failed to load creatures for ${faction}:`, err);
-            this.completeFactionLoad();
           },
-          complete: () => this.completeFactionLoad(),
         });
     });
   }
