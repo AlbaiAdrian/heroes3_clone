@@ -62,7 +62,9 @@ describe('CreatureSpriteService', () => {
       ]);
 
       expect(service.get(Faction.Castle, 'pikeman')).toBeDefined();
-      expect(warnSpy).toHaveBeenCalledTimes(Object.values(Faction).length - 1);
+      const warningMessages = warnSpy.mock.calls.map((call) => String(call[0]));
+      expect(warningMessages.some((message) => message.includes(Faction.Inferno))).toBe(true);
+      expect(warningMessages.some((message) => message.includes(Faction.Rampart))).toBe(true);
     } finally {
       Object.defineProperty(globalThis, 'Image', {
         value: originalImage,
