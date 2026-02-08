@@ -1,6 +1,6 @@
 [
   {
-    "id": "centaur",
+    "code": "centaur",
     "name": "Centaur",
     "faction": "rampart",
     "level": 1,
@@ -38,7 +38,7 @@
     ]
   },
   {
-    "id": "centaur_captain",
+    "code": "centaur_captain",
     "name": "Centaur Captain",
     "faction": "rampart",
     "level": 1,
@@ -76,7 +76,7 @@
     ]
   },
   {
-    "id": "dwarf",
+    "code": "dwarf",
     "name": "Dwarf",
     "faction": "rampart",
     "level": 2,
@@ -114,7 +114,7 @@
     ]
   },
   {
-    "id": "battle_dwarf",
+    "code": "battle_dwarf",
     "name": "Battle Dwarf",
     "faction": "rampart",
     "level": 2,
@@ -152,7 +152,7 @@
     ]
   },
   {
-    "id": "wood_elf",
+    "code": "wood_elf",
     "name": "Wood Elf",
     "faction": "rampart",
     "level": 3,
@@ -190,7 +190,7 @@
     ]
   },
   {
-    "id": "grand_elf",
+    "code": "grand_elf",
     "name": "Grand Elf",
     "faction": "rampart",
     "level": 3,
@@ -228,7 +228,7 @@
     ]
   },
   {
-    "id": "pegasus",
+    "code": "pegasus",
     "name": "Pegasus",
     "faction": "rampart",
     "level": 4,
@@ -266,7 +266,7 @@
     ]
   },
   {
-    "id": "silver_pegasus",
+    "code": "silver_pegasus",
     "name": "Silver Pegasus",
     "faction": "rampart",
     "level": 4,
@@ -304,7 +304,7 @@
     ]
   },
   {
-    "id": "dendroid_guard",
+    "code": "dendroid_guard",
     "name": "Dendroid Guard",
     "faction": "rampart",
     "level": 5,
@@ -342,7 +342,7 @@
     ]
   },
   {
-    "id": "dendroid_soldier",
+    "code": "dendroid_soldier",
     "name": "Dendroid Soldier",
     "faction": "rampart",
     "level": 5,
@@ -380,7 +380,7 @@
     ]
   },
   {
-    "id": "unicorn",
+    "code": "unicorn",
     "name": "Unicorn",
     "faction": "rampart",
     "level": 6,
@@ -418,7 +418,7 @@
     ]
   },
   {
-    "id": "war_unicorn",
+    "code": "war_unicorn",
     "name": "War Unicorn",
     "faction": "rampart",
     "level": 6,
@@ -456,7 +456,7 @@
     ]
   },
   {
-    "id": "green_dragon",
+    "code": "green_dragon",
     "name": "Green Dragon",
     "faction": "rampart",
     "level": 7,
@@ -498,7 +498,7 @@
     ]
   },
   {
-    "id": "gold_dragon",
+    "code": "gold_dragon",
     "name": "Gold Dragon",
     "faction": "rampart",
     "level": 7,

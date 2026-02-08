@@ -5,6 +5,7 @@ import { CreatureAttribute } from './creature-attribute.model';
 import { CreatureLevel } from './creature-level.enum';
 
 export interface CreatureType {
+  code: string; // Unique identifier for the creature type
   level: CreatureLevel;
   faction: Faction;
   name: string;

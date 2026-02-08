@@ -1,6 +1,6 @@
 [
   {
-    "id": "pikeman",
+    "code": "pikeman",
     "name": "Pikeman",
     "faction": "castle",
     "level": 1,
@@ -38,7 +38,7 @@
     ]
   },
   {
-    "id": "halberdier",
+    "code": "halberdier",
     "name": "Halberdier",
     "faction": "castle",
     "level": 1,
@@ -76,7 +76,7 @@
     ]
   },
   {
-    "id": "archer",
+    "code": "archer",
     "name": "Archer",
     "faction": "castle",
     "level": 2,
@@ -118,7 +118,7 @@
     ]
   },
   {
-    "id": "marksman",
+    "code": "marksman",
     "name": "Marksman",
     "faction": "castle",
     "level": 2,
@@ -160,7 +160,7 @@
     ]
   },
   {
-    "id": "griffin",
+    "code": "griffin",
     "name": "Griffin",
     "faction": "castle",
     "level": 3,
@@ -198,7 +198,7 @@
     ]
   },
   {
-    "id": "royal_griffin",
+    "code": "royal_griffin",
     "name": "Royal Griffin",
     "faction": "castle",
     "level": 3,
@@ -236,7 +236,7 @@
     ]
   },
   {
-    "id": "swordsman",
+    "code": "swordsman",
     "name": "Swordsman",
     "faction": "castle",
     "level": 4,
@@ -274,7 +274,7 @@
     ]
   },
   {
-    "id": "crusader",
+    "code": "crusader",
     "name": "Crusader",
     "faction": "castle",
     "level": 4,
@@ -316,7 +316,7 @@
     ]
   },
   {
-    "id": "monk",
+    "code": "monk",
     "name": "Monk",
     "faction": "castle",
     "level": 5,
@@ -354,7 +354,7 @@
     ]
   },
   {
-    "id": "zealot",
+    "code": "zealot",
     "name": "Zealot",
     "faction": "castle",
     "level": 5,
@@ -392,7 +392,7 @@
     ]
   },
   {
-    "id": "cavalier",
+    "code": "cavalier",
     "name": "Cavalier",
     "faction": "castle",
     "level": 6,
@@ -430,7 +430,7 @@
     ]
   },
   {
-    "id": "champion",
+    "code": "champion",
     "name": "Champion",
     "faction": "castle",
     "level": 6,
@@ -472,7 +472,7 @@
     ]
   },
   {
-    "id": "angel",
+    "code": "angel",
     "name": "Angel",
     "faction": "castle",
     "level": 7,
@@ -514,7 +514,7 @@
     ]
   },
   {
-    "id": "archangel",
+    "code": "archangel",
     "name": "Archangel",
     "faction": "castle",
     "level": 7,

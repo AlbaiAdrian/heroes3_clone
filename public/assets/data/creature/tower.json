@@ -1,6 +1,6 @@
 [
   {
-    "id": "gremlin",
+    "code": "gremlin",
     "name": "Gremlin",
     "faction": "tower",
     "level": 1,
@@ -38,7 +38,7 @@
     ]
   },
   {
-    "id": "master_gremlin",
+    "code": "master_gremlin",
     "name": "Master Gremlin",
     "faction": "tower",
     "level": 1,
@@ -76,7 +76,7 @@
     ]
   },
   {
-    "id": "stone_gargoyle",
+    "code": "stone_gargoyle",
     "name": "Stone Gargoyle",
     "faction": "tower",
     "level": 2,
@@ -114,7 +114,7 @@
     ]
   },
   {
-    "id": "obsidian_gargoyle",
+    "code": "obsidian_gargoyle",
     "name": "Obsidian Gargoyle",
     "faction": "tower",
     "level": 2,
@@ -152,7 +152,7 @@
     ]
   },
   {
-    "id": "stone_golem",
+    "code": "stone_golem",
     "name": "Stone Golem",
     "faction": "tower",
     "level": 3,
@@ -190,7 +190,7 @@
     ]
   },
   {
-    "id": "iron_golem",
+    "code": "iron_golem",
     "name": "Iron Golem",
     "faction": "tower",
     "level": 3,
@@ -228,7 +228,7 @@
     ]
   },
   {
-    "id": "mage",
+    "code": "mage",
     "name": "Mage",
     "faction": "tower",
     "level": 4,
@@ -266,7 +266,7 @@
     ]
   },
   {
-    "id": "arch_mage",
+    "code": "arch_mage",
     "name": "Arch Mage",
     "faction": "tower",
     "level": 4,
@@ -304,7 +304,7 @@
     ]
   },
   {
-    "id": "genie",
+    "code": "genie",
     "name": "Genie",
     "faction": "tower",
     "level": 5,
@@ -342,7 +342,7 @@
     ]
   },
   {
-    "id": "master_genie",
+    "code": "master_genie",
     "name": "Master Genie",
     "faction": "tower",
     "level": 5,
@@ -380,7 +380,7 @@
     ]
   },
   {
-    "id": "naga",
+    "code": "naga",
     "name": "Naga",
     "faction": "tower",
     "level": 6,
@@ -418,7 +418,7 @@
     ]
   },
   {
-    "id": "naga_queen",
+    "code": "naga_queen",
     "name": "Naga Queen",
     "faction": "tower",
     "level": 6,
@@ -456,7 +456,7 @@
     ]
   },
   {
-    "id": "giant",
+    "code": "giant",
     "name": "Giant",
     "faction": "tower",
     "level": 7,
@@ -498,7 +498,7 @@
     ]
   },
   {
-    "id": "titan",
+    "code": "titan",
     "name": "Titan",
     "faction": "tower",
     "level": 7,

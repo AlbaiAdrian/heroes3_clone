@@ -1,6 +1,6 @@
 [
   {
-    "id": "goblin",
+    "code": "goblin",
     "name": "Goblin",
     "faction": "stronghold",
     "level": 1,
@@ -38,7 +38,7 @@
     ]
   },
   {
-    "id": "hobgoblin",
+    "code": "hobgoblin",
     "name": "Hobgoblin",
     "faction": "stronghold",
     "level": 1,
@@ -76,7 +76,7 @@
     ]
   },
   {
-    "id": "wolf_rider",
+    "code": "wolf_rider",
     "name": "Wolf Rider",
     "faction": "stronghold",
     "level": 2,
@@ -114,7 +114,7 @@
     ]
   },
   {
-    "id": "wolf_raider",
+    "code": "wolf_raider",
     "name": "Wolf Raider",
     "faction": "stronghold",
     "level": 2,
@@ -152,7 +152,7 @@
     ]
   },
   {
-    "id": "orc",
+    "code": "orc",
     "name": "Orc",
     "faction": "stronghold",
     "level": 3,
@@ -190,7 +190,7 @@
     ]
   },
   {
-    "id": "orc_chieftain",
+    "code": "orc_chieftain",
     "name": "Orc Chieftain",
     "faction": "stronghold",
     "level": 3,
@@ -228,7 +228,7 @@
     ]
   },
   {
-    "id": "ogre",
+    "code": "ogre",
     "name": "Ogre",
     "faction": "stronghold",
     "level": 4,
@@ -266,7 +266,7 @@
     ]
   },
   {
-    "id": "ogre_mage",
+    "code": "ogre_mage",
     "name": "Ogre Mage",
     "faction": "stronghold",
     "level": 4,
@@ -304,7 +304,7 @@
     ]
   },
   {
-    "id": "roc",
+    "code": "roc",
     "name": "Roc",
     "faction": "stronghold",
     "level": 5,
@@ -342,7 +342,7 @@
     ]
   },
   {
-    "id": "thunderbird",
+    "code": "thunderbird",
     "name": "Thunderbird",
     "faction": "stronghold",
     "level": 5,
@@ -380,7 +380,7 @@
     ]
   },
   {
-    "id": "cyclops",
+    "code": "cyclops",
     "name": "Cyclops",
     "faction": "stronghold",
     "level": 6,
@@ -418,7 +418,7 @@
     ]
   },
   {
-    "id": "cyclops_king",
+    "code": "cyclops_king",
     "name": "Cyclops King",
     "faction": "stronghold",
     "level": 6,
@@ -456,7 +456,7 @@
     ]
   },
   {
-    "id": "behemoth",
+    "code": "behemoth",
     "name": "Behemoth",
     "faction": "stronghold",
     "level": 7,
@@ -494,7 +494,7 @@
     ]
   },
   {
-    "id": "ancient_behemoth",
+    "code": "ancient_behemoth",
     "name": "Ancient Behemoth",
     "faction": "stronghold",
     "level": 7,

@@ -1,6 +1,6 @@
 [
   {
-    "id": "troglodyte",
+    "code": "troglodyte",
     "name": "Troglodyte",
     "faction": "dungeon",
     "level": 1,
@@ -38,7 +38,7 @@
     ]
   },
   {
-    "id": "infernal_troglodyte",
+    "code": "infernal_troglodyte",
     "name": "Infernal Troglodyte",
     "faction": "dungeon",
     "level": 1,
@@ -76,7 +76,7 @@
     ]
   },
   {
-    "id": "harpy",
+    "code": "harpy",
     "name": "Harpy",
     "faction": "dungeon",
     "level": 2,
@@ -114,7 +114,7 @@
     ]
   },
   {
-    "id": "harpy_hag",
+    "code": "harpy_hag",
     "name": "Harpy Hag",
     "faction": "dungeon",
     "level": 2,
@@ -152,7 +152,7 @@
     ]
   },
   {
-    "id": "beholder",
+    "code": "beholder",
     "name": "Beholder",
     "faction": "dungeon",
     "level": 3,
@@ -190,7 +190,7 @@
     ]
   },
   {
-    "id": "evil_eye",
+    "code": "evil_eye",
     "name": "Evil Eye",
     "faction": "dungeon",
     "level": 3,
@@ -228,7 +228,7 @@
     ]
   },
   {
-    "id": "medusa",
+    "code": "medusa",
     "name": "Medusa",
     "faction": "dungeon",
     "level": 4,
@@ -266,7 +266,7 @@
     ]
   },
   {
-    "id": "medusa_queen",
+    "code": "medusa_queen",
     "name": "Medusa Queen",
     "faction": "dungeon",
     "level": 4,
@@ -304,7 +304,7 @@
     ]
   },
   {
-    "id": "minotaur",
+    "code": "minotaur",
     "name": "Minotaur",
     "faction": "dungeon",
     "level": 5,
@@ -342,7 +342,7 @@
     ]
   },
   {
-    "id": "minotaur_king",
+    "code": "minotaur_king",
     "name": "Minotaur King",
     "faction": "dungeon",
     "level": 5,
@@ -380,7 +380,7 @@
     ]
   },
   {
-    "id": "manticore",
+    "code": "manticore",
     "name": "Manticore",
     "faction": "dungeon",
     "level": 6,
@@ -418,7 +418,7 @@
     ]
   },
   {
-    "id": "scorpicore",
+    "code": "scorpicore",
     "name": "Scorpicore",
     "faction": "dungeon",
     "level": 6,
@@ -456,7 +456,7 @@
     ]
   },
   {
-    "id": "red_dragon",
+    "code": "red_dragon",
     "name": "Red Dragon",
     "faction": "dungeon",
     "level": 7,
@@ -498,7 +498,7 @@
     ]
   },
   {
-    "id": "black_dragon",
+    "code": "black_dragon",
     "name": "Black Dragon",
     "faction": "dungeon",
     "level": 7,

@@ -1,6 +1,6 @@
 [
   {
-    "id": "gnoll",
+    "code": "gnoll",
     "name": "Gnoll",
     "faction": "fortress",
     "level": 1,
@@ -38,7 +38,7 @@
     ]
   },
   {
-    "id": "gnoll_marauder",
+    "code": "gnoll_marauder",
     "name": "Gnoll Marauder",
     "faction": "fortress",
     "level": 1,
@@ -76,7 +76,7 @@
     ]
   },
   {
-    "id": "lizardman",
+    "code": "lizardman",
     "name": "Lizardman",
     "faction": "fortress",
     "level": 2,
@@ -114,7 +114,7 @@
     ]
   },
   {
-    "id": "lizard_warrior",
+    "code": "lizard_warrior",
     "name": "Lizard Warrior",
     "faction": "fortress",
     "level": 2,
@@ -152,7 +152,7 @@
     ]
   },
   {
-    "id": "serpent_fly",
+    "code": "serpent_fly",
     "name": "Serpent Fly",
     "faction": "fortress",
     "level": 3,
@@ -190,7 +190,7 @@
     ]
   },
   {
-    "id": "dragonfly",
+    "code": "dragonfly",
     "name": "Dragon Fly",
     "faction": "fortress",
     "level": 3,
@@ -228,7 +228,7 @@
     ]
   },
   {
-    "id": "basilisk",
+    "code": "basilisk",
     "name": "Basilisk",
     "faction": "fortress",
     "level": 4,
@@ -266,7 +266,7 @@
     ]
   },
   {
-    "id": "greater_basilisk",
+    "code": "greater_basilisk",
     "name": "Greater Basilisk",
     "faction": "fortress",
     "level": 4,
@@ -304,7 +304,7 @@
     ]
   },
   {
-    "id": "gorgon",
+    "code": "gorgon",
     "name": "Gorgon",
     "faction": "fortress",
     "level": 5,
@@ -342,7 +342,7 @@
     ]
   },
   {
-    "id": "mighty_gorgon",
+    "code": "mighty_gorgon",
     "name": "Mighty Gorgon",
     "faction": "fortress",
     "level": 5,
@@ -380,7 +380,7 @@
     ]
   },
   {
-    "id": "wyvern",
+    "code": "wyvern",
     "name": "Wyvern",
     "faction": "fortress",
     "level": 6,
@@ -418,7 +418,7 @@
     ]
   },
   {
-    "id": "wyvern_monarch",
+    "code": "wyvern_monarch",
     "name": "Wyvern Monarch",
     "faction": "fortress",
     "level": 6,
@@ -456,7 +456,7 @@
     ]
   },
   {
-    "id": "hydra",
+    "code": "hydra",
     "name": "Hydra",
     "faction": "fortress",
     "level": 7,
@@ -494,7 +494,7 @@
     ]
   },
   {
-    "id": "chaos_hydra",
+    "code": "chaos_hydra",
     "name": "Chaos Hydra",
     "faction": "fortress",
     "level": 7,

@@ -1,6 +1,6 @@
 [
   {
-    "id": "pixie",
+    "code": "pixie",
     "name": "Pixie",
     "faction": "conflux",
     "level": 1,
@@ -38,7 +38,7 @@
     ]
   },
   {
-    "id": "sprite",
+    "code": "sprite",
     "name": "Sprite",
     "faction": "conflux",
     "level": 1,
@@ -76,7 +76,7 @@
     ]
   },
   {
-    "id": "air_elemental",
+    "code": "air_elemental",
     "name": "Air Elemental",
     "faction": "conflux",
     "level": 2,
@@ -114,7 +114,7 @@
     ]
   },
   {
-    "id": "storm_elemental",
+    "code": "storm_elemental",
     "name": "Storm Elemental",
     "faction": "conflux",
     "level": 2,
@@ -152,7 +152,7 @@
     ]
   },
   {
-    "id": "water_elemental",
+    "code": "water_elemental",
     "name": "Water Elemental",
     "faction": "conflux",
     "level": 3,
@@ -190,7 +190,7 @@
     ]
   },
   {
-    "id": "ice_elemental",
+    "code": "ice_elemental",
     "name": "Ice Elemental",
     "faction": "conflux",
     "level": 3,
@@ -228,7 +228,7 @@
     ]
   },
   {
-    "id": "fire_elemental",
+    "code": "fire_elemental",
     "name": "Fire Elemental",
     "faction": "conflux",
     "level": 4,
@@ -266,7 +266,7 @@
     ]
   },
   {
-    "id": "energy_elemental",
+    "code": "energy_elemental",
     "name": "Energy Elemental",
     "faction": "conflux",
     "level": 4,
@@ -304,7 +304,7 @@
     ]
   },
   {
-    "id": "earth_elemental",
+    "code": "earth_elemental",
     "name": "Earth Elemental",
     "faction": "conflux",
     "level": 5,
@@ -342,7 +342,7 @@
     ]
   },
   {
-    "id": "magma_elemental",
+    "code": "magma_elemental",
     "name": "Magma Elemental",
     "faction": "conflux",
     "level": 5,
@@ -380,7 +380,7 @@
     ]
   },
   {
-    "id": "psychic_elemental",
+    "code": "psychic_elemental",
     "name": "Psychic Elemental",
     "faction": "conflux",
     "level": 6,
@@ -418,7 +418,7 @@
     ]
   },
   {
-    "id": "magic_elemental",
+    "code": "magic_elemental",
     "name": "Magic Elemental",
     "faction": "conflux",
     "level": 6,
@@ -456,7 +456,7 @@
     ]
   },
   {
-    "id": "firebird",
+    "code": "firebird",
     "name": "Firebird",
     "faction": "conflux",
     "level": 7,
@@ -494,7 +494,7 @@
     ]
   },
   {
-    "id": "phoenix",
+    "code": "phoenix",
     "name": "Phoenix",
     "faction": "conflux",
     "level": 7,

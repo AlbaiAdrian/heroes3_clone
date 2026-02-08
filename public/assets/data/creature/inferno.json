@@ -1,6 +1,6 @@
 [
   {
-    "id": "imp",
+    "code": "imp",
     "name": "Imp",
     "faction": "inferno",
     "level": 1,
@@ -38,7 +38,7 @@
     ]
   },
   {
-    "id": "familiar",
+    "code": "familiar",
     "name": "Familiar",
     "faction": "inferno",
     "level": 1,
@@ -76,7 +76,7 @@
     ]
   },
   {
-    "id": "gog",
+    "code": "gog",
     "name": "Gog",
     "faction": "inferno",
     "level": 2,
@@ -114,7 +114,7 @@
     ]
   },
   {
-    "id": "magog",
+    "code": "magog",
     "name": "Magog",
     "faction": "inferno",
     "level": 2,
@@ -152,7 +152,7 @@
     ]
   },
   {
-    "id": "hell_hound",
+    "code": "hell_hound",
     "name": "Hell Hound",
     "faction": "inferno",
     "level": 3,
@@ -190,7 +190,7 @@
     ]
   },
   {
-    "id": "cerberus",
+    "code": "cerberus",
     "name": "Cerberus",
     "faction": "inferno",
     "level": 3,
@@ -228,7 +228,7 @@
     ]
   },
   {
-    "id": "demon",
+    "code": "demon",
     "name": "Demon",
     "faction": "inferno",
     "level": 4,
@@ -266,7 +266,7 @@
     ]
   },
   {
-    "id": "horned_demon",
+    "code": "horned_demon",
     "name": "Horned Demon",
     "faction": "inferno",
     "level": 4,
@@ -304,7 +304,7 @@
     ]
   },
   {
-    "id": "pit_fiend",
+    "code": "pit_fiend",
     "name": "Pit Fiend",
     "faction": "inferno",
     "level": 5,
@@ -342,7 +342,7 @@
     ]
   },
   {
-    "id": "pit_lord",
+    "code": "pit_lord",
     "name": "Pit Lord",
     "faction": "inferno",
     "level": 5,
@@ -380,7 +380,7 @@
     ]
   },
   {
-    "id": "efreeti",
+    "code": "efreeti",
     "name": "Efreeti",
     "faction": "inferno",
     "level": 6,
@@ -418,7 +418,7 @@
     ]
   },
   {
-    "id": "efreet_sultan",
+    "code": "efreet_sultan",
     "name": "Efreet Sultan",
     "faction": "inferno",
     "level": 6,
@@ -456,7 +456,7 @@
     ]
   },
   {
-    "id": "devil",
+    "code": "devil",
     "name": "Devil",
     "faction": "inferno",
     "level": 7,
@@ -498,7 +498,7 @@
     ]
   },
   {
-    "id": "arch_devil",
+    "code": "arch_devil",
     "name": "Arch Devil",
     "faction": "inferno",
     "level": 7,

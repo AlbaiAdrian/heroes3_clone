@@ -20,6 +20,7 @@ export class CreatureTypeDataService {
     return this.http.get<CreatureType[]>(`${this.creaturesPath}/${faction}.json`).pipe(
       map((data) =>
         data.map((creature) => ({
+          code: creature.code,
           level: creature.level,
           faction: creature.faction,
           name: creature.name,

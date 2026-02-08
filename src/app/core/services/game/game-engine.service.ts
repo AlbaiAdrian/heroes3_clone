@@ -46,6 +46,7 @@ export class GameEngineService {
       next: (creatureTypes) => {
         console.log('Creatures loaded:', creatureTypes);
         creatureStore.setCreatureTypes(creatureTypes);
+        console.log('Creature types stored in CreatureTypeStoreService.', creatureStore.getCreatureTypes());
         this.creaturesLoaded = true;
         this.updateCanStartGame();
       },
