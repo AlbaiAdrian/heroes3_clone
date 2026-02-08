@@ -10,6 +10,7 @@ import { ResourceType } from '../../models/player/resource-type.enum';
 import { TileInteraction } from '../../models/terrain/tile-interaction.model';
 import { CreatureTypeStoreService } from '../creature/creature-type-store.service';
 import { CreatureType } from '../../models/creature/creature-type.model';
+import { MAX_ARMY_SLOTS } from '../../models/army.constants';
 
 
 /**
@@ -30,7 +31,6 @@ class InteractionFactory {
 @Injectable({ providedIn: 'root' })
 export class MapObjectGeneratorService {
   private readonly MINE_RESOURCE_TYPES = [ResourceType.Gold, ResourceType.Wood, ResourceType.Stone];
-  private readonly MAX_ARMY_SLOTS = 8;
   private readonly interactionFactory = new InteractionFactory();
   private occupiedTiles = new Set<string>();
 
@@ -179,7 +179,7 @@ export class MapObjectGeneratorService {
         y,
         footprint: def.footprint,
         entries: def.entries,
-        creatures: creatures.slice(0, this.MAX_ARMY_SLOTS),
+        creatures: creatures.slice(0, MAX_ARMY_SLOTS),
       };
 
       // Mark tiles as occupied

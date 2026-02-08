@@ -7,6 +7,7 @@ import { BattleResult } from '../../models/battle/battle-result.enum';
 import { BattleService } from './battle.service';
 import { MapObjectCreature } from '../../models/map-objects/map-object-creature.model';
 import { Tile } from '../../models/terrain/tile.model';
+import { MAX_ARMY_SLOTS } from '../../models/army.constants';
 
 /**
  * Holds the current battle state as an observable for the UI.
@@ -15,7 +16,6 @@ import { Tile } from '../../models/terrain/tile.model';
 @Injectable({ providedIn: 'root' })
 export class BattleStateService {
   private battleState$ = new BehaviorSubject<BattleState | null>(null);
-  private readonly maxArmySlots = 8;
 
   readonly state$ = this.battleState$.asObservable();
 
@@ -51,8 +51,8 @@ export class BattleStateService {
     this._creatureObject = creatureObject;
     this._heroTileBeforeBattle = heroTileBeforeBattle;
     const state = this.battleService.initBattle(
-      attackerArmy.slice(0, this.maxArmySlots),
-      defenderArmy.slice(0, this.maxArmySlots)
+      attackerArmy.slice(0, MAX_ARMY_SLOTS),
+      defenderArmy.slice(0, MAX_ARMY_SLOTS)
     );
     this.battleState$.next(state);
   }
