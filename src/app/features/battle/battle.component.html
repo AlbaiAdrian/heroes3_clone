@@ -1,0 +1,112 @@
+<div class="heroes-root" *ngIf="state">
+  <header class="top-bar">
+    <div class="battle-title">Battle — Round {{ state.round }}</div>
+    <div class="battle-turn" *ngIf="!state.result">
+      <span class="turn-label">Current Turn</span>
+      <span class="turn-name">{{ currentUnit?.creatureType?.name }}</span>
+      <span class="turn-side">{{ currentUnit?.isAttacker ? 'Attacker' : 'Defender' }}</span>
+    </div>
+    <div class="battle-turn" *ngIf="state.result">
+      <span class="turn-label">Battle Result</span>
+      <span class="turn-name">{{ resultText }}</span>
+    </div>
+  </header>
+
+  <div class="battle-layout">
+    <section class="panel army-panel attacker-panel">
+      <h3>Attacker</h3>
+      <div class="unit-list">
+        <div
+          *ngFor="let unit of state.attackerUnits"
+          class="unit-card"
+          [class.dead]="unit.isDead"
+          [class.active]="unit === currentUnit"
+        >
+          <div class="unit-sprite">
+            <ng-container *ngIf="getCreatureSprite(unit) as sprite; else spritePlaceholder">
+              <img
+                [attr.src]="sprite"
+                [attr.alt]="unit.creatureType.name + (unit.isDead ? ' (Dead)' : '')"
+              />
+            </ng-container>
+          </div>
+          <div class="unit-info">
+            <div class="unit-name">{{ unit.creatureType.name }}</div>
+            <div class="unit-meta">
+              <span>Qty: {{ unit.quantity }}</span>
+              <span>HP: {{ unit.currentHp }}/{{ unit.maxHp }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="battle-center">
+      <div class="panel turn-panel" *ngIf="!state.result">
+        <h3>Orders</h3>
+        <p class="turn-summary">Select a target to attack:</p>
+        <div class="targets" *ngIf="targets.length > 0; else noTargets">
+          <button
+            *ngFor="let target of targets"
+            class="btn btn-secondary"
+            (click)="attackTarget(target)"
+          >
+            Attack {{ target.creatureType.name }} ({{ target.quantity }})
+          </button>
+        </div>
+        <ng-template #noTargets>
+          <p class="turn-summary muted">No valid targets.</p>
+        </ng-template>
+      </div>
+
+      <div class="panel result-panel" *ngIf="state.result">
+        <h3 class="result-title">{{ resultText }}</h3>
+        <p class="turn-summary">The battle has ended.</p>
+      </div>
+
+      <div class="panel battle-log">
+        <h4>Battle Log</h4>
+        <div class="log-entries">
+          <p *ngFor="let entry of state.log">{{ entry }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel army-panel defender-panel">
+      <h3>Defender</h3>
+      <div class="unit-list">
+        <div
+          *ngFor="let unit of state.defenderUnits"
+          class="unit-card"
+          [class.dead]="unit.isDead"
+          [class.active]="unit === currentUnit"
+        >
+          <div class="unit-sprite">
+            <ng-container *ngIf="getCreatureSprite(unit) as sprite; else spritePlaceholder">
+              <img
+                [attr.src]="sprite"
+                [attr.alt]="unit.creatureType.name + (unit.isDead ? ' (Dead)' : '')"
+              />
+            </ng-container>
+          </div>
+          <div class="unit-info">
+            <div class="unit-name">{{ unit.creatureType.name }}</div>
+            <div class="unit-meta">
+              <span>Qty: {{ unit.quantity }}</span>
+              <span>HP: {{ unit.currentHp }}/{{ unit.maxHp }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="bottom-bar">
+    <button *ngIf="!state.result" class="btn btn-secondary" (click)="retreat()">Retreat</button>
+    <button *ngIf="state.result" class="btn btn-secondary" (click)="endBattle()">Return to Map</button>
+  </footer>
+</div>
+
+<ng-template #spritePlaceholder>
+  <span class="sprite-placeholder">?</span>
+</ng-template>
