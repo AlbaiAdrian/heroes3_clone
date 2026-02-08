@@ -90,6 +90,9 @@ export class BattleComponent implements OnInit, OnDestroy {
       if (attr.attributeType === CreatureAttributeType.AttackTypeMelee) {
         melee = attr.value;
       }
+      if (ranged !== null && melee !== null) {
+        break;
+      }
     }
     const attackValue = ranged ?? melee ?? 0;
     this.attackCache.set(key, attackValue);
