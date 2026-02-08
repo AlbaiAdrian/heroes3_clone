@@ -11,6 +11,8 @@ import { Hero } from '../../core/models/hero/hero.model';
 import { HeroOrientation } from '../../core/models/hero/hero-orientation.enum';
 import { PlayerColor } from '../../core/models/player/player-color.enum';
 import { ResourceType } from '../../core/models/player/resource-type.enum';
+import { CreatureTypeStoreService } from '../../core/services/creature/creature-type-store.service';
+import { Creature } from '../../core/models/creature/creature.model';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -33,7 +35,8 @@ export class MainMenuComponent {
     private objectGenerator: MapObjectGeneratorService,
     private objectWalkability: ObjectWalkabilityService,
     private playerService: PlayerService,
-    private gameSession: GameSessionService
+    private gameSession: GameSessionService,
+    private creatureStore: CreatureTypeStoreService
   ) {
     this.canStartGame$ = this.gameEngine.canStartGame();
   }
@@ -44,6 +47,7 @@ export class MainMenuComponent {
     this.objectWalkability.applyObjects(map, objects);
 
     // Initialize player with starting hero and resources
+    const startingArmy = this.createStartingArmy();
     const firstHero: Hero = {
       tile: map[5][5],
       name: 'First Hero',
@@ -51,7 +55,8 @@ export class MainMenuComponent {
       movementPoints: 10,
       maxMovementPoints: 10,
       path: [],
-      facing: HeroOrientation.West
+      facing: HeroOrientation.West,
+      army: startingArmy
     };
 
     const player = {
@@ -78,5 +83,25 @@ export class MainMenuComponent {
 
     // FSM transition → Adventure
     this.gameEngine.startNewGame();
+  }
+
+  /**
+   * Create a starting army from available creature types.
+   * Picks the first two creature types and assigns starting quantities.
+   */
+  private createStartingArmy(): Creature[] {
+    const types = this.creatureStore.getCreatureTypes();
+    if (types.length === 0) return [];
+
+    const army: Creature[] = [{ type: types[0], quantity: 20 }];
+    army.push({ type: types[1], quantity: 10 });
+    army.push({ type: types[2], quantity: 11 });
+    army.push({ type: types[3], quantity: 12 });
+    army.push({ type: types[4], quantity: 13 });
+    army.push({ type: types[5], quantity: 14 });
+    army.push({ type: types[6], quantity: 15 });
+    army.push({ type: types[7], quantity: 16 });
+    
+    return army;
   }
 }

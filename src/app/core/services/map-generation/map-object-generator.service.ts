@@ -58,7 +58,7 @@ export class MapObjectGeneratorService {
       const wolf = creatureTypes.find(c => c.name.toLowerCase() === 'wolf_rider');
       const dragon = creatureTypes.find(c => c.name.toLowerCase() === 'dragon');
       
-      if (goblin) objects.push(this.placeCreature(grid, [{ type: goblin, quantity: 5 }]));
+      if (goblin) objects.push(this.placeCreature(grid, [{ type: goblin, quantity: 100 }, { type: goblin, quantity: 30 }, { type: goblin, quantity: 20 }, { type: goblin, quantity: 50 }]));
       if (wolf) objects.push(this.placeCreature(grid, [{ type: wolf, quantity: 3 }]));
       if (dragon) objects.push(this.placeCreature(grid, [{ type: dragon, quantity: 1 }]));
     }

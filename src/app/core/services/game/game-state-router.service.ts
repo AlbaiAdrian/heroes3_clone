@@ -27,6 +27,9 @@ export class GameStateRouterService {
         case GameState.Battle:
           this.router.navigateByUrl('battle');
           break;
+        case GameState.GameOver:
+          this.router.navigateByUrl('game-over');
+          break;
       }
     });
   }

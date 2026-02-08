@@ -4,6 +4,7 @@ import { Tile } from '../../models/terrain/tile.model';
 import { HeroOrientation } from '../../models/hero/hero-orientation.enum';
 import { Hero } from '../../models/hero/hero.model';
 import { ActionHandlerRegistry } from '../action-handlers/action-handler-registry.service';
+import { HeroBattleContextService } from './hero-battle-context.service';
 
 @Injectable({ providedIn: 'root' })
 export class HeroStepExecutorService {
@@ -11,11 +12,13 @@ export class HeroStepExecutorService {
   private readonly STEP_DELAY_MS = 200;
 
   constructor(
-    private actionHandlerRegistry: ActionHandlerRegistry
+    private actionHandlerRegistry: ActionHandlerRegistry,
+    private heroBattleContext: HeroBattleContextService
   ) {}
 
   async execute(hero: Hero, tile: Tile): Promise<void> {
     const facing = this.getFacingDirection(hero, tile);
+    this.heroBattleContext.setPreviousTile(hero.tile);
     hero.tile = tile;
     hero.facing = facing;
 

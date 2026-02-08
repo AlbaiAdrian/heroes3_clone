@@ -2,6 +2,7 @@
 import { Tile } from "../terrain/tile.model";
 import { HeroOrientation } from "./hero-orientation.enum";
 import { Faction } from "../faction/faction.enum";
+import { Creature } from "../creature/creature.model";
 
   // core/models/hero.model.ts
   export interface Hero {
@@ -15,4 +16,6 @@ import { Faction } from "../faction/faction.enum";
 
     tile: Tile
     path: Tile[];
+
+    army: Creature[];
   }
