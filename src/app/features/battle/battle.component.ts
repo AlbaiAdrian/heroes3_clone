@@ -4,12 +4,10 @@ import { CommonModule } from '@angular/common';
 import { GameEngineService } from '../../core/services/game/game-engine.service';
 import { BattleStateService } from '../../core/services/battle/battle-state.service';
 import { BattleService } from '../../core/services/battle/battle.service';
-import { CreatureSpriteService } from '../../core/services/rendering/creature-sprite.service';
 import { BattleState } from '../../core/models/battle/battle-state.model';
 import { BattleUnit } from '../../core/models/battle/battle-unit.model';
 import { BattleResult } from '../../core/models/battle/battle-result.enum';
 import { Subscription } from 'rxjs';
-import { DomSanitizer, SecurityContext } from '@angular/platform-browser';
 
 @Component({
   standalone: true,
@@ -31,8 +29,6 @@ export class BattleComponent implements OnInit, OnDestroy {
     private gameEngine: GameEngineService,
     private battleStateService: BattleStateService,
     private battleService: BattleService,
-    private creatureSprites: CreatureSpriteService,
-    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -62,28 +58,6 @@ export class BattleComponent implements OnInit, OnDestroy {
 
   endBattle(): void {
     this.gameEngine.resolveBattle();
-  }
-
-  getCreatureSprite(unit: BattleUnit): string | null {
-    const key = `${unit.creatureType.faction}:${unit.creatureType.code}`;
-    const cached = this.spriteCache.get(key);
-    if (cached) {
-      return cached;
-    }
-
-    const spriteUrl = this.creatureSprites.get(unit.creatureType.faction, unit.creatureType.code)?.src;
-    if (!spriteUrl) {
-      return null;
-    }
-
-    const sanitized = this.sanitizer.sanitize(SecurityContext.URL, spriteUrl);
-    if (sanitized) {
-      this.spriteCache.set(key, sanitized);
-      return sanitized;
-    }
-
-    console.warn(`Blocked unsafe sprite URL for ${key}.`);
-    return null;
   }
 
   private getResultText(result: BattleResult | null): string {

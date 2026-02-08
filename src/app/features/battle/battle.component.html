@@ -23,12 +23,10 @@
           [class.active]="unit === currentUnit"
         >
           <div class="unit-sprite">
-            <ng-container *ngIf="getCreatureSprite(unit) as sprite; else spritePlaceholder">
               <img
-                [attr.src]="sprite"
-                [attr.alt]="unit.creatureType.name + (unit.isDead ? ' (Dead)' : '')"
-              />
-            </ng-container>
+              [attr.src]="'creature/' + unit.creatureType.faction + '/' + unit.creatureType.code + '.png'"
+              [attr.alt]="unit.creatureType.name + (unit.isDead ? ' (Dead)' : '')"
+            />
           </div>
           <div class="unit-info">
             <div class="unit-name">{{ unit.creatureType.name }}</div>
@@ -82,12 +80,10 @@
           [class.active]="unit === currentUnit"
         >
           <div class="unit-sprite">
-            <ng-container *ngIf="getCreatureSprite(unit) as sprite; else spritePlaceholder">
-              <img
-                [attr.src]="sprite"
-                [attr.alt]="unit.creatureType.name + (unit.isDead ? ' (Dead)' : '')"
-              />
-            </ng-container>
+            <img
+              [attr.src]="'creature/' + unit.creatureType.faction + '/' + unit.creatureType.code + '.png'"
+              [attr.alt]="unit.creatureType.name + (unit.isDead ? ' (Dead)' : '')"
+            />
           </div>
           <div class="unit-info">
             <div class="unit-name">{{ unit.creatureType.name }}</div>
