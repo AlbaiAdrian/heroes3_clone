@@ -80,12 +80,24 @@ export class BattleComponent implements OnInit, OnDestroy {
 
   getAttackValue(unit: BattleUnit): number {
     const key = this.getUnitKey(unit);
-    return this.attackCache.get(key) ?? this.computeAttackValue(unit);
+    if (this.attackCache.has(key)) {
+      return this.attackCache.get(key) ?? 0;
+    }
+
+    const attackValue = this.computeAttackValue(unit);
+    this.attackCache.set(key, attackValue);
+    return attackValue;
   }
 
   getDefenseValue(unit: BattleUnit): number {
     const key = this.getUnitKey(unit);
-    return this.defenseCache.get(key) ?? this.getAttributeValue(unit, CreatureAttributeType.Defense);
+    if (this.defenseCache.has(key)) {
+      return this.defenseCache.get(key) ?? 0;
+    }
+
+    const defenseValue = this.getAttributeValue(unit, CreatureAttributeType.Defense);
+    this.defenseCache.set(key, defenseValue);
+    return defenseValue;
   }
 
   private getResultText(result: BattleResult | null): string {

@@ -26,6 +26,8 @@
             class="unit-sprite"
             type="button"
             (click)="openSprite(unit)"
+            (keydown.enter)="openSprite(unit)"
+            (keydown.space)="openSprite(unit); $event.preventDefault()"
             [attr.aria-label]="'View ' + unit.creatureType.name + ' details'"
           >
             <img
@@ -90,6 +92,8 @@
             class="unit-sprite"
             type="button"
             (click)="openSprite(unit)"
+            (keydown.enter)="openSprite(unit)"
+            (keydown.space)="openSprite(unit); $event.preventDefault()"
             [attr.aria-label]="'View ' + unit.creatureType.name + ' details'"
           >
             <img
