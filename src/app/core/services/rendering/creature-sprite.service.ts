@@ -57,11 +57,14 @@ export class CreatureSpriteService {
     const factionSprites = this.getFactionSprites(faction);
     creatures.forEach((creature) => {
       const img = new Image();
-      img.src = `${this.creatureSpritePath}/${faction}/${creature.code}.png`;
+      img.onload = () => {
+        factionSprites.set(creature.code, img);
+      };
       img.onerror = () => {
         console.warn(`Missing creature sprite: ${faction}/${creature.code}`);
+        factionSprites.delete(creature.code);
       };
-      factionSprites.set(creature.code, img);
+      img.src = `${this.creatureSpritePath}/${faction}/${creature.code}.png`;
     });
   }
 
