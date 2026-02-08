@@ -132,6 +132,11 @@
   box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
 }
 
+.unit-sprite:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 2px;
+}
+
 .unit-info {
   display: flex;
   flex-direction: column;

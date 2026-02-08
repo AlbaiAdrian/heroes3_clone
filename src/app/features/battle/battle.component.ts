@@ -74,9 +74,18 @@ export class BattleComponent implements OnInit, OnDestroy {
   }
 
   getAttackValue(unit: BattleUnit): number {
-    const ranged = this.getAttributeValue(unit, CreatureAttributeType.AttackTypeRanged);
-    const melee = this.getAttributeValue(unit, CreatureAttributeType.AttackTypeMelee);
-    return ranged > 0 ? ranged : melee;
+    const ranged = unit.creatureType.attributes.find(
+      attr => attr.attributeType === CreatureAttributeType.AttackTypeRanged
+    );
+    if (ranged) {
+      return ranged.value;
+    }
+
+    return (
+      unit.creatureType.attributes.find(
+        attr => attr.attributeType === CreatureAttributeType.AttackTypeMelee
+      )?.value ?? 0
+    );
   }
 
   getDefenseValue(unit: BattleUnit): number {
