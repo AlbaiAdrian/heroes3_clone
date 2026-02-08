@@ -15,6 +15,7 @@ import { Tile } from '../../models/terrain/tile.model';
 @Injectable({ providedIn: 'root' })
 export class BattleStateService {
   private battleState$ = new BehaviorSubject<BattleState | null>(null);
+  private readonly maxArmySlots = 8;
 
   readonly state$ = this.battleState$.asObservable();
 
@@ -49,7 +50,10 @@ export class BattleStateService {
   ): void {
     this._creatureObject = creatureObject;
     this._heroTileBeforeBattle = heroTileBeforeBattle;
-    const state = this.battleService.initBattle(attackerArmy, defenderArmy);
+    const state = this.battleService.initBattle(
+      attackerArmy.slice(0, this.maxArmySlots),
+      defenderArmy.slice(0, this.maxArmySlots)
+    );
     this.battleState$.next(state);
   }
 

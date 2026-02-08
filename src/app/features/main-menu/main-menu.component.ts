@@ -26,6 +26,7 @@ export class MainMenuComponent {
   // Map dimensions (increased from 24x16 to 48x32)
   private readonly MAP_WIDTH = 48;
   private readonly MAP_HEIGHT = 32;
+  private readonly MAX_ARMY_SLOTS = 8;
 
   canStartGame$!: Observable<boolean>;
 
@@ -102,6 +103,6 @@ export class MainMenuComponent {
     army.push({ type: types[6], quantity: 15 });
     army.push({ type: types[7], quantity: 16 });
     
-    return army;
+    return army.slice(0, this.MAX_ARMY_SLOTS);
   }
 }

@@ -21,7 +21,6 @@ export class BattleComponent implements OnInit, OnDestroy {
   currentUnit: BattleUnit | null = null;
   targets: BattleUnit[] = [];
   resultText = '';
-  private spriteCache = new Map<string, string>();
 
   private sub?: Subscription;
 

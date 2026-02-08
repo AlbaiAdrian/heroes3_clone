@@ -23,7 +23,7 @@
           [class.active]="unit === currentUnit"
         >
           <div class="unit-sprite">
-              <img
+            <img
               [attr.src]="'creature/' + unit.creatureType.faction + '/' + unit.creatureType.code + '.png'"
               [attr.alt]="unit.creatureType.name + (unit.isDead ? ' (Dead)' : '')"
             />
@@ -102,7 +102,3 @@
     <button *ngIf="state.result" class="btn btn-secondary" (click)="endBattle()">Return to Map</button>
   </footer>
 </div>
-
-<ng-template #spritePlaceholder>
-  <span class="sprite-placeholder">?</span>
-</ng-template>
