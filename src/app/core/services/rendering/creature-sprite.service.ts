@@ -12,6 +12,7 @@ export class CreatureSpriteService {
   private sprites = new Map<Faction, Map<string, HTMLImageElement>>();
   private pendingLoads = 0;
   private pendingFactions = 0;
+  private loadingInProgress = false;
   private spritesLoaded$ = new BehaviorSubject<boolean>(false);
 
   constructor(
@@ -21,8 +22,13 @@ export class CreatureSpriteService {
 
   loadSprites(): void {
     const factions = Object.values(Faction);
+    if (this.loadingInProgress) {
+      return;
+    }
+
     this.pendingFactions = factions.length;
     this.pendingLoads = 0;
+    this.loadingInProgress = true;
     this.spritesLoaded$.next(false);
 
     factions.forEach((faction) => {
@@ -74,7 +80,6 @@ export class CreatureSpriteService {
         return;
       }
 
-      this.pendingLoads += 1;
       const img = new Image();
       img.onload = () => {
         factionSprites.set(creature.code, img);
@@ -84,6 +89,7 @@ export class CreatureSpriteService {
         console.warn(`Missing creature sprite: ${faction}/${creature.code}`);
         this.completeSpriteLoad();
       };
+      this.pendingLoads += 1;
       img.src = `${this.creatureSpritePath}/${faction}/${creature.code}.png`;
     });
   }
@@ -100,6 +106,7 @@ export class CreatureSpriteService {
 
   private checkIfLoaded(): void {
     if (this.pendingFactions === 0 && this.pendingLoads === 0) {
+      this.loadingInProgress = false;
       this.spritesLoaded$.next(true);
     }
   }
