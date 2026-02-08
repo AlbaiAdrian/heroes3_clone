@@ -22,7 +22,12 @@
           [class.dead]="unit.isDead"
           [class.active]="unit === currentUnit"
         >
-          <button class="unit-sprite" type="button" (click)="openSprite(unit)">
+          <button
+            class="unit-sprite"
+            type="button"
+            (click)="openSprite(unit)"
+            [attr.aria-label]="'View ' + unit.creatureType.name + ' details'"
+          >
             <img
               [attr.src]="getCreatureSpritePath(unit)"
               [attr.alt]="unit.creatureType.name + (unit.isDead ? ' (Dead)' : '')"
@@ -81,7 +86,12 @@
           [class.dead]="unit.isDead"
           [class.active]="unit === currentUnit"
         >
-          <button class="unit-sprite" type="button" (click)="openSprite(unit)">
+          <button
+            class="unit-sprite"
+            type="button"
+            (click)="openSprite(unit)"
+            [attr.aria-label]="'View ' + unit.creatureType.name + ' details'"
+          >
             <img
               [attr.src]="getCreatureSpritePath(unit)"
               [attr.alt]="unit.creatureType.name + (unit.isDead ? ' (Dead)' : '')"
@@ -107,9 +117,15 @@
   </footer>
 </div>
 
-<div class="sprite-modal" *ngIf="selectedUnit as unit" (click)="closeSprite()">
+<div
+  class="sprite-modal"
+  *ngIf="selectedUnit as unit"
+  role="dialog"
+  aria-modal="true"
+  (click)="closeSprite()"
+>
   <div class="sprite-modal-content" (click)="$event.stopPropagation()">
-    <button type="button" class="modal-close" (click)="closeSprite()">×</button>
+    <button type="button" class="modal-close" aria-label="Close" (click)="closeSprite()">×</button>
     <img
       [attr.src]="getCreatureSpritePath(unit)"
       [attr.alt]="unit.creatureType.name + ' portrait'"
