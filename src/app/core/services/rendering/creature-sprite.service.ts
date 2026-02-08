@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { DestroyRef, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { catchError, filter, map, Observable, of, switchMap } from 'rxjs';
 import { CreatureType } from '../../models/creature/creature-type.model';
 import { Faction } from '../../models/faction/faction.enum';
@@ -10,7 +11,10 @@ export class CreatureSpriteService {
   private readonly creatureSpritePath = 'creature';
   private sprites = new Map<Faction, Map<string, HTMLImageElement>>();
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(
+    private readonly http: HttpClient,
+    private readonly destroyRef: DestroyRef
+  ) {}
 
   loadSprites(): void {
     const factions = Object.values(Faction);
@@ -23,7 +27,8 @@ export class CreatureSpriteService {
             }
             return exists;
           }),
-          switchMap(() => this.http.get<CreatureType[]>(`${this.creatureDataPath}/${faction}.json`))
+          switchMap(() => this.http.get<CreatureType[]>(`${this.creatureDataPath}/${faction}.json`)),
+          takeUntilDestroyed(this.destroyRef)
         )
         .subscribe({
           next: (creatures) => this.loadFactionSprites(faction, creatures),
@@ -36,7 +41,7 @@ export class CreatureSpriteService {
     return this.sprites.get(faction)?.get(code);
   }
 
-  private folderExists(faction: Faction): Observable<boolean> {
+  folderExists(faction: Faction): Observable<boolean> {
     return this.http
       .get(`${this.creatureSpritePath}/${faction}/`, {
         observe: 'response',

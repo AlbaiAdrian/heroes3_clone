@@ -28,8 +28,8 @@ describe('CreatureSpriteService', () => {
 
   it('loads sprites for available faction folders', () => {
     const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
-    vi.spyOn(service as any, 'folderExists').mockImplementation(
-      ((faction: Faction) => of(faction === Faction.Castle)) as (...args: unknown[]) => unknown
+    vi.spyOn(service, 'folderExists').mockImplementation((faction) =>
+      of(faction === Faction.Castle)
     );
 
     service.loadSprites();
