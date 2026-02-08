@@ -1,5 +1,5 @@
 // features/battle/battle.component.ts
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameEngineService } from '../../core/services/game/game-engine.service';
 import { BattleStateService } from '../../core/services/battle/battle-state.service';
@@ -82,16 +82,16 @@ export class BattleComponent implements OnInit, OnDestroy {
     }
 
     let melee: number | null = null;
+    let ranged: number | null = null;
     for (const attr of unit.creatureType.attributes) {
       if (attr.attributeType === CreatureAttributeType.AttackTypeRanged) {
-        this.attackCache.set(key, attr.value);
-        return attr.value;
+        ranged = attr.value;
       }
       if (attr.attributeType === CreatureAttributeType.AttackTypeMelee) {
         melee = attr.value;
       }
     }
-    const attackValue = melee ?? 0;
+    const attackValue = ranged ?? melee ?? 0;
     this.attackCache.set(key, attackValue);
     return attackValue;
   }
@@ -122,5 +122,12 @@ export class BattleComponent implements OnInit, OnDestroy {
 
   private getUnitKey(unit: BattleUnit): string {
     return `${unit.creatureType.faction}:${unit.creatureType.code}`;
+  }
+
+  @HostListener('document:keydown.escape')
+  handleEscape(): void {
+    if (this.selectedUnit) {
+      this.closeSprite();
+    }
   }
 }
