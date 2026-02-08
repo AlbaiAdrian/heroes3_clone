@@ -22,17 +22,19 @@
           [class.dead]="unit.isDead"
           [class.active]="unit === currentUnit"
         >
-          <div class="unit-sprite">
+          <button class="unit-sprite" type="button" (click)="openSprite(unit)">
             <img
-              [attr.src]="'creature/' + unit.creatureType.faction + '/' + unit.creatureType.code + '.png'"
+              [attr.src]="getCreatureSpritePath(unit)"
               [attr.alt]="unit.creatureType.name + (unit.isDead ? ' (Dead)' : '')"
             />
-          </div>
+          </button>
           <div class="unit-info">
             <div class="unit-name">{{ unit.creatureType.name }}</div>
             <div class="unit-meta">
               <span>Qty: {{ unit.quantity }}</span>
               <span>HP: {{ unit.currentHp }}/{{ unit.maxHp }}</span>
+              <span>Atk: {{ getAttackValue(unit) }}</span>
+              <span>Def: {{ getDefenseValue(unit) }}</span>
             </div>
           </div>
         </div>
@@ -79,17 +81,19 @@
           [class.dead]="unit.isDead"
           [class.active]="unit === currentUnit"
         >
-          <div class="unit-sprite">
+          <button class="unit-sprite" type="button" (click)="openSprite(unit)">
             <img
-              [attr.src]="'creature/' + unit.creatureType.faction + '/' + unit.creatureType.code + '.png'"
+              [attr.src]="getCreatureSpritePath(unit)"
               [attr.alt]="unit.creatureType.name + (unit.isDead ? ' (Dead)' : '')"
             />
-          </div>
+          </button>
           <div class="unit-info">
             <div class="unit-name">{{ unit.creatureType.name }}</div>
             <div class="unit-meta">
               <span>Qty: {{ unit.quantity }}</span>
               <span>HP: {{ unit.currentHp }}/{{ unit.maxHp }}</span>
+              <span>Atk: {{ getAttackValue(unit) }}</span>
+              <span>Def: {{ getDefenseValue(unit) }}</span>
             </div>
           </div>
         </div>
@@ -101,4 +105,21 @@
     <button *ngIf="!state.result" class="btn btn-secondary" (click)="retreat()">Retreat</button>
     <button *ngIf="state.result" class="btn btn-secondary" (click)="endBattle()">Return to Map</button>
   </footer>
+</div>
+
+<div class="sprite-modal" *ngIf="selectedUnit as unit" (click)="closeSprite()">
+  <div class="sprite-modal-content" (click)="$event.stopPropagation()">
+    <button type="button" class="modal-close" (click)="closeSprite()">×</button>
+    <img
+      [attr.src]="getCreatureSpritePath(unit)"
+      [attr.alt]="unit.creatureType.name + ' portrait'"
+    />
+    <div class="modal-details">
+      <div class="unit-name">{{ unit.creatureType.name }}</div>
+      <div class="modal-stats">
+        <span>Attack: {{ getAttackValue(unit) }}</span>
+        <span>Defense: {{ getDefenseValue(unit) }}</span>
+      </div>
+    </div>
+  </div>
 </div>

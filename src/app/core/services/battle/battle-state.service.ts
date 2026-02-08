@@ -7,7 +7,6 @@ import { BattleResult } from '../../models/battle/battle-result.enum';
 import { BattleService } from './battle.service';
 import { MapObjectCreature } from '../../models/map-objects/map-object-creature.model';
 import { Tile } from '../../models/terrain/tile.model';
-import { MAX_ARMY_SLOTS } from '../../models/army.constants';
 
 /**
  * Holds the current battle state as an observable for the UI.
@@ -50,10 +49,7 @@ export class BattleStateService {
   ): void {
     this._creatureObject = creatureObject;
     this._heroTileBeforeBattle = heroTileBeforeBattle;
-    const state = this.battleService.initBattle(
-      attackerArmy.slice(0, MAX_ARMY_SLOTS),
-      defenderArmy.slice(0, MAX_ARMY_SLOTS)
-    );
+    const state = this.battleService.initBattle(attackerArmy, defenderArmy);
     this.battleState$.next(state);
   }
 

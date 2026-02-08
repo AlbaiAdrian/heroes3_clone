@@ -10,7 +10,6 @@ import { ResourceType } from '../../models/player/resource-type.enum';
 import { TileInteraction } from '../../models/terrain/tile-interaction.model';
 import { CreatureTypeStoreService } from '../creature/creature-type-store.service';
 import { CreatureType } from '../../models/creature/creature-type.model';
-import { MAX_ARMY_SLOTS } from '../../models/army.constants';
 
 
 /**
@@ -179,7 +178,7 @@ export class MapObjectGeneratorService {
         y,
         footprint: def.footprint,
         entries: def.entries,
-        creatures: creatures.slice(0, MAX_ARMY_SLOTS),
+        creatures,
       };
 
       // Mark tiles as occupied

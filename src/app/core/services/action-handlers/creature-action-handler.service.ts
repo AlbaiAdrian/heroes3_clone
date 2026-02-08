@@ -13,6 +13,7 @@ import { HeroBattleContextService } from '../hero-movement/hero-battle-context.s
  */
 @Injectable({ providedIn: 'root' })
 export class CreatureActionHandler implements ActionHandler {
+  private readonly MAX_ARMY_SLOTS = 8;
 
   constructor(
     private gameEngineService: GameEngineService,
@@ -30,9 +31,10 @@ export class CreatureActionHandler implements ActionHandler {
     console.log(`Initiating battle with: ${creatureList}`);
 
     const player = this.playerService.getActivePlayer();
-    const attackerArmy = player?.selectedHero?.army ?? [];
+    const attackerArmy = (player?.selectedHero?.army ?? []).slice(0, this.MAX_ARMY_SLOTS);
     const previousTile = this.heroBattleContext.previousTile;
 
-    this.gameEngineService.enterBattle(attackerArmy, [...creature.creatures], creature, previousTile);
+    const defenderArmy = creature.creatures.slice(0, this.MAX_ARMY_SLOTS);
+    this.gameEngineService.enterBattle(attackerArmy, defenderArmy, creature, previousTile);
   }
 }

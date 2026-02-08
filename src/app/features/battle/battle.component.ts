@@ -7,6 +7,7 @@ import { BattleService } from '../../core/services/battle/battle.service';
 import { BattleState } from '../../core/models/battle/battle-state.model';
 import { BattleUnit } from '../../core/models/battle/battle-unit.model';
 import { BattleResult } from '../../core/models/battle/battle-result.enum';
+import { CreatureAttributeType } from '../../core/models/creature/creature-attribute-type.enum';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -21,6 +22,7 @@ export class BattleComponent implements OnInit, OnDestroy {
   currentUnit: BattleUnit | null = null;
   targets: BattleUnit[] = [];
   resultText = '';
+  selectedUnit: BattleUnit | null = null;
 
   private sub?: Subscription;
 
@@ -59,6 +61,28 @@ export class BattleComponent implements OnInit, OnDestroy {
     this.gameEngine.resolveBattle();
   }
 
+  openSprite(unit: BattleUnit): void {
+    this.selectedUnit = unit;
+  }
+
+  closeSprite(): void {
+    this.selectedUnit = null;
+  }
+
+  getCreatureSpritePath(unit: BattleUnit): string {
+    return `creature/${unit.creatureType.faction}/${unit.creatureType.code}.png`;
+  }
+
+  getAttackValue(unit: BattleUnit): number {
+    const ranged = this.getAttributeValue(unit, CreatureAttributeType.AttackTypeRanged);
+    const melee = this.getAttributeValue(unit, CreatureAttributeType.AttackTypeMelee);
+    return ranged > 0 ? ranged : melee;
+  }
+
+  getDefenseValue(unit: BattleUnit): number {
+    return this.getAttributeValue(unit, CreatureAttributeType.Defense);
+  }
+
   private getResultText(result: BattleResult | null): string {
     switch (result) {
       case BattleResult.AttackerWins: return 'Victory! The attacker wins!';
@@ -66,5 +90,9 @@ export class BattleComponent implements OnInit, OnDestroy {
       case BattleResult.Retreat: return 'The attacker has retreated!';
       default: return '';
     }
+  }
+
+  private getAttributeValue(unit: BattleUnit, type: CreatureAttributeType): number {
+    return unit.creatureType.attributes.find(attr => attr.attributeType === type)?.value ?? 0;
   }
 }
