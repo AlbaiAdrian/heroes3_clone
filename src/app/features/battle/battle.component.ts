@@ -23,6 +23,8 @@ export class BattleComponent implements OnInit, OnDestroy {
   targets: BattleUnit[] = [];
   resultText = '';
   selectedUnit: BattleUnit | null = null;
+  private readonly attackCache = new Map<string, number>();
+  private readonly defenseCache = new Map<string, number>();
 
   private sub?: Subscription;
 
@@ -74,20 +76,35 @@ export class BattleComponent implements OnInit, OnDestroy {
   }
 
   getAttackValue(unit: BattleUnit): number {
+    const key = this.getUnitKey(unit);
+    if (this.attackCache.has(key)) {
+      return this.attackCache.get(key) ?? 0;
+    }
+
     let melee: number | null = null;
     for (const attr of unit.creatureType.attributes) {
       if (attr.attributeType === CreatureAttributeType.AttackTypeRanged) {
+        this.attackCache.set(key, attr.value);
         return attr.value;
       }
       if (attr.attributeType === CreatureAttributeType.AttackTypeMelee) {
         melee = attr.value;
       }
     }
-    return melee ?? 0;
+    const attackValue = melee ?? 0;
+    this.attackCache.set(key, attackValue);
+    return attackValue;
   }
 
   getDefenseValue(unit: BattleUnit): number {
-    return this.getAttributeValue(unit, CreatureAttributeType.Defense);
+    const key = this.getUnitKey(unit);
+    if (this.defenseCache.has(key)) {
+      return this.defenseCache.get(key) ?? 0;
+    }
+
+    const defenseValue = this.getAttributeValue(unit, CreatureAttributeType.Defense);
+    this.defenseCache.set(key, defenseValue);
+    return defenseValue;
   }
 
   private getResultText(result: BattleResult | null): string {
@@ -101,5 +118,9 @@ export class BattleComponent implements OnInit, OnDestroy {
 
   private getAttributeValue(unit: BattleUnit, type: CreatureAttributeType): number {
     return unit.creatureType.attributes.find(attr => attr.attributeType === type)?.value ?? 0;
+  }
+
+  private getUnitKey(unit: BattleUnit): string {
+    return `${unit.creatureType.faction}:${unit.creatureType.code}`;
   }
 }
