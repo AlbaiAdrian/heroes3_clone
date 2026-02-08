@@ -6,6 +6,7 @@ import { GameState } from '../../models/game-state.enum';
 import { TerrainSpriteService } from '../rendering/terrain-sprite.service';
 import { HeroSpriteService } from '../rendering/hero-sprite.service';
 import { ObjectsSpriteService } from '../rendering/objects-sprite.service';
+import { CreatureSpriteService } from '../rendering/creature-sprite.service';
 import { CreatureTypeDataService } from '../creature/creature-type-data.service';
 import { CreatureTypeStoreService } from '../creature/creature-type-store.service';
 import { BuildingDataService } from '../building/building-data.service';
@@ -36,11 +37,13 @@ export class GameEngineService {
     creatureTypeData: CreatureTypeDataService,
     creatureStore: CreatureTypeStoreService,
     buildingData: BuildingDataService,
-    buildingStore: BuildingStoreService
+    buildingStore: BuildingStoreService,
+    creatureSprite: CreatureSpriteService
   ) {
     heroSprite.loadSprites();
     objectsSprite.loadSprites();
     terrainSprite.loadSprites();
+    creatureSprite.loadSprites();
 
     creatureTypeData.getCreatureTypes().subscribe({
       next: (creatureTypes) => {
