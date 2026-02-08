@@ -94,9 +94,14 @@ export class MainMenuComponent {
     if (types.length === 0) return [];
 
     const army: Creature[] = [{ type: types[0], quantity: 20 }];
-    if (types.length > 1) {
-      army.push({ type: types[1], quantity: 10 });
-    }
+    army.push({ type: types[1], quantity: 10 });
+    army.push({ type: types[2], quantity: 11 });
+    army.push({ type: types[3], quantity: 12 });
+    army.push({ type: types[4], quantity: 13 });
+    army.push({ type: types[5], quantity: 14 });
+    army.push({ type: types[6], quantity: 15 });
+    army.push({ type: types[7], quantity: 16 });
+    
     return army;
   }
 }
