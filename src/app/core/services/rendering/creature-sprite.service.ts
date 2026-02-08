@@ -107,6 +107,7 @@ export class CreatureSpriteService {
   private checkIfLoaded(): void {
     if (this.pendingFactions === 0 && this.pendingLoads === 0) {
       this.loadingInProgress = false;
+      console.log('All creature sprites loaded.', this.sprites);
       this.spritesLoaded$.next(true);
     }
   }

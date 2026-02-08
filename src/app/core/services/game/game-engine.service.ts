@@ -22,7 +22,8 @@ import { Tile } from '../../models/terrain/tile.model';
 @Injectable({ providedIn: 'root' })
 export class GameEngineService {
   private canStartGame$ = new BehaviorSubject<boolean>(false);
-  private creaturesLoaded = false;
+  private creatureTypesLoaded = false;
+  private creatureSpritesLoaded = false;
   private buildingsLoaded = false;
   
   constructor(
@@ -50,13 +51,13 @@ export class GameEngineService {
         console.log('Creatures loaded:', creatureTypes);
         creatureStore.setCreatureTypes(creatureTypes);
         console.log('Creature types stored in CreatureTypeStoreService.', creatureStore.getCreatureTypes());
-        this.creaturesLoaded = true;
+        this.creatureTypesLoaded = true;
         this.updateCanStartGame();
       },
       error: (err) => {
         console.error('Failed to load creatures:', err);
         // Allow game to proceed even if creatures fail
-        this.creaturesLoaded = true;
+        this.creatureTypesLoaded = true;
         this.updateCanStartGame();
       }
     });
@@ -75,10 +76,16 @@ export class GameEngineService {
         this.updateCanStartGame();
       }
     });
+
+    creatureSprite.spritesLoaded().subscribe((loaded) => {
+      this.creatureSpritesLoaded = loaded;
+      console.log('Creature sprites loaded:', loaded);
+      this.updateCanStartGame();
+    });
   }
 
   private updateCanStartGame(): void {
-    if (this.creaturesLoaded && this.buildingsLoaded) {
+    if (this.creatureTypesLoaded && this.buildingsLoaded && this.creatureSpritesLoaded) {
       this.canStartGame$.next(true);
     }
   }
