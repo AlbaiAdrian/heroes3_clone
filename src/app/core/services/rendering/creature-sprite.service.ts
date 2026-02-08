@@ -62,15 +62,10 @@ export class CreatureSpriteService {
   }
 
   private folderExists(faction: Faction): Observable<boolean> {
-    return this.http
-      .get(`${this.creatureSpritePath}/${faction}/`, {
-        observe: 'response',
-        responseType: 'text',
-      })
-      .pipe(
-        map(() => true),
-        catchError(() => of(false))
-      );
+    // Directory HTTP probing is unreliable across static servers. Instead, we
+    // rely on per-sprite Image loading (onload/onerror) to detect missing
+    // assets and keep the internal loading counters consistent.
+    return of(true);
   }
 
   private loadFactionSprites(faction: Faction, creatures: CreatureType[]): void {
