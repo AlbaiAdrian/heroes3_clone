@@ -6,6 +6,7 @@ import { MapObjectType } from '../../models/map-objects/map-object-type.enum';
 import { GameEngineService } from '../game/game-engine.service';
 import { PlayerService } from '../player.service';
 import { HeroBattleContextService } from '../hero-movement/hero-battle-context.service';
+import { MAX_ARMY_SLOTS } from '../../models/army.constants';
 
 /**
  * Handler for creature battle interactions.
@@ -13,7 +14,6 @@ import { HeroBattleContextService } from '../hero-movement/hero-battle-context.s
  */
 @Injectable({ providedIn: 'root' })
 export class CreatureActionHandler implements ActionHandler {
-
   constructor(
     private gameEngineService: GameEngineService,
     private playerService: PlayerService,
@@ -30,9 +30,10 @@ export class CreatureActionHandler implements ActionHandler {
     console.log(`Initiating battle with: ${creatureList}`);
 
     const player = this.playerService.getActivePlayer();
-    const attackerArmy = player?.selectedHero?.army ?? [];
+    const attackerArmy = (player?.selectedHero?.army ?? []).slice(0, MAX_ARMY_SLOTS);
     const previousTile = this.heroBattleContext.previousTile;
 
-    this.gameEngineService.enterBattle(attackerArmy, [...creature.creatures], creature, previousTile);
+    const defenderArmy = creature.creatures.slice(0, MAX_ARMY_SLOTS);
+    this.gameEngineService.enterBattle(attackerArmy, defenderArmy, creature, previousTile);
   }
 }

@@ -14,6 +14,7 @@ import { ResourceType } from '../../core/models/player/resource-type.enum';
 import { CreatureTypeStoreService } from '../../core/services/creature/creature-type-store.service';
 import { Creature } from '../../core/models/creature/creature.model';
 import { Observable } from 'rxjs';
+import { MAX_ARMY_SLOTS } from '../../core/models/army.constants';
 
 @Component({
   standalone: true,
@@ -102,6 +103,6 @@ export class MainMenuComponent {
     army.push({ type: types[6], quantity: 15 });
     army.push({ type: types[7], quantity: 16 });
     
-    return army;
+    return army.slice(0, MAX_ARMY_SLOTS);
   }
 }

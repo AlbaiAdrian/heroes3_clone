@@ -6,7 +6,6 @@ import { GameState } from '../../models/game-state.enum';
 import { TerrainSpriteService } from '../rendering/terrain-sprite.service';
 import { HeroSpriteService } from '../rendering/hero-sprite.service';
 import { ObjectsSpriteService } from '../rendering/objects-sprite.service';
-import { CreatureSpriteService } from '../rendering/creature-sprite.service';
 import { CreatureTypeDataService } from '../creature/creature-type-data.service';
 import { CreatureTypeStoreService } from '../creature/creature-type-store.service';
 import { BuildingDataService } from '../building/building-data.service';
@@ -23,7 +22,6 @@ import { Tile } from '../../models/terrain/tile.model';
 export class GameEngineService {
   private canStartGame$ = new BehaviorSubject<boolean>(false);
   private creatureTypesLoaded = false;
-  private creatureSpritesLoaded = false;
   private buildingsLoaded = false;
   
   constructor(
@@ -39,12 +37,10 @@ export class GameEngineService {
     creatureStore: CreatureTypeStoreService,
     buildingData: BuildingDataService,
     buildingStore: BuildingStoreService,
-    creatureSprite: CreatureSpriteService
   ) {
     heroSprite.loadSprites();
     objectsSprite.loadSprites();
     terrainSprite.loadSprites();
-    creatureSprite.loadSprites();
 
     creatureTypeData.getCreatureTypes().subscribe({
       next: (creatureTypes) => {
@@ -76,16 +72,10 @@ export class GameEngineService {
         this.updateCanStartGame();
       }
     });
-
-    creatureSprite.spritesLoaded().subscribe((loaded) => {
-      this.creatureSpritesLoaded = loaded;
-      console.log('Creature sprites loaded:', loaded);
-      this.updateCanStartGame();
-    });
   }
 
   private updateCanStartGame(): void {
-    if (this.creatureTypesLoaded && this.buildingsLoaded && this.creatureSpritesLoaded) {
+    if (this.creatureTypesLoaded && this.buildingsLoaded) {
       this.canStartGame$.next(true);
     }
   }

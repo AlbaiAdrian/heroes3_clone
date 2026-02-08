@@ -1,5 +1,5 @@
 // features/battle/battle.component.ts
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameEngineService } from '../../core/services/game/game-engine.service';
 import { BattleStateService } from '../../core/services/battle/battle-state.service';
@@ -7,217 +7,40 @@ import { BattleService } from '../../core/services/battle/battle.service';
 import { BattleState } from '../../core/models/battle/battle-state.model';
 import { BattleUnit } from '../../core/models/battle/battle-unit.model';
 import { BattleResult } from '../../core/models/battle/battle-result.enum';
+import { CreatureAttributeType } from '../../core/models/creature/creature-attribute-type.enum';
 import { Subscription } from 'rxjs';
 
 @Component({
   standalone: true,
   selector: 'app-battle',
   imports: [CommonModule],
-  template: `
-    <section class="battle" *ngIf="state">
-      <h2>Battle — Round {{ state.round }}</h2>
-
-      <div class="battlefield">
-        <div class="army attacker-army">
-          <h3>Attacker</h3>
-          <div
-            *ngFor="let unit of state.attackerUnits"
-            class="unit-card"
-            [class.dead]="unit.isDead"
-            [class.active]="unit === currentUnit"
-          >
-            <strong>{{ unit.creatureType.name }}</strong>
-            <span>Qty: {{ unit.quantity }}</span>
-            <span>HP: {{ unit.currentHp }}/{{ unit.maxHp }}</span>
-          </div>
-        </div>
-
-        <div class="battle-info">
-          <div *ngIf="!state.result" class="turn-info">
-            <p>
-              Current turn:
-              <strong>{{ currentUnit?.creatureType?.name }}</strong>
-              ({{ currentUnit?.isAttacker ? 'Attacker' : 'Defender' }})
-            </p>
-            <p class="select-target" *ngIf="targets.length > 0">Select a target to attack:</p>
-            <div class="targets">
-              <button
-                *ngFor="let target of targets"
-                class="target-btn"
-                (click)="attackTarget(target)"
-              >
-                Attack {{ target.creatureType.name }} ({{ target.quantity }})
-              </button>
-            </div>
-          </div>
-
-          <div *ngIf="state.result" class="result">
-            <h3 class="result-title">{{ resultText }}</h3>
-            <button class="end-btn" (click)="endBattle()">Return to Map</button>
-          </div>
-
-          <div class="battle-log">
-            <h4>Battle Log</h4>
-            <div class="log-entries">
-              <p *ngFor="let entry of state.log">{{ entry }}</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="army defender-army">
-          <h3>Defender</h3>
-          <div
-            *ngFor="let unit of state.defenderUnits"
-            class="unit-card"
-            [class.dead]="unit.isDead"
-            [class.active]="unit === currentUnit"
-          >
-            <strong>{{ unit.creatureType.name }}</strong>
-            <span>Qty: {{ unit.quantity }}</span>
-            <span>HP: {{ unit.currentHp }}/{{ unit.maxHp }}</span>
-          </div>
-        </div>
-      </div>
-
-      <button *ngIf="!state.result" class="retreat-btn" (click)="retreat()">Retreat</button>
-    </section>
-  `,
-  styles: [
-    `
-      .battle {
-        padding: 1rem;
-        text-align: center;
-        background: #1a1a2e;
-        color: #eee;
-        min-height: 100vh;
-      }
-      .battlefield {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        margin: 1rem auto;
-        max-width: 900px;
-      }
-      .army {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .army h3 {
-        margin-bottom: 0.5rem;
-      }
-      .attacker-army h3 { color: #4fc3f7; }
-      .defender-army h3 { color: #ef5350; }
-      .unit-card {
-        padding: 0.5rem;
-        border: 1px solid #555;
-        border-radius: 4px;
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-        background: #16213e;
-      }
-      .unit-card.dead {
-        opacity: 0.4;
-        text-decoration: line-through;
-      }
-      .unit-card.active {
-        border-color: #ffd700;
-        box-shadow: 0 0 6px #ffd700;
-      }
-      .battle-info {
-        flex: 1.5;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .turn-info {
-        padding: 0.5rem;
-      }
-      .select-target {
-        margin-top: 0.5rem;
-        font-style: italic;
-      }
-      .targets {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
-      }
-      .target-btn {
-        padding: 0.5rem;
-        border: none;
-        border-radius: 4px;
-        background: #e65100;
-        color: #fff;
-        cursor: pointer;
-        font-size: 0.9rem;
-      }
-      .target-btn:hover { background: #ff6d00; }
-      .result {
-        padding: 1rem;
-        border: 2px solid #ffd700;
-        border-radius: 8px;
-        background: #0d1b2a;
-      }
-      .result-title { color: #ffd700; margin-bottom: 0.5rem; }
-      .end-btn {
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 4px;
-        background: #2e7d32;
-        color: #fff;
-        cursor: pointer;
-        font-size: 1rem;
-      }
-      .end-btn:hover { background: #388e3c; }
-      .retreat-btn {
-        margin-top: 1rem;
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 4px;
-        background: #b71c1c;
-        color: #fff;
-        cursor: pointer;
-        font-size: 1rem;
-      }
-      .retreat-btn:hover { background: #c62828; }
-      .battle-log {
-        text-align: left;
-        max-height: 200px;
-        overflow-y: auto;
-        background: #0d1b2a;
-        border-radius: 4px;
-        padding: 0.5rem;
-      }
-      .battle-log h4 { margin-bottom: 0.5rem; }
-      .log-entries p {
-        margin: 0.15rem 0;
-        font-size: 0.85rem;
-        color: #aaa;
-      }
-    `,
-  ],
+  templateUrl: './battle.component.html',
+  styleUrls: ['./battle.component.scss'],
 })
 export class BattleComponent implements OnInit, OnDestroy {
   state: BattleState | null = null;
   currentUnit: BattleUnit | null = null;
   targets: BattleUnit[] = [];
   resultText = '';
+  selectedUnit: BattleUnit | null = null;
+  private readonly attackCache = new Map<string, number>();
+  private readonly defenseCache = new Map<string, number>();
 
   private sub?: Subscription;
 
   constructor(
     private gameEngine: GameEngineService,
     private battleStateService: BattleStateService,
-    private battleService: BattleService
+    private battleService: BattleService,
   ) {}
 
   ngOnInit(): void {
     this.sub = this.battleStateService.state$.subscribe(state => {
       this.state = state;
+      this.attackCache.clear();
+      this.defenseCache.clear();
       if (state) {
+        this.populateStatCaches(state);
         this.currentUnit = this.battleService.getCurrentUnit(state);
         this.targets = this.currentUnit
           ? this.battleService.getValidTargets(state, this.currentUnit)
@@ -243,12 +66,87 @@ export class BattleComponent implements OnInit, OnDestroy {
     this.gameEngine.resolveBattle();
   }
 
+  openSprite(unit: BattleUnit): void {
+    this.selectedUnit = unit;
+  }
+
+  closeSprite(): void {
+    this.selectedUnit = null;
+  }
+
+  getCreatureSpritePath(unit: BattleUnit): string {
+    return `creature/${unit.creatureType.faction}/${unit.creatureType.code}.png`;
+  }
+
+  getAttackValue(unit: BattleUnit): number {
+    const key = this.getUnitKey(unit);
+    if (this.attackCache.has(key)) {
+      return this.attackCache.get(key) ?? 0;
+    }
+
+    const attackValue = this.computeAttackValue(unit);
+    this.attackCache.set(key, attackValue);
+    return attackValue;
+  }
+
+  getDefenseValue(unit: BattleUnit): number {
+    const key = this.getUnitKey(unit);
+    if (this.defenseCache.has(key)) {
+      return this.defenseCache.get(key) ?? 0;
+    }
+
+    const defenseValue = this.getAttributeValue(unit, CreatureAttributeType.Defense);
+    this.defenseCache.set(key, defenseValue);
+    return defenseValue;
+  }
+
   private getResultText(result: BattleResult | null): string {
     switch (result) {
       case BattleResult.AttackerWins: return 'Victory! The attacker wins!';
       case BattleResult.DefenderWins: return 'Defeat! The defender wins!';
       case BattleResult.Retreat: return 'The attacker has retreated!';
       default: return '';
+    }
+  }
+
+  private getAttributeValue(unit: BattleUnit, type: CreatureAttributeType): number {
+    return unit.creatureType.attributes.find(attr => attr.attributeType === type)?.value ?? 0;
+  }
+
+  private getUnitKey(unit: BattleUnit): string {
+    return `${unit.creatureType.faction}:${unit.creatureType.code}`;
+  }
+
+  private populateStatCaches(state: BattleState): void {
+    const units = [...state.attackerUnits, ...state.defenderUnits];
+    units.forEach(unit => {
+      const key = this.getUnitKey(unit);
+      this.attackCache.set(key, this.computeAttackValue(unit));
+      this.defenseCache.set(key, this.getAttributeValue(unit, CreatureAttributeType.Defense));
+    });
+  }
+
+  private computeAttackValue(unit: BattleUnit): number {
+    let melee: number | null = null;
+    let ranged: number | null = null;
+    for (const attr of unit.creatureType.attributes) {
+      if (attr.attributeType === CreatureAttributeType.AttackTypeRanged) {
+        ranged = attr.value;
+      }
+      if (attr.attributeType === CreatureAttributeType.AttackTypeMelee) {
+        melee = attr.value;
+      }
+      if (ranged !== null && melee !== null) {
+        break;
+      }
+    }
+    return ranged ?? melee ?? 0;
+  }
+
+  @HostListener('document:keydown.escape')
+  handleEscape(): void {
+    if (this.selectedUnit) {
+      this.closeSprite();
     }
   }
 }
