@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { of } from 'rxjs';
 import { vi } from 'vitest';
 import { CreatureSpriteService } from './creature-sprite.service';
 import { Faction } from '../../models/faction/faction.enum';
@@ -41,12 +40,19 @@ describe('CreatureSpriteService', () => {
       configurable: true,
       writable: true,
     });
-    vi.spyOn(service, 'folderExists').mockImplementation((faction) =>
-      of(faction === Faction.Castle)
-    );
-
     try {
       service.loadSprites();
+
+      const folderRequests = httpMock.match((req) => req.url.startsWith('creature/'));
+      expect(folderRequests.length).toBe(Object.values(Faction).length);
+      folderRequests.forEach((req) => {
+        const [, faction] = req.request.url.split('/');
+        if (faction === Faction.Castle) {
+          req.flush('');
+          return;
+        }
+        req.flush('', { status: 404, statusText: 'Not Found' });
+      });
 
       const req = httpMock.expectOne('assets/data/creature/castle.json');
       expect(req.request.method).toBe('GET');

@@ -41,7 +41,7 @@ export class CreatureSpriteService {
     return this.sprites.get(faction)?.get(code);
   }
 
-  folderExists(faction: Faction): Observable<boolean> {
+  private folderExists(faction: Faction): Observable<boolean> {
     return this.http
       .get(`${this.creatureSpritePath}/${faction}/`, {
         observe: 'response',
