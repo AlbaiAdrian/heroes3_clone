@@ -28,7 +28,7 @@ describe('CreatureSpriteService', () => {
   it('loads sprites for available faction folders', () => {
     const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
     const originalImage = globalThis.Image;
-    class TestImage {
+    class MockImage {
       onload: (() => void) | null = null;
       onerror: (() => void) | null = null;
       set src(_value: string) {
@@ -36,7 +36,7 @@ describe('CreatureSpriteService', () => {
       }
     }
     Object.defineProperty(globalThis, 'Image', {
-      value: TestImage,
+      value: MockImage,
       configurable: true,
       writable: true,
     });
