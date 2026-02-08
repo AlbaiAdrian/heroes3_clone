@@ -13,7 +13,6 @@ import { BuildingStoreService } from '../building/building-store.service';
 import { Creature } from '../../models/creature/creature.model';
 import { BattleStateService } from '../battle/battle-state.service';
 import { BattleOutcomeService } from '../battle/battle-outcome.service';
-import { BattleResult } from '../../models/battle/battle-result.enum';
 import { MapObjectCreature } from '../../models/map-objects/map-object-creature.model';
 import { PlayerService } from '../player.service';
 import { GameSessionService } from './game-session.service';
