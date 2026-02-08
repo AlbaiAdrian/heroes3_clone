@@ -28,7 +28,8 @@ export class BattleOutcomeService {
     player: Player,
     creatureObject: MapObjectCreature,
     objects: MapObject[],
-    map: Tile[][]
+    map: Tile[][],
+    heroTileBeforeBattle: Tile | null
   ): boolean {
     switch (result) {
       case BattleResult.AttackerWins:
@@ -39,7 +40,7 @@ export class BattleOutcomeService {
         return this.handleDefeat(hero, player);
 
       case BattleResult.Retreat:
-        this.handleRetreat(hero, creatureObject);
+        this.handleRetreat(hero, heroTileBeforeBattle);
         return false;
 
       default:
@@ -48,7 +49,9 @@ export class BattleOutcomeService {
   }
 
   /**
-   * Victory: update hero's army to reflect losses, remove creature from map.
+   * Victory: remove dead creature stacks from hero's army and update
+   * surviving stacks with their remaining quantities, then remove
+   * the defeated creature from the map.
    */
   private handleVictory(
     battleState: BattleState,
@@ -57,13 +60,14 @@ export class BattleOutcomeService {
     objects: MapObject[],
     map: Tile[][]
   ): void {
-    // Update hero army based on surviving attacker units
-    hero.army = battleState.attackerUnits
-      .filter(u => !u.isDead)
-      .map(u => ({
-        type: u.creatureType,
-        quantity: u.quantity,
-      } as Creature));
+    // Rebuild hero army: keep only surviving units, remove dead stacks
+    const survivingArmy: Creature[] = [];
+    for (const unit of battleState.attackerUnits) {
+      if (!unit.isDead && unit.quantity > 0) {
+        survivingArmy.push({ type: unit.creatureType, quantity: unit.quantity });
+      }
+    }
+    hero.army = survivingArmy;
 
     // Remove the creature from the map objects array
     const index = objects.indexOf(creatureObject);
@@ -95,10 +99,14 @@ export class BattleOutcomeService {
   }
 
   /**
-   * Retreat: clear hero's remaining path to stop further movement.
-   * The creature remains on the map so the hero cannot advance past it.
+   * Retreat: move hero back to the tile before the creature and clear
+   * remaining path. The creature remains on the map blocking passage.
    */
-  private handleRetreat(hero: Hero, creatureObject: MapObjectCreature): void {
+  private handleRetreat(hero: Hero, previousTile: Tile | null): void {
+    // Move hero back to the tile before the creature
+    if (previousTile) {
+      hero.tile = previousTile;
+    }
     // Clear any remaining path so the hero stops moving
     hero.path = [];
   }

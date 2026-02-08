@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { HeroPathfindingService } from './hero-pathfinding.service';
 import { HeroStepExecutorService } from './hero-step-executor.service';
 import { HeroMovementStateService } from './hero-movement-state.service';
+import { GameStateService } from '../game/game-state.service';
+import { GameState } from '../../models/game-state.enum';
 import { Tile } from '../../models/terrain/tile.model';
 import { Hero } from '../../models/hero/hero.model';
 
@@ -14,7 +16,8 @@ export class HeroMovementService {
   constructor(
     private pathfinding: HeroPathfindingService,
     private stepExecutor: HeroStepExecutorService,
-    private movementState: HeroMovementStateService
+    private movementState: HeroMovementStateService,
+    private gameState: GameStateService
   ) {}
 
   setDestination(hero: Hero, tile: Tile, map: Tile[][]): void {
@@ -35,6 +38,9 @@ export class HeroMovementService {
 
       await this.stepExecutor.execute(hero, nextTile);
       this.movementState.consume(hero);
+
+      // Stop movement if a battle or other state change was triggered
+      if (this.gameState.snapshot !== GameState.Adventure) break;
         
       // service does NOT know what this does
       await afterStep();

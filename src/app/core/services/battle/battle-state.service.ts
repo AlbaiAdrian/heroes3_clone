@@ -6,6 +6,7 @@ import { BattleUnit } from '../../models/battle/battle-unit.model';
 import { BattleResult } from '../../models/battle/battle-result.enum';
 import { BattleService } from './battle.service';
 import { MapObjectCreature } from '../../models/map-objects/map-object-creature.model';
+import { Tile } from '../../models/terrain/tile.model';
 
 /**
  * Holds the current battle state as an observable for the UI.
@@ -20,6 +21,9 @@ export class BattleStateService {
   /** The map creature object that triggered the current battle */
   private _creatureObject: MapObjectCreature | null = null;
 
+  /** The tile the hero was on before stepping onto the creature tile */
+  private _heroTileBeforeBattle: Tile | null = null;
+
   constructor(private battleService: BattleService) {}
 
   get snapshot(): BattleState | null {
@@ -30,11 +34,21 @@ export class BattleStateService {
     return this._creatureObject;
   }
 
+  get heroTileBeforeBattle(): Tile | null {
+    return this._heroTileBeforeBattle;
+  }
+
   /**
    * Start a new battle between an attacker army and a defender army.
    */
-  startBattle(attackerArmy: Creature[], defenderArmy: Creature[], creatureObject: MapObjectCreature | null): void {
+  startBattle(
+    attackerArmy: Creature[],
+    defenderArmy: Creature[],
+    creatureObject: MapObjectCreature | null,
+    heroTileBeforeBattle: Tile | null
+  ): void {
     this._creatureObject = creatureObject;
+    this._heroTileBeforeBattle = heroTileBeforeBattle;
     const state = this.battleService.initBattle(attackerArmy, defenderArmy);
     this.battleState$.next(state);
   }
@@ -71,6 +85,7 @@ export class BattleStateService {
    */
   endBattle(): void {
     this._creatureObject = null;
+    this._heroTileBeforeBattle = null;
     this.battleState$.next(null);
   }
 }

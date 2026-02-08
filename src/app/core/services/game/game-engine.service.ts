@@ -17,6 +17,7 @@ import { BattleResult } from '../../models/battle/battle-result.enum';
 import { MapObjectCreature } from '../../models/map-objects/map-object-creature.model';
 import { PlayerService } from '../player.service';
 import { GameSessionService } from './game-session.service';
+import { Tile } from '../../models/terrain/tile.model';
 
 @Injectable({ providedIn: 'root' })
 export class GameEngineService {
@@ -93,8 +94,8 @@ export class GameEngineService {
     this.gameState.transitionTo(GameState.Load);
   }
 
-  enterBattle(attackerArmy: Creature[], defenderArmy: Creature[], creatureObject: MapObjectCreature): void {
-    this.battleState.startBattle(attackerArmy, defenderArmy, creatureObject);
+  enterBattle(attackerArmy: Creature[], defenderArmy: Creature[], creatureObject: MapObjectCreature, heroTileBeforeBattle: Tile | null): void {
+    this.battleState.startBattle(attackerArmy, defenderArmy, creatureObject, heroTileBeforeBattle);
     this.gameState.transitionTo(GameState.Battle);
   }
 
@@ -104,6 +105,7 @@ export class GameEngineService {
   resolveBattle(): void {
     const state = this.battleState.snapshot;
     const creatureObject = this.battleState.creatureObject;
+    const heroTileBeforeBattle = this.battleState.heroTileBeforeBattle;
     const player = this.playerService.getActivePlayer();
 
     if (!state?.result || !player) {
@@ -123,7 +125,8 @@ export class GameEngineService {
       player,
       creatureObject!,
       objects,
-      map
+      map,
+      heroTileBeforeBattle
     );
 
     this.battleState.endBattle();

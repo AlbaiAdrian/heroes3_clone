@@ -10,12 +10,20 @@ export class HeroStepExecutorService {
 
   private readonly STEP_DELAY_MS = 200;
 
+  /** The tile the hero was on before the last executed step */
+  private _previousTile: Tile | null = null;
+
   constructor(
     private actionHandlerRegistry: ActionHandlerRegistry
   ) {}
 
+  get previousTile(): Tile | null {
+    return this._previousTile;
+  }
+
   async execute(hero: Hero, tile: Tile): Promise<void> {
     const facing = this.getFacingDirection(hero, tile);
+    this._previousTile = hero.tile;
     hero.tile = tile;
     hero.facing = facing;
 

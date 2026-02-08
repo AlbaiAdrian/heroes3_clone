@@ -5,6 +5,7 @@ import { MapObjectCreature } from '../../models/map-objects/map-object-creature.
 import { MapObjectType } from '../../models/map-objects/map-object-type.enum';
 import { GameEngineService } from '../game/game-engine.service';
 import { PlayerService } from '../player.service';
+import { HeroStepExecutorService } from '../hero-movement/hero-step-executor.service';
 
 /**
  * Handler for creature battle interactions.
@@ -15,7 +16,8 @@ export class CreatureActionHandler implements ActionHandler {
 
   constructor(
     private gameEngineService: GameEngineService,
-    private playerService: PlayerService
+    private playerService: PlayerService,
+    private stepExecutor: HeroStepExecutorService
   ) {}
 
   canHandle(interactionObject: MapObject): boolean {
@@ -29,7 +31,8 @@ export class CreatureActionHandler implements ActionHandler {
 
     const player = this.playerService.getActivePlayer();
     const attackerArmy = player?.selectedHero?.army ?? [];
+    const previousTile = this.stepExecutor.previousTile;
 
-    this.gameEngineService.enterBattle(attackerArmy, [...creature.creatures], creature);
+    this.gameEngineService.enterBattle(attackerArmy, [...creature.creatures], creature, previousTile);
   }
 }
