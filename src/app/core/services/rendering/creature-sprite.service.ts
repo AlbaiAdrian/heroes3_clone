@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, map, Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { catchError, filter, map, Observable, of, switchMap } from 'rxjs';
 import { CreatureType } from '../../models/creature/creature-type.model';
 import { Faction } from '../../models/faction/faction.enum';
 
@@ -15,17 +15,20 @@ export class CreatureSpriteService {
   loadSprites(): void {
     const factions = Object.values(Faction);
     factions.forEach((faction) => {
-      this.folderExists(faction).subscribe((exists) => {
-        if (!exists) {
-          console.warn(`Creature sprite folder missing for faction: ${faction}`);
-          return;
-        }
-
-        this.http.get<CreatureType[]>(`${this.creatureDataPath}/${faction}.json`).subscribe({
+      this.folderExists(faction)
+        .pipe(
+          filter((exists) => {
+            if (!exists) {
+              console.warn(`Creature sprite folder missing for faction: ${faction}`);
+            }
+            return exists;
+          }),
+          switchMap(() => this.http.get<CreatureType[]>(`${this.creatureDataPath}/${faction}.json`))
+        )
+        .subscribe({
           next: (creatures) => this.loadFactionSprites(faction, creatures),
           error: (err) => console.error(`Failed to load creatures for ${faction}:`, err),
         });
-      });
     });
   }
 
@@ -41,7 +44,7 @@ export class CreatureSpriteService {
       })
       .pipe(
         map(() => true),
-        catchError((error: HttpErrorResponse) => of(error.status !== 404))
+        catchError(() => of(false))
       );
   }
 
