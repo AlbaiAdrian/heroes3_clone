@@ -23,24 +23,16 @@ export class BattleComponent implements OnInit, OnDestroy {
   targets: BattleUnit[] = [];
   resultText = '';
   selectedUnit: BattleUnit | null = null;
-  private readonly attackCache = new Map<string, number>();
-  private readonly defenseCache = new Map<string, number>();
+
 
   private sub?: Subscription;
 
-  constructor(
-    private gameEngine: GameEngineService,
-    private battleStateService: BattleStateService,
-    private battleService: BattleService,
-  ) {}
+  constructor(private gameEngine: GameEngineService, private battleStateService: BattleStateService, private battleService: BattleService) {}
 
   ngOnInit(): void {
     this.sub = this.battleStateService.state$.subscribe(state => {
       this.state = state;
-      this.attackCache.clear();
-      this.defenseCache.clear();
       if (state) {
-        this.populateStatCaches(state);
         this.currentUnit = this.battleService.getCurrentUnit(state);
         this.targets = this.currentUnit
           ? this.battleService.getValidTargets(state, this.currentUnit)
@@ -80,23 +72,13 @@ export class BattleComponent implements OnInit, OnDestroy {
 
   getAttackValue(unit: BattleUnit): number {
     const key = this.getUnitKey(unit);
-    if (this.attackCache.has(key)) {
-      return this.attackCache.get(key) ?? 0;
-    }
-
     const attackValue = this.computeAttackValue(unit);
-    this.attackCache.set(key, attackValue);
     return attackValue;
   }
 
   getDefenseValue(unit: BattleUnit): number {
     const key = this.getUnitKey(unit);
-    if (this.defenseCache.has(key)) {
-      return this.defenseCache.get(key) ?? 0;
-    }
-
     const defenseValue = this.getAttributeValue(unit, CreatureAttributeType.Defense);
-    this.defenseCache.set(key, defenseValue);
     return defenseValue;
   }
 
@@ -115,15 +97,6 @@ export class BattleComponent implements OnInit, OnDestroy {
 
   private getUnitKey(unit: BattleUnit): string {
     return `${unit.creatureType.faction}:${unit.creatureType.code}`;
-  }
-
-  private populateStatCaches(state: BattleState): void {
-    const units = [...state.attackerUnits, ...state.defenderUnits];
-    units.forEach(unit => {
-      const key = this.getUnitKey(unit);
-      this.attackCache.set(key, this.computeAttackValue(unit));
-      this.defenseCache.set(key, this.getAttributeValue(unit, CreatureAttributeType.Defense));
-    });
   }
 
   private computeAttackValue(unit: BattleUnit): number {
