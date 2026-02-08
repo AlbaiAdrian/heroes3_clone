@@ -1,7 +1,7 @@
 import { DestroyRef, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { catchError, filter, map, Observable, of, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, filter, map, Observable, of, switchMap } from 'rxjs';
 import { CreatureType } from '../../models/creature/creature-type.model';
 import { Faction } from '../../models/faction/faction.enum';
 
@@ -10,6 +10,9 @@ export class CreatureSpriteService {
   private readonly creatureDataPath = 'assets/data/creature';
   private readonly creatureSpritePath = 'creature';
   private sprites = new Map<Faction, Map<string, HTMLImageElement>>();
+  private pendingLoads = 0;
+  private pendingFactions = 0;
+  private spritesLoaded$ = new BehaviorSubject<boolean>(false);
 
   constructor(
     private readonly http: HttpClient,
@@ -18,6 +21,10 @@ export class CreatureSpriteService {
 
   loadSprites(): void {
     const factions = Object.values(Faction);
+    this.pendingFactions = factions.length;
+    this.pendingLoads = 0;
+    this.spritesLoaded$.next(false);
+
     factions.forEach((faction) => {
       this.folderExists(faction)
         .pipe(
@@ -32,13 +39,21 @@ export class CreatureSpriteService {
         )
         .subscribe({
           next: (creatures) => this.loadFactionSprites(faction, creatures),
-          error: (err) => console.error(`Failed to load creatures for ${faction}:`, err),
+          error: (err) => {
+            console.error(`Failed to load creatures for ${faction}:`, err);
+            this.completeFactionLoad();
+          },
+          complete: () => this.completeFactionLoad(),
         });
     });
   }
 
   get(faction: Faction, code: string): HTMLImageElement | undefined {
     return this.sprites.get(faction)?.get(code);
+  }
+
+  spritesLoaded(): Observable<boolean> {
+    return this.spritesLoaded$.asObservable();
   }
 
   private folderExists(faction: Faction): Observable<boolean> {
@@ -56,15 +71,38 @@ export class CreatureSpriteService {
   private loadFactionSprites(faction: Faction, creatures: CreatureType[]): void {
     const factionSprites = this.getFactionSprites(faction);
     creatures.forEach((creature) => {
+      if (factionSprites.has(creature.code)) {
+        return;
+      }
+
+      this.pendingLoads += 1;
       const img = new Image();
       img.onload = () => {
         factionSprites.set(creature.code, img);
+        this.completeSpriteLoad();
       };
       img.onerror = () => {
         console.warn(`Missing creature sprite: ${faction}/${creature.code}`);
+        this.completeSpriteLoad();
       };
       img.src = `${this.creatureSpritePath}/${faction}/${creature.code}.png`;
     });
+  }
+
+  private completeFactionLoad(): void {
+    this.pendingFactions = Math.max(0, this.pendingFactions - 1);
+    this.checkIfLoaded();
+  }
+
+  private completeSpriteLoad(): void {
+    this.pendingLoads = Math.max(0, this.pendingLoads - 1);
+    this.checkIfLoaded();
+  }
+
+  private checkIfLoaded(): void {
+    if (this.pendingFactions === 0 && this.pendingLoads === 0) {
+      this.spritesLoaded$.next(true);
+    }
   }
 
   private getFactionSprites(faction: Faction): Map<string, HTMLImageElement> {
