@@ -4,9 +4,8 @@
 # To make this agent available, merge this file into the default repository branch.
 # For format details, see: https://gh.io/customagents/config
 
-name:
-description:
----
+name:Heroes3 clone agent
+description:My agent to code the heroes 3 clone game
 
 # My Agent
 
